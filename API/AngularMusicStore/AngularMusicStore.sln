@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularMusicStore.Api", "AngularMusicStore.Api\AngularMusicStore.Api.csproj", "{3F76DB32-E73B-49CD-992B-5665B0F10856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularMusicStore.Core", "AngularMusicStore.Core\AngularMusicStore.Core.csproj", "{DBDFA887-DC63-4A00-9C03-6F16C445DC4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularMusicStore.UnitTests", "AngularMusicStore.UnitTests\AngularMusicStore.UnitTests.csproj", "{09A5B9C1-E842-47C0-8DA8-CA8F768C0A1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularMusicStore.IntegrationTests", "AngularMusicStore.IntegrationTests\AngularMusicStore.IntegrationTests.csproj", "{5565FF18-E719-45F7-B01B-8109B19A14AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F76DB32-E73B-49CD-992B-5665B0F10856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F76DB32-E73B-49CD-992B-5665B0F10856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F76DB32-E73B-49CD-992B-5665B0F10856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F76DB32-E73B-49CD-992B-5665B0F10856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDFA887-DC63-4A00-9C03-6F16C445DC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDFA887-DC63-4A00-9C03-6F16C445DC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDFA887-DC63-4A00-9C03-6F16C445DC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDFA887-DC63-4A00-9C03-6F16C445DC4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09A5B9C1-E842-47C0-8DA8-CA8F768C0A1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A5B9C1-E842-47C0-8DA8-CA8F768C0A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A5B9C1-E842-47C0-8DA8-CA8F768C0A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09A5B9C1-E842-47C0-8DA8-CA8F768C0A1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5565FF18-E719-45F7-B01B-8109B19A14AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5565FF18-E719-45F7-B01B-8109B19A14AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5565FF18-E719-45F7-B01B-8109B19A14AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5565FF18-E719-45F7-B01B-8109B19A14AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
