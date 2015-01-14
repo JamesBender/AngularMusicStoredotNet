@@ -58,5 +58,26 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             Assert.IsNull(result);
         }
+
+        [Test]
+        public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbums()
+        {
+            var albumOne = new Album();
+            var albumTwo = new Album();
+            var artist = new Artist();
+            artist.Albums.Add(albumOne);
+            artist.Albums.Add(albumTwo);
+            var numberOfAlbums = artist.Albums.Count;
+
+            var artistId = _repository.Save(artist);
+
+            Assert.IsNotNull(artistId);
+
+            artist = _repository.GetById(artistId);
+
+            Assert.IsNotNull(artist);
+            Assert.IsNotNull(artist.Albums);
+            Assert.AreEqual(numberOfAlbums, artist.Albums.Count);
+        }
     }
 }
