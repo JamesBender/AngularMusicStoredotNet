@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AngularMusicStore.Core.Entities;
 using AngularMusicStore.Core.Factories;
 using AngularMusicStore.Core.Persistence;
@@ -60,7 +62,7 @@ namespace AngularMusicStore.IntegrationTests.Core
         }
 
         [Test]
-        public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbums()
+        public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbumsAndDeletingTheArtistShouldCascadeToAlbums()
         {
             var albumOne = new Album();
             var albumTwo = new Album();
@@ -78,6 +80,12 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.IsNotNull(artist);
             Assert.IsNotNull(artist.Albums);
             Assert.AreEqual(numberOfAlbums, artist.Albums.Count);
-        }
+
+            _repository.Delete(artist);
+            var listOfAlbums = _repository.GetAll<Album>();
+
+            Assert.IsNotNull(listOfAlbums);
+            Assert.AreEqual(0, listOfAlbums.Count());
+        }        
     }
 }

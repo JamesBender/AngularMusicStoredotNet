@@ -44,5 +44,41 @@ namespace AngularMusicStore.UnitTests.Core
 
             Assert.AreEqual(numberOfArtists, result.ToList().Count);
         }
+
+        [Test]
+        public void ShouldBeAbleToSaveAnNewArtist()
+        {
+            var artist = new Artist();
+            var artistId = Guid.NewGuid();
+            _artistRepository.Setup(x => x.Save(artist)).Returns(artistId);
+
+            var result = _artistService.Save(artist);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(artistId, result);
+        }
+
+        [Test]
+        public void ShouldBeAbleToUpdateAnExistingArtist()
+        {
+            var artistId = Guid.NewGuid();
+            var artist = new Artist {Id = artistId};
+            _artistRepository.Setup(x => x.Save(artist)).Returns(artistId);
+
+            var result = _artistService.Save(artist);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(artistId, result);
+        }
+
+        [Test]
+        public void ShouldBeAbleToDeleteAnExistingArtist()
+        {
+            var artist = new Artist();
+
+            _artistService.Delete(artist);
+
+            _artistRepository.Verify(x => x.Delete(artist), Times.Once);
+        }
     }
 }

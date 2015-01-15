@@ -1,5 +1,5 @@
-﻿using AngularMusicStore.Core.Entities;
-using AngularMusicStore.Core.Persistence;
+﻿using AngularMusicStore.Core.Persistence;
+using AngularMusicStore.Core.Services;
 using NHibernate;
 using Ninject.Modules;
 
@@ -11,6 +11,7 @@ namespace AngularMusicStore.Core.Factories
         {
             Bind<ISessionFactory>().ToProvider<SessionFactoryProvider>().InSingletonScope();
             Bind<IRepository>().To<Repository>();
+            Bind<IArtistService>().To<ArtistService>();
         }
     }
 }
