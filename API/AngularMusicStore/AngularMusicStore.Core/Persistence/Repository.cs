@@ -5,15 +5,15 @@ using NHibernate;
 
 namespace AngularMusicStore.Core.Persistence
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository
     {
-        IEnumerable<T> All { get; }
-        Guid Save(T entity);
-        void Delete(T entity);
-        T GetById(Guid entityId);
+        IEnumerable<T> GetAll<T>() where T : BaseEntity;
+        Guid Save<T>(T entity) where T: BaseEntity;
+        void Delete<T>(T entity) where T : BaseEntity;
+        T GetById<T>(Guid entityId) where T : BaseEntity;
     }
 
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository : IRepository
     {
         private readonly ISessionFactory _sessionFactory;
 
@@ -22,18 +22,15 @@ namespace AngularMusicStore.Core.Persistence
             _sessionFactory = sessionFactory;
         }
 
-        public IEnumerable<T> All 
+        public IEnumerable<T> GetAll<T>() where T : BaseEntity
         {
-            get
+            using (var session = _sessionFactory.OpenSession())
             {
-                using (var session = _sessionFactory.OpenSession())
-                {
-                    return session.CreateCriteria<Artist>().List<T>();
-                }
-            } 
+                return session.CreateCriteria<T>().List<T>();
+            }
         }
 
-        public Guid Save(T entity)
+        public Guid Save<T>(T entity) where T : BaseEntity
         {
             using (var session = _sessionFactory.OpenSession())
             {
@@ -41,7 +38,7 @@ namespace AngularMusicStore.Core.Persistence
             }
         }
 
-        private static Guid UpdateEntity(T entity, ISession session)
+        private static Guid UpdateEntity<T>(T entity, ISession session) where T : BaseEntity
         {
             session.Merge(entity);
             session.Flush();
@@ -49,15 +46,15 @@ namespace AngularMusicStore.Core.Persistence
             return entity.Id;
         }
 
-        private static Guid SaveEntity(T entity, ISession session)
+        private static Guid SaveEntity<T>(T entity, ISession session) where T : BaseEntity
         {
-            var id = (Guid) session.Save(entity);
+            var id = (Guid)session.Save(entity);
             session.Flush();
             session.Evict(entity);
             return id;
         }
 
-        public void Delete(T entity)
+        public void Delete<T>(T entity) where T : BaseEntity
         {
             using (var session = _sessionFactory.OpenSession())
             {
@@ -67,7 +64,7 @@ namespace AngularMusicStore.Core.Persistence
             }
         }
 
-        public T GetById(Guid entityId)
+        public T GetById<T>(Guid entityId) where T : BaseEntity
         {
             using (var session = _sessionFactory.OpenSession())
             {

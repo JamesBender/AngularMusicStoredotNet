@@ -15,7 +15,7 @@ namespace AngularMusicStore.UnitTests.Core
         private ISessionFactory _sessionFactory;
         private Mock<ISession> _session;
         private ISession _sessionMockedObject;
-        private Repository<Artist> _repository;
+        private Repository _repository;
 
         [SetUp]
         public void SetupTests()
@@ -25,7 +25,7 @@ namespace AngularMusicStore.UnitTests.Core
             _session = new Mock<ISession>();
             _sessionMockedObject = _session.Object;
             sessionFactoryMock.Setup(x => x.OpenSession()).Returns(_sessionMockedObject);
-            _repository = new Repository<Artist>(_sessionFactory);
+            _repository = new Repository(_sessionFactory);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace AngularMusicStore.UnitTests.Core
             criteraQueryMock.Setup(x => x.List<Artist>()).Returns(listOfUsers);
             _session.Setup(x => x.CreateCriteria<Artist>()).Returns(criteraQueryMock.Object);
 
-            var result = _repository.All;
+            var result = _repository.GetAll<Artist>();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(expectedNumberOfEntities, result.Count());
@@ -69,7 +69,7 @@ namespace AngularMusicStore.UnitTests.Core
 
             _session.Setup(x => x.Get<Artist>(artistId)).Returns(expectedArtist);
 
-            var result = _repository.GetById(artistId);
+            var result = _repository.GetById<Artist>(artistId);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(expectedArtist, result);

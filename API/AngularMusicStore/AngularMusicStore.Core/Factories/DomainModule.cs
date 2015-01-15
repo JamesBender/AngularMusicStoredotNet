@@ -10,7 +10,7 @@ namespace AngularMusicStore.Core.Factories
         public override void Load()
         {
             Bind<ISessionFactory>().ToProvider<SessionFactoryProvider>().InSingletonScope();
-            Bind<IRepository<Artist>>().To<Repository<Artist>>();
+            Bind<IRepository>().To<Repository>();
         }
     }
 }

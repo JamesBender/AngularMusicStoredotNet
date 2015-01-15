@@ -10,17 +10,17 @@ namespace AngularMusicStore.IntegrationTests.Core
     [TestFixture]
     public class RepositoryTests
     {
-        private IRepository<Artist> _repository;
-
+        private IRepository _repository;
+        
         [SetUp]
         public void SetupTests()
         {
             var kernel = new StandardKernel(new DomainModule());
-            _repository = kernel.Get<IRepository<Artist>>();
+            _repository = kernel.Get<IRepository>();
         }
 
         [Test]
-        public void ShouldBeAbleToSaveThenRetrieveThenUpdateThenDeleteAnEntityToTheDatastore()
+        public void ShouldBeAbleToSaveThenRetrieveThenEditThenDeleteAnEntity()
         {
             //Create
             var artist = new Artist();
@@ -30,10 +30,10 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             var artistId = _repository.Save(artist);
 
-            Assert.IsNotNull(artistId);           
-            
+            Assert.IsNotNull(artistId);
+
             //Retrieve
-            artist = _repository.GetById(artistId);
+            artist = _repository.GetById<Artist>(artistId);
 
             Assert.IsNotNull(artist);
 
@@ -46,7 +46,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.IsNotNull(artistId);
 
             //Verify Update
-            artist = _repository.GetById(artistId);
+            artist = _repository.GetById<Artist>(artistId);
 
             Assert.IsNotNull(artist);
             Assert.AreEqual(artistName, artist.Name);
@@ -54,7 +54,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             //Delete
             _repository.Delete(artist);
 
-            var result = _repository.GetById(artistId);
+            var result = _repository.GetById<Artist>(artistId);
 
             Assert.IsNull(result);
         }
@@ -73,7 +73,7 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             Assert.IsNotNull(artistId);
 
-            artist = _repository.GetById(artistId);
+            artist = _repository.GetById<Artist>(artistId);
 
             Assert.IsNotNull(artist);
             Assert.IsNotNull(artist.Albums);

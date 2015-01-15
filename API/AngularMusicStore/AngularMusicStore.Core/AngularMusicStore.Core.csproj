@@ -58,9 +58,10 @@
     <Compile Include="Factories\DomainModule.cs" />
     <Compile Include="Factories\SessionFactoryProvider.cs" />
     <Compile Include="Factories\EntityConfiguration.cs" />
-    <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Factories\SqlStatementInterceptor.cs" />
+    <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ArtistService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
