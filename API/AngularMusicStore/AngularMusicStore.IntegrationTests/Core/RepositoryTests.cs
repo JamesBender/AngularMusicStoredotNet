@@ -64,8 +64,8 @@ namespace AngularMusicStore.IntegrationTests.Core
         [Test]
         public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbumsAndDeletingTheArtistShouldCascadeToAlbums()
         {
-            var albumOne = new Album();
-            var albumTwo = new Album();
+            var albumOne = new Album {ReleaseDate = DateTime.Now};
+            var albumTwo = new Album {ReleaseDate = DateTime.Now};
             var artist = new Artist();
             artist.Albums.Add(albumOne);
             artist.Albums.Add(albumTwo);

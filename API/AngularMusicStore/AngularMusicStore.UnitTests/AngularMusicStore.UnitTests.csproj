@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -57,11 +60,16 @@
     <Compile Include="Core\ArtistServiceTests.cs" />
     <Compile Include="Core\RepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\AutomapperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AngularMusicStore.Api\AngularMusicStore.Api.csproj">
+      <Project>{3F76DB32-E73B-49CD-992B-5665B0F10856}</Project>
+      <Name>AngularMusicStore.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AngularMusicStore.Core\AngularMusicStore.Core.csproj">
       <Project>{DBDFA887-DC63-4A00-9C03-6F16C445DC4F}</Project>
       <Name>AngularMusicStore.Core</Name>
