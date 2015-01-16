@@ -7,5 +7,6 @@ namespace AngularMusicStore.Core.Entities
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string CoverUrl { get; set; }
+        public Artist Parent { get; set; }
     }
 }

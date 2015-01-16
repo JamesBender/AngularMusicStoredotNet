@@ -66,8 +66,8 @@ namespace AngularMusicStore.IntegrationTests.Core
             var albumOne = new Album {ReleaseDate = DateTime.Now};
             var albumTwo = new Album {ReleaseDate = DateTime.Now};
             var artist = new Artist();
-            artist.Albums.Add(albumOne);
-            artist.Albums.Add(albumTwo);
+            artist.AddAlbum(albumOne);
+            artist.AddAlbum(albumTwo);
             var numberOfAlbums = artist.Albums.Count;
 
             var artistId = _repository.Save(artist);
@@ -78,8 +78,8 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             Assert.IsNotNull(artist);
             Assert.IsNotNull(artist.Albums);
-            Assert.AreEqual(numberOfAlbums, artist.Albums.Count);
-
+            Assert.AreEqual(numberOfAlbums, artist.Albums.Count(x => x.Parent.Id == artist.Id));
+            
             _repository.Delete(artist);
             var listOfAlbums = _repository.GetAll<Album>();
 
