@@ -36,7 +36,7 @@ namespace AngularMusicStore.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
-            
+
             return Request.CreateResponse(HttpStatusCode.OK, artist);
         }
 
@@ -45,17 +45,19 @@ namespace AngularMusicStore.Api.Controllers
             return _artistModel.Save(artist);
         }
 
-        public HttpResponseMessage PutArtist(Artist artist)
+        public HttpResponseMessage PutArtist(string id, Artist artist)
         {
-            var returnStatus = HttpStatusCode.OK;
-
-            if (artist.Id == Guid.Empty)
+            Guid putId;
+            if (!Guid.TryParse(id, out putId))
             {
-                returnStatus = HttpStatusCode.Created;
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
-            _artistModel.Save(artist);
+            var returnStatus = Guid.Empty == artist.Id ? HttpStatusCode.Created : HttpStatusCode.OK;
+            artist.Id = putId;
             
+            _artistModel.Save(artist);
+
             return Request.CreateResponse(returnStatus);
         }
 

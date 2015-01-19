@@ -61,7 +61,7 @@ namespace AngularMusicStore.IntegrationTests.Web
             var newAlbum = new Album {Name = newAlbumName, ReleaseDate = DateTime.Now, CoverUrl = newAlbumCoverUrl};
             artist.AddAlbum(newAlbum);
 
-            response = _artistController.PutArtist(artist);
+            response = _artistController.PutArtist(artist.Id.ToString(), artist);
 
             Assert.IsNotNull(response);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);

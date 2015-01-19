@@ -92,10 +92,19 @@ namespace AngularMusicStore.UnitTests.Web.Controller
         {
             var artist = new Artist();
 
-            var result = _artistController.PutArtist(artist);
+            var result = _artistController.PutArtist(artist.Id.ToString(), artist);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+        }
+
+        [Test]
+        public void ShouldGetBackAnHttpStatusCode400WhenPuttingWithAMalformedId()
+        {
+            var result = _artistController.PutArtist("this is not a guid", new Artist());
+            
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
         }
 
         [Test]
@@ -104,7 +113,7 @@ namespace AngularMusicStore.UnitTests.Web.Controller
             var artistId = Guid.NewGuid();
             var artist = new Artist {Id = artistId};
 
-            var result = _artistController.PutArtist(artist);
+            var result = _artistController.PutArtist(artist.Id.ToString(), artist);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
