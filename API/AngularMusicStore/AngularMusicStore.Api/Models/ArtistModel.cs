@@ -8,7 +8,15 @@ using Domain = AngularMusicStore.Core.Entities;
 
 namespace AngularMusicStore.Api.Models
 {
-    public class ArtistModel
+    public interface IArtistModel
+    {
+        IEnumerable<Artist> GetArtists();
+        Artist GetById(Guid artistId);
+        Guid Save(Artist artist);
+        void Delete(Artist artist);
+    }
+
+    public class ArtistModel : IArtistModel
     {
         private readonly IRepository _repository;
 

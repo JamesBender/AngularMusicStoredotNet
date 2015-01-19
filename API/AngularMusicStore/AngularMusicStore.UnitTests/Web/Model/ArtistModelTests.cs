@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Api.Models;
-//using AngularMusicStore.Api.Models.ViewModels;
 using AngularMusicStore.Core.Persistence;
-using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using Domain = AngularMusicStore.Core.Entities;

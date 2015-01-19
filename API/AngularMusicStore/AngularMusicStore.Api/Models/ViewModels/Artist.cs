@@ -13,5 +13,11 @@ namespace AngularMusicStore.Api.Models.ViewModels
         {
             Albums = new List<Album>();
         }
+
+        public void AddAlbum(Album album)
+        {
+            album.Parent = this;
+            Albums.Add(album);
+        }
     }
 }
