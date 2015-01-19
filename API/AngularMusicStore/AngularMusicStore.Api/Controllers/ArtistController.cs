@@ -24,17 +24,20 @@ namespace AngularMusicStore.Api.Controllers
         }
 
         [ResponseType(typeof(Artist))]
-        public HttpResponseMessage GetById( string artistId)
+        public HttpResponseMessage GetById(string id)
         {
             Guid retrievalId;
-            if (!Guid.TryParse(artistId, out retrievalId))
+            if (!Guid.TryParse(id, out retrievalId))
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            var artist = _artistModel.GetById(Guid.Parse(artistId));
-            return artist == null
-                ? Request.CreateResponse(HttpStatusCode.NotFound)
-                : Request.CreateResponse(HttpStatusCode.OK, artist);
+            var artist = _artistModel.GetById(Guid.Parse(id));
+            if (artist == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            
+            return Request.CreateResponse(HttpStatusCode.OK, artist);
         }
 
         public Guid PostArtist(Artist artist)
