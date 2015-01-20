@@ -79,7 +79,7 @@ namespace AngularMusicStore.IntegrationTests.Web
             Assert.IsNotNull(artist.Albums.First(x => x.Name == newAlbumName));
 
             //Delete
-            response = _artistController.Delete(artist);
+            response = _artistController.Delete(artist.Id.ToString());
 
             Assert.IsNotNull(response);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);

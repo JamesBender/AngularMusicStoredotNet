@@ -61,9 +61,16 @@ namespace AngularMusicStore.Api.Controllers
             return Request.CreateResponse(returnStatus);
         }
 
-        public HttpResponseMessage Delete(Artist artist)
+        public HttpResponseMessage Delete(string id)
         {
-            if (_artistModel.GetById(artist.Id) == null)
+            Guid artistId;
+
+            if (!Guid.TryParse(id, out artistId))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var artist = _artistModel.GetById(artistId);
+            if (artist == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }

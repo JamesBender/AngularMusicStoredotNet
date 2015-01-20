@@ -24,12 +24,12 @@ namespace AngularMusicStore.Core.Factories
                         x.Add(DefaultCascade.All());
                         x.Add(DefaultLazy.Never());
                     })))
-//                    .ExposeConfiguration(cfg =>
-//                    {
-//                        var schemaExport = new SchemaExport(cfg);
-//                        schemaExport.Drop(true, true);
-//                        schemaExport.Create(true, true);
-//                    })
+                    .ExposeConfiguration(cfg =>
+                    {
+                        var schemaExport = new SchemaExport(cfg);
+                        schemaExport.Drop(true, true);
+                        schemaExport.Create(true, true);
+                    })
                     .BuildSessionFactory();
         }
     }

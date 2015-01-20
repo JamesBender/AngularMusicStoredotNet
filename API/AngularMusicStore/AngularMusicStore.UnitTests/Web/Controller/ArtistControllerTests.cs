@@ -126,7 +126,7 @@ namespace AngularMusicStore.UnitTests.Web.Controller
             var artist = new Artist {Id = artistId};
             _artistModel.Setup(x => x.GetById(artistId)).Returns(artist);
 
-            var result = _artistController.Delete(artist);
+            var result = _artistController.Delete(artist.Id.ToString());
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
@@ -135,7 +135,7 @@ namespace AngularMusicStore.UnitTests.Web.Controller
         [Test]
         public void ShouldGetBackAnHttp404StatusWhenArtistToBeDeleteDoesNotExist()
         {
-            var result = _artistController.Delete(new Artist());
+            var result = _artistController.Delete(new Artist().Id.ToString());
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);
