@@ -140,5 +140,14 @@ namespace AngularMusicStore.UnitTests.Web.Controller
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);
         }
+
+        [Test]
+        public void ShouldGetBackAnHttp400StatusWhenDeletingAnArtistWithABadGuid()
+        {
+            var result = _artistController.Delete("this is not a guid");
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
+        }
     }
 }

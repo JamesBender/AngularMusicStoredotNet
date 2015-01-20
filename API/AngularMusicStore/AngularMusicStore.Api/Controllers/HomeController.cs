@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AngularMusicStore.Api.Controllers
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class HomeController : Controller
     {
         public ActionResult Index()

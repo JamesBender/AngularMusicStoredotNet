@@ -51,6 +51,8 @@ namespace AngularMusicStore.UnitTests.Web.Model
         public void ShouldBeAbleToSaveANewArtist()
         {
             var artist = new ApiModel.Artist();
+            var album = new ApiModel.Album();
+            artist.AddAlbum(album);
 
             var result = _artistModel.Save(artist);
 

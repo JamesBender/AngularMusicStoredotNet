@@ -5,6 +5,7 @@ using Ninject.Modules;
 
 namespace AngularMusicStore.Core.Factories
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class DomainModule : NinjectModule
     {
         public override void Load()

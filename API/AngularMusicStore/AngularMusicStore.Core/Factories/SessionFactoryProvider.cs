@@ -11,6 +11,7 @@ using Ninject.Activation;
 
 namespace AngularMusicStore.Core.Factories
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class SessionFactoryProvider : Provider<ISessionFactory>
     {
         protected override ISessionFactory CreateInstance(IContext context)

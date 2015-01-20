@@ -19,6 +19,7 @@ using AngularMusicStore.Api.Results;
 
 namespace AngularMusicStore.Api.Controllers
 {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
