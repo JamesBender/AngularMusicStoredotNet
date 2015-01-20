@@ -29,7 +29,8 @@ namespace AngularMusicStore.Api.Models
         {
             var listOfDomainArtist = _repository.GetAll<Domain.Artist>();
 
-            return listOfDomainArtist.Select(Mapper.Map<Domain.Artist, Artist>).ToList();
+            var listOfApiArtists = listOfDomainArtist.Select(Mapper.Map<Domain.Artist, Artist>).ToList();
+            return listOfApiArtists;
         }
 
         public Artist GetById(Guid artistId)

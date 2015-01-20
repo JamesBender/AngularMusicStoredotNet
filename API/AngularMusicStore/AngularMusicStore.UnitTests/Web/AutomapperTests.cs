@@ -1,6 +1,7 @@
 ﻿using System;
 using AngularMusicStore.Api.Models.ViewModels;
 using AutoMapper;
+using NHibernate.Proxy;
 using NUnit.Framework;
 using Domain = AngularMusicStore.Core.Entities;
 
@@ -31,7 +32,7 @@ namespace AngularMusicStore.UnitTests.Web
                 CoverUrl = Guid.NewGuid().ToString()
             };
             domainArtist.AddAlbum(domainAlbum);
-            Assert.AreEqual(domainAlbum.Parent, domainArtist);
+            Assert.AreEqual(domainAlbum.Parent.Id, domainArtist.Id);
 
             var apiArtist = Mapper.Map<Domain.Artist, Artist>(domainArtist);
 

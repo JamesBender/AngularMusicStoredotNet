@@ -53,6 +53,7 @@
     <Compile Include="Core\ArtistServiceTests.cs" />
     <Compile Include="Core\RepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs" />
     <Compile Include="Web\ArtistControllerTests.cs" />
     <Compile Include="Web\ArtistModelTests.cs" />
   </ItemGroup>

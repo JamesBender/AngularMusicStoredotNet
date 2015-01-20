@@ -1,3 +1,5 @@
+using AngularMusicStore.Core.Factories;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AngularMusicStore.Api.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AngularMusicStore.Api.App_Start.NinjectWebCommon), "Stop")]
 
@@ -61,6 +63,8 @@ namespace AngularMusicStore.Api.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Load<DomainModule>();
+            kernel.Load<ApiModule>();
         }        
     }
 }
