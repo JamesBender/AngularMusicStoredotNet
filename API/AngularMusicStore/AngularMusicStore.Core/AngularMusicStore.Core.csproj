@@ -61,6 +61,7 @@
     <Compile Include="Factories\SqlStatementInterceptor.cs" />
     <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AlbumService.cs" />
     <Compile Include="Services\ArtistService.cs" />
   </ItemGroup>
   <ItemGroup>

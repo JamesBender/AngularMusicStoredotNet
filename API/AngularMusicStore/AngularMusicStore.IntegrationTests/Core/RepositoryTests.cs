@@ -85,6 +85,41 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             Assert.IsNotNull(listOfAlbums);
             Assert.AreEqual(0, listOfAlbums.Count());
-        }        
+        }
+
+        [Test]
+        public void ShouldBeAbleToSaveANewAlbumDirectlyWithoutSavingTheArtistAsLongAsItHasAParent()
+        {
+            var artist = new Artist {Name = Guid.NewGuid().ToString()};
+
+            var artistId = _repository.Save(artist);
+
+            Assert.IsNotNull(artistId);
+            Assert.AreEqual(artistId, artist.Id);
+
+            var albumName = Guid.NewGuid().ToString();
+            var albumCoverUrl = Guid.NewGuid().ToString();
+            var albumReleaseDate = DateTime.Now;
+            var album = new Album {Name = albumName, CoverUrl = albumCoverUrl, ReleaseDate = albumReleaseDate};
+            artist.AddAlbum(album);
+            Assert.IsNotNull(album.Parent);
+
+            var albumId = _repository.Save(album);
+
+            Assert.IsNotNull(albumId);
+            Assert.AreEqual(albumId, album.Id);
+
+            artist = _repository.GetById<Artist>(artistId);
+
+            Assert.IsNotNull(artist);
+            Assert.IsNotNull(artist.Albums);
+            Assert.AreNotEqual(0, artist.Albums.Count);
+            Assert.IsNotNull(
+                artist.Albums.FirstOrDefault(
+                    x => x.Name == albumName && x.CoverUrl == albumCoverUrl));
+
+            
+            _repository.Delete(artist);
+        }
     }
 }
