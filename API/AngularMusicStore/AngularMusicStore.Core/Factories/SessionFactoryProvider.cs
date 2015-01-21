@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using AngularMusicStore.Core.Entities;
-using AngularMusicStore.Core.Persistence;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -11,7 +11,7 @@ using Ninject.Activation;
 
 namespace AngularMusicStore.Core.Factories
 {
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage]
     public class SessionFactoryProvider : Provider<ISessionFactory>
     {
         protected override ISessionFactory CreateInstance(IContext context)
@@ -28,8 +28,8 @@ namespace AngularMusicStore.Core.Factories
                     .ExposeConfiguration(cfg =>
                     {
                         var schemaExport = new SchemaExport(cfg);
-                        schemaExport.Drop(true, true);
-                        schemaExport.Create(true, true);
+                        schemaExport.Drop(false, true);
+                        schemaExport.Create(false, true);
                     })
                     .BuildSessionFactory();
         }

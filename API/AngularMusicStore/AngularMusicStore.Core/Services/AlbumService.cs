@@ -5,7 +5,15 @@ using AngularMusicStore.Core.Persistence;
 
 namespace AngularMusicStore.Core.Services
 {
-    public class AlbumService
+    public interface IAlbumService
+    {
+        Album GetAlbum(Guid albumId);
+        IEnumerable<Album> GetAlbumsByArtist(Guid artistId);
+        Guid Save(Guid artistId, Album album);
+        void Delete(Album album);
+    }
+
+    public class AlbumService : IAlbumService
     {
         private readonly IRepository _repository;
         private readonly IArtistService _artistService;

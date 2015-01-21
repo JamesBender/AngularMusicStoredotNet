@@ -13,6 +13,7 @@ namespace AngularMusicStore.Core.Factories
             Bind<ISessionFactory>().ToProvider<SessionFactoryProvider>().InSingletonScope();
             Bind<IRepository>().To<Repository>();
             Bind<IArtistService>().To<ArtistService>();
+            Bind<IAlbumService>().To<AlbumService>();
         }
     }
 }
