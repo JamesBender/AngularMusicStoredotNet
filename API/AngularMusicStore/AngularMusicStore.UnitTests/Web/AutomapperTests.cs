@@ -1,7 +1,6 @@
 ﻿using System;
 using AngularMusicStore.Api.Models.ViewModels;
 using AutoMapper;
-using NHibernate.Proxy;
 using NUnit.Framework;
 using Domain = AngularMusicStore.Core.Entities;
 

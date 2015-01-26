@@ -69,6 +69,7 @@
     <Compile Include="Web\AutomapperTests.cs" />
     <Compile Include="Web\Controller\AlbumControllerTests.cs" />
     <Compile Include="Web\Controller\ArtistControllerTests.cs" />
+    <Compile Include="Web\Model\AlbumModelTests.cs" />
     <Compile Include="Web\Model\ArtistModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
