@@ -56,8 +56,9 @@ namespace AngularMusicStore.IntegrationTests.Web
             var artistId = _artistModel.Save(artist);
 
             Assert.IsNotNull(artistId);
+            artist.Id = artistId;
 
-            var listOfAlbumsForArtist = _albumModel.GetAlbumsByArtist(artistId);
+            var listOfAlbumsForArtist = _albumModel.GetAlbumsByArtist(artistId).ToList();
 
             Assert.IsNotNull(listOfAlbumsForArtist);
             Assert.AreEqual(3, listOfAlbumsForArtist.Count());
@@ -75,11 +76,44 @@ namespace AngularMusicStore.IntegrationTests.Web
             Assert.AreEqual(albumToRetreive.CoverUrl, album.CoverUrl);
             Assert.AreEqual(albumToRetreive.ReleaseDate, album.ReleaseDate);
 
+            Assert.AreNotEqual(Guid.Empty, artist.Id);
             _artistModel.Delete(artist);
 
             artist = _artistModel.GetById(artistId);
 
             Assert.IsNull(artist);
-        }       
+        }
+
+        [Test]
+        public void ShouldBeAbleToAddAnAlbumToAnExistingArtist()
+        {
+            var artist = new Artist {Name = Guid.NewGuid().ToString()};
+            artist.AddAlbum(new Album{Name = Guid.NewGuid().ToString(), CoverUrl = Guid.NewGuid().ToString(), ReleaseDate = DateTime.Now});
+            artist.AddAlbum(new Album{Name = Guid.NewGuid().ToString(), CoverUrl = Guid.NewGuid().ToString(), ReleaseDate = DateTime.Now});
+            artist.AddAlbum(new Album{Name = Guid.NewGuid().ToString(), CoverUrl = Guid.NewGuid().ToString(), ReleaseDate = DateTime.Now});
+            var startingNumberOfAlbums = artist.Albums.Count;
+
+            var artistId = _artistModel.Save(artist);
+
+            Assert.IsNotNull(artistId);
+            artist.Id = artistId;
+
+            var newAlbumName = Guid.NewGuid().ToString();
+            var newAlbumCoverUrl = Guid.NewGuid().ToString();
+            var newAlbum = new Album {Name = newAlbumName, CoverUrl = newAlbumCoverUrl, ReleaseDate = DateTime.Now};
+
+            var newAlbumId = _albumModel.Save(artistId, newAlbum);
+            artist = _artistModel.GetById(artistId);
+
+            Assert.IsNotNull(newAlbumId);
+            Assert.AreEqual(startingNumberOfAlbums+1, artist.Albums.Count);
+            Assert.IsNotNull(artist.Albums.FirstOrDefault(x => x.Name == newAlbumName && x.CoverUrl == newAlbumCoverUrl));
+
+            _artistModel.Delete(artist);
+
+            artist = _artistModel.GetById(artistId);
+
+            Assert.IsNull(artist);
+        }
     }
 }
