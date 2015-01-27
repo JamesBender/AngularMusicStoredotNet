@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Principal;
 
 namespace AngularMusicStore.Core.Entities
 {

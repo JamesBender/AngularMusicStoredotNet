@@ -4,7 +4,6 @@ using System.Linq;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
 using AngularMusicStore.Core.Services;
-using AutoMapper;
 using Moq;
 using NUnit.Framework;
 using Domain = AngularMusicStore.Core.Entities;
@@ -29,7 +28,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
         public void ShouldBeAbleToGetAnAlbumByAlbumId()
         {
             //Arrainge
-            var domainAlbum = new AngularMusicStore.Core.Entities.Album
+            var domainAlbum = new Domain.Album
             {
                 Name = Guid.NewGuid().ToString(),
                 CoverUrl = Guid.NewGuid().ToString()

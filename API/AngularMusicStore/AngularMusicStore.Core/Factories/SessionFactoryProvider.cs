@@ -1,10 +1,8 @@
 ﻿using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using AngularMusicStore.Core.Entities;
-using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using FluentNHibernate.Conventions.Helpers;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using Ninject.Activation;
@@ -18,15 +16,15 @@ namespace AngularMusicStore.Core.Factories
         {
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                .ConnectionString(c => c.Is(ConfigurationManager.ConnectionStrings["AngularMusicStore"].ToString())))               
+                    .ConnectionString(c => c.Is(ConfigurationManager.ConnectionStrings["AngularMusicStore"].ToString())))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<BaseEntity>())
-                    .ExposeConfiguration(cfg =>
-                    {
-                        var schemaExport = new SchemaExport(cfg);
-                        schemaExport.Drop(false, true);
-                        schemaExport.Create(false, true);
-                    })
-                    .BuildSessionFactory();
+                .ExposeConfiguration(cfg =>
+                {
+                    var schemaExport = new SchemaExport(cfg);
+                    schemaExport.Drop(false, true);
+                    schemaExport.Create(false, true);
+                })
+                .BuildSessionFactory();
         }
     }
 }

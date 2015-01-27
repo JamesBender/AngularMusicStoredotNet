@@ -46,7 +46,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(domainAlbum.Name, apiAlbum.Name);
             Assert.AreEqual(domainAlbum.ReleaseDate, apiAlbum.ReleaseDate);
             Assert.AreEqual(domainAlbum.CoverUrl, apiAlbum.CoverUrl);
-            //Assert.AreEqual(domainAlbum.Parent.Id, apiAlbum.Parent.Id);
+            Assert.AreEqual(domainAlbum.Parent.Id, apiAlbum.Parent.Id);
         }
 
         [Test]

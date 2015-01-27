@@ -2,8 +2,6 @@
 
 namespace AngularMusicStore.Core.Entities
 {
-    //I don't like making sealed clases, but nHibernate wont let me
-    //make the set on the Albums list private, so...
     public class Artist : BaseEntity
     {
         public virtual string Name { get; set; }
@@ -11,6 +9,7 @@ namespace AngularMusicStore.Core.Entities
 
         public Artist()
         {
+            // ReSharper disable once DoNotCallOverridableMethodsInConstructor
             Albums = new List<Album>();
         }
 
