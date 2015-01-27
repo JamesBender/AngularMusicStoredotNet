@@ -5,9 +5,9 @@ namespace AngularMusicStore.Core.Entities
 {
     public class Album : BaseEntity
     {
-        public string Name { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public string CoverUrl { get; set; }
-        public Artist Parent { get; set; }
+        public virtual string Name { get; set; }
+        public virtual DateTime ReleaseDate { get; set; }
+        public virtual string CoverUrl { get; set; }
+        public virtual Artist Parent { get; set; }
     }
 }

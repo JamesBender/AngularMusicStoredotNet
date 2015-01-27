@@ -7,9 +7,16 @@ using AutoMapper;
 
 namespace AngularMusicStore.Api.Models
 {
-    public class AlbumModel
+    public interface IAlbumModel
     {
-        private IAlbumService _albumService;
+        Album GetAlbum(Guid albumId);
+        IEnumerable<Album> GetAlbumsByArtist(Guid artistId);
+        Guid Save(Guid artistId, Album album);
+    }
+
+    public class AlbumModel : IAlbumModel
+    {
+        private readonly IAlbumService _albumService;
 
         public AlbumModel(IAlbumService albumService)
         {

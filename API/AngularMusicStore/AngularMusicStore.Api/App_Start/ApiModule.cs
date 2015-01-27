@@ -7,6 +7,7 @@ namespace AngularMusicStore.Api
         public override void Load()
         {
             Bind<IArtistModel>().To<ArtistModel>();
+            Bind<IAlbumModel>().To<AlbumModel>();
         }
     }
 }
