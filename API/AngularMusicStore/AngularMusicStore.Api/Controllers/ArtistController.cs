@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
+using AngularMusicStore.Core.Exceptions;
 
 namespace AngularMusicStore.Api.Controllers
 {
@@ -69,12 +70,14 @@ namespace AngularMusicStore.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            var artist = _artistModel.GetById(artistId);
-            if (artist == null)
+            try
+            {
+                _artistModel.Delete(artistId);
+            }
+            catch (DataNotFoundException)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
-            _artistModel.Delete(artist);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

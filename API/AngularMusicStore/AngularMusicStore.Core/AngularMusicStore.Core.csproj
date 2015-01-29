@@ -55,6 +55,7 @@
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\Artist.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Exceptions\DataNotFoundException.cs" />
     <Compile Include="Factories\DomainModule.cs" />
     <Compile Include="Factories\SessionFactoryProvider.cs" />
     <Compile Include="Factories\SqlStatementInterceptor.cs" />

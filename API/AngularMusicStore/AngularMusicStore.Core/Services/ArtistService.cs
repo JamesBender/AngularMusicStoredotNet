@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AngularMusicStore.Core.Entities;
+using AngularMusicStore.Core.Exceptions;
 using AngularMusicStore.Core.Persistence;
 
 namespace AngularMusicStore.Core.Services
@@ -10,7 +11,7 @@ namespace AngularMusicStore.Core.Services
         Artist GetById(Guid artistId);
         IEnumerable<Artist> GetAll();
         Guid Save(Artist artist);
-        void Delete(Artist artist);
+        void Delete(Guid artistId);
     }
 
     public class ArtistService : IArtistService
@@ -37,8 +38,13 @@ namespace AngularMusicStore.Core.Services
             return _artistRepository.Save(artist);
         }
 
-        public void Delete(Artist artist)
+        public void Delete(Guid artistId)
         {
+            var artist = _artistRepository.GetById<Artist>(artistId);
+            if (artist == null)
+            {
+                throw new DataNotFoundException(string.Format("Artist {0} not found.", artistId));
+            }
             _artistRepository.Delete(artist);
         }
     }

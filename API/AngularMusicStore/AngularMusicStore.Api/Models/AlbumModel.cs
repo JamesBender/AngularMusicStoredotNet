@@ -12,6 +12,7 @@ namespace AngularMusicStore.Api.Models
         Album GetAlbum(Guid albumId);
         IEnumerable<Album> GetAlbumsByArtist(Guid artistId);
         Guid Save(Guid artistId, Album album);
+        void Delete(Guid albumId);
     }
 
     public class AlbumModel : IAlbumModel
@@ -43,6 +44,11 @@ namespace AngularMusicStore.Api.Models
         {
             var domainAlbum = Mapper.Map<Album, Core.Entities.Album>(album);
             return _albumService.Save(artistId, domainAlbum);
+        }
+
+        public void Delete(Guid albumId)
+        {
+            _albumService.Delete(albumId);
         }
     }
 }

@@ -66,7 +66,7 @@ namespace AngularMusicStore.IntegrationTests.Web
             Assert.IsNotNull(artist.Albums.FirstOrDefault(x => x.Name == newAlbumName));
 
             //Delete
-            _artistModel.Delete(artist);
+            _artistModel.Delete(artist.Id);
 
             var listOfArtists = _artistModel.GetArtists();
 

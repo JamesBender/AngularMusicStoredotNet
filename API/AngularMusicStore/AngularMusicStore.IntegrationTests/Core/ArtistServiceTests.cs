@@ -47,7 +47,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.AreEqual(artistName, artist.Name);
 
             //Delete
-            _artistService.Delete(artist);
+            _artistService.Delete(artist.Id);
 
             artist = _artistService.GetById(artistId);
 

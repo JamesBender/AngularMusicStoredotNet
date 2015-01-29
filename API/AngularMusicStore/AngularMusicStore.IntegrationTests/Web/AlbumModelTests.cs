@@ -77,7 +77,7 @@ namespace AngularMusicStore.IntegrationTests.Web
             Assert.AreEqual(albumToRetreive.ReleaseDate, album.ReleaseDate);
 
             Assert.AreNotEqual(Guid.Empty, artist.Id);
-            _artistModel.Delete(artist);
+            _artistModel.Delete(artist.Id);
 
             artist = _artistModel.GetById(artistId);
 
@@ -85,7 +85,7 @@ namespace AngularMusicStore.IntegrationTests.Web
         }
 
         [Test]
-        public void ShouldBeAbleToAddAnAlbumToAnExistingArtist()
+        public void ShouldBeAbleToAddAnAlbumToAnExistingArtistAndThenDeleteTheSpecificAlbum()
         {
             var artist = new Artist {Name = Guid.NewGuid().ToString()};
             artist.AddAlbum(new Album{Name = Guid.NewGuid().ToString(), CoverUrl = Guid.NewGuid().ToString(), ReleaseDate = DateTime.Now});
@@ -107,9 +107,16 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             Assert.IsNotNull(newAlbumId);
             Assert.AreEqual(startingNumberOfAlbums+1, artist.Albums.Count);
-            Assert.IsNotNull(artist.Albums.FirstOrDefault(x => x.Name == newAlbumName && x.CoverUrl == newAlbumCoverUrl));
+            var deleteAlbum = artist.Albums.FirstOrDefault(x => x.Name == newAlbumName && x.CoverUrl == newAlbumCoverUrl);
+            Assert.IsNotNull(deleteAlbum);
 
-            _artistModel.Delete(artist);
+            _albumModel.Delete(deleteAlbum.Id);
+            artist = _artistModel.GetById(artistId);
+
+            Assert.IsNotNull(artist);
+            Assert.AreEqual(startingNumberOfAlbums, artist.Albums.Count);
+
+            _artistModel.Delete(artist.Id);
 
             artist = _artistModel.GetById(artistId);
 

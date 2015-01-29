@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Core.Entities;
+using AngularMusicStore.Core.Exceptions;
 using AngularMusicStore.Core.Persistence;
 using AngularMusicStore.Core.Services;
 using Moq;
@@ -27,7 +28,7 @@ namespace AngularMusicStore.UnitTests.Core
         {
             var artistId = Guid.NewGuid();
             _artistRepository.Setup(x => x.GetById<Artist>(artistId)).Returns(new Artist());
-            
+
             var result = _artistService.GetById(artistId);
 
             Assert.IsNotNull(result);
@@ -36,7 +37,7 @@ namespace AngularMusicStore.UnitTests.Core
         [Test]
         public void ShouldBeAbleToGetAListOfAllArtistsFromTheArtistService()
         {
-            var listOfArtists = new List<Artist> {new Artist(), new Artist(), new Artist()};
+            var listOfArtists = new List<Artist> { new Artist(), new Artist(), new Artist() };
             var numberOfArtists = listOfArtists.Count;
             _artistRepository.Setup(x => x.GetAll<Artist>()).Returns(listOfArtists);
 
@@ -62,7 +63,7 @@ namespace AngularMusicStore.UnitTests.Core
         public void ShouldBeAbleToUpdateAnExistingArtist()
         {
             var artistId = Guid.NewGuid();
-            var artist = new Artist {Id = artistId};
+            var artist = new Artist { Id = artistId };
             _artistRepository.Setup(x => x.Save(artist)).Returns(artistId);
 
             var result = _artistService.Save(artist);
@@ -74,11 +75,28 @@ namespace AngularMusicStore.UnitTests.Core
         [Test]
         public void ShouldBeAbleToDeleteAnExistingArtist()
         {
-            var artist = new Artist();
+            var artist = new Artist { Id = Guid.NewGuid() };
+            _artistRepository.Setup(x => x.GetById<Artist>(artist.Id)).Returns(artist);
 
-            _artistService.Delete(artist);
+            _artistService.Delete(artist.Id);
 
             _artistRepository.Verify(x => x.Delete(artist), Times.Once);
+        }
+
+        [Test]
+        [ExpectedException(typeof(DataNotFoundException))]
+        public void ShouldGetADataNotFoundExceptionWhenTryingToDeleteAnArtistThatDoesntExist()
+        {
+            var artistId = Guid.NewGuid();
+            try
+            {
+                _artistService.Delete(artistId);
+            }
+            catch (DataNotFoundException exception)
+            {
+                Assert.AreEqual(string.Format("Artist {0} not found.", artistId), exception.Message);
+                throw;
+            }
         }
     }
 }

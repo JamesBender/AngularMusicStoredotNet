@@ -48,7 +48,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.AreEqual(albumName, album.Name);
             Assert.AreEqual(albumCoverUrl, album.CoverUrl);
 
-            _artistService.Delete(artist);
+            _artistService.Delete(artist.Id);
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.IsNotNull(result.FirstOrDefault(x => x.Name == albumTwo.Name));
             Assert.IsNotNull(result.FirstOrDefault(x => x.Name == albumThree.Name));
 
-            _artistService.Delete(artist);
+            _artistService.Delete(artist.Id);
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.IsNotNull(result);
             Assert.AreEqual(0, result.Count());
             
-            _artistService.Delete(artist);
+            _artistService.Delete(artist.Id);
         }
 
         [Test]
@@ -121,7 +121,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.AreEqual(1, artist.Albums.Count);
             Assert.IsNotNull(artist.Albums.FirstOrDefault(x => x.Name == albumName && x.CoverUrl == albumCoverUrl));
 
-            _artistService.Delete(artist);
+            _artistService.Delete(artist.Id);
         }
     }
 }

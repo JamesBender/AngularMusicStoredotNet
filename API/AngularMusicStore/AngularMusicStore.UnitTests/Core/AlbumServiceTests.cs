@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Core.Entities;
+using AngularMusicStore.Core.Exceptions;
 using AngularMusicStore.Core.Persistence;
 using AngularMusicStore.Core.Services;
 using Moq;
@@ -104,11 +105,28 @@ namespace AngularMusicStore.UnitTests.Core
         [Test]
         public void ShouldBeAbleToDeleteAnAlbum()
         {
-            var album = new Album();
+            var album = new Album {Id = Guid.NewGuid()};
+            _repository.Setup(x => x.GetById<Album>(album.Id)).Returns(album);
 
-            _albumService.Delete(album);
+            _albumService.Delete(album.Id);
 
             _repository.Verify(x => x.Delete(album), Times.Once);
+        }
+
+        [Test]
+        [ExpectedException(typeof(DataNotFoundException))]
+        public void ShouldGetADataNotFoundExceptionWhenTryingToDeleteAnAlbumThatDoesntExist()
+        {
+            var albumId = Guid.NewGuid();
+            try
+            {
+                _albumService.Delete(albumId);
+            }
+            catch (DataNotFoundException exception)
+            {
+                Assert.AreEqual(string.Format("Album {0} not found.", albumId), exception.Message);
+                throw;
+            }
         }
     }
 }

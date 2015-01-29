@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Core.Persistence;
+using AngularMusicStore.Core.Services;
 using Moq;
 using NUnit.Framework;
 using Domain = AngularMusicStore.Core.Entities;
@@ -13,22 +14,22 @@ namespace AngularMusicStore.UnitTests.Web.Model
     [TestFixture]
     public class ArtistModelTests
     {
-        private Mock<IRepository> _repository;
+        private Mock<IArtistService> _artistService;
         private ArtistModel _artistModel;
 
         [SetUp]
         public void SetupTests()
         {
             ApiModel.AutomapperConfiguration.Configure();
-            _repository = new Mock<IRepository>();
-            _artistModel = new ArtistModel(_repository.Object);
+            _artistService = new Mock<IArtistService>();
+            _artistModel = new ArtistModel(_artistService.Object);
         }
 
         [Test]
         public void ShouldBeAbleToGetAListOfArtistsFromTheArtistModel()
         {
             var listOfDomainArtists = new List<Domain.Artist> {new Domain.Artist(), new Domain.Artist()};
-            _repository.Setup(x => x.GetAll<Domain.Artist>()).Returns(listOfDomainArtists);
+            _artistService.Setup(x => x.GetAll()).Returns(listOfDomainArtists);
             
             var result = _artistModel.GetArtists();
 
@@ -40,7 +41,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
         public void ShouldBeAbleToGetASpecificArtistFromTheArtistModel()
         {
             var artistId = Guid.NewGuid();
-            _repository.Setup(x => x.GetById<Domain.Artist>(artistId)).Returns(new Domain.Artist());
+            _artistService.Setup(x => x.GetById(artistId)).Returns(new Domain.Artist());
 
             var result = _artistModel.GetById(artistId);
 
@@ -64,7 +65,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
         {
             var artistId = Guid.NewGuid();
             var artist = new ApiModel.Artist {Id = artistId};
-            _repository.Setup(x => x.Save(It.IsAny<Domain.Artist>())).Returns(artistId);
+            _artistService.Setup(x => x.Save(It.IsAny<Domain.Artist>())).Returns(artistId);
 
             var result = _artistModel.Save(artist);
 
@@ -75,11 +76,11 @@ namespace AngularMusicStore.UnitTests.Web.Model
         [Test]
         public void ShouldBeAbleToDeleteAnExistingArtist()
         {
-            var artist = new ApiModel.Artist();
+            var artist = new ApiModel.Artist {Id = Guid.NewGuid()};
 
-            _artistModel.Delete(artist);
+            _artistModel.Delete(artist.Id);
 
-            _repository.Verify(x => x.Delete(It.IsAny<Domain.Artist>()), Times.Once);
+            _artistService.Verify(x => x.Delete(artist.Id), Times.Once);
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Web.Http;
 using AngularMusicStore.Api.Controllers;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
+using AngularMusicStore.Core.Exceptions;
 using Moq;
 using NUnit.Framework;
 
@@ -135,7 +136,10 @@ namespace AngularMusicStore.UnitTests.Web.Controller
         [Test]
         public void ShouldGetBackAnHttp404StatusWhenArtistToBeDeleteDoesNotExist()
         {
-            var result = _artistController.Delete(new Artist().Id.ToString());
+            var artistId = Guid.NewGuid();
+            _artistModel.Setup(x => x.Delete(artistId)).Throws(new DataNotFoundException(""));
+
+            var result = _artistController.Delete(artistId.ToString());
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);

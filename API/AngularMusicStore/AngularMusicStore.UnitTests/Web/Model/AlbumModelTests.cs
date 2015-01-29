@@ -85,5 +85,15 @@ namespace AngularMusicStore.UnitTests.Web.Model
             Assert.IsNotNull(result);
             Assert.AreEqual(albumId, result);
         }
+
+        [Test]
+        public void ShouldBeAbleToDeleteASpecificAlbum()
+        {
+            var album = new Album {Id = Guid.NewGuid()};
+            
+            _albumModel.Delete(album.Id);
+
+            _albumService.Verify(x => x.Delete(It.IsAny<Guid>()));
+        }
     }
 }
