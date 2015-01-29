@@ -6,7 +6,7 @@ namespace AngularMusicStore.Core.Entities
     {
         public virtual string Name { get; set; }
         public virtual DateTime ReleaseDate { get; set; }
-        public virtual string CoverUrl { get; set; }
+        public virtual string CoverUri { get; set; }
         public virtual Artist Parent { get; set; }
     }
 }

@@ -100,7 +100,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             var albumName = Guid.NewGuid().ToString();
             var albumCoverUrl = Guid.NewGuid().ToString();
             var albumReleaseDate = DateTime.Now;
-            var album = new Album {Name = albumName, CoverUrl = albumCoverUrl, ReleaseDate = albumReleaseDate};
+            var album = new Album {Name = albumName, CoverUri = albumCoverUrl, ReleaseDate = albumReleaseDate};
             artist.AddAlbum(album);
             Assert.IsNotNull(album.Parent);
 
@@ -116,7 +116,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.AreNotEqual(0, artist.Albums.Count);
             Assert.IsNotNull(
                 artist.Albums.FirstOrDefault(
-                    x => x.Name == albumName && x.CoverUrl == albumCoverUrl));
+                    x => x.Name == albumName && x.CoverUri == albumCoverUrl));
 
             
             _repository.Delete(artist);

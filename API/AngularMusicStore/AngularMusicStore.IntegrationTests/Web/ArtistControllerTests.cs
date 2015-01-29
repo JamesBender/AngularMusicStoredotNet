@@ -32,7 +32,7 @@ namespace AngularMusicStore.IntegrationTests.Web
         {
             var albumName = Guid.NewGuid().ToString();
             var coverUrl = Guid.NewGuid().ToString();
-            var album = new Album {Name = albumName, ReleaseDate = DateTime.Now, CoverUrl = coverUrl};
+            var album = new Album {Name = albumName, ReleaseDate = DateTime.Now, CoverUri = coverUrl};
             var artistName = Guid.NewGuid().ToString();
             var artist = new Artist {Name = artistName};
             artist.AddAlbum(album);
@@ -58,7 +58,7 @@ namespace AngularMusicStore.IntegrationTests.Web
             artist.Name = newArtistName;
             var newAlbumName = Guid.NewGuid().ToString();
             var newAlbumCoverUrl = Guid.NewGuid().ToString();
-            var newAlbum = new Album {Name = newAlbumName, ReleaseDate = DateTime.Now, CoverUrl = newAlbumCoverUrl};
+            var newAlbum = new Album {Name = newAlbumName, ReleaseDate = DateTime.Now, CoverUri = newAlbumCoverUrl};
             artist.AddAlbum(newAlbum);
 
             response = _artistController.PutArtist(artist.Id.ToString(), artist);

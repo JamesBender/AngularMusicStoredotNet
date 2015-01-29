@@ -30,7 +30,7 @@ namespace AngularMusicStore.IntegrationTests.Core
             var albumName = Guid.NewGuid().ToString();
             var albumReleaseDate = DateTime.Now;
             var albumCoverUrl = Guid.NewGuid().ToString();
-            var album = new Album {Name = albumName, CoverUrl = albumCoverUrl, ReleaseDate = albumReleaseDate};
+            var album = new Album {Name = albumName, CoverUri = albumCoverUrl, ReleaseDate = albumReleaseDate};
             artist.AddAlbum(album);
 
             var artistId = _artistService.Save(artist);
@@ -46,7 +46,7 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             Assert.IsNotNull(album);
             Assert.AreEqual(albumName, album.Name);
-            Assert.AreEqual(albumCoverUrl, album.CoverUrl);
+            Assert.AreEqual(albumCoverUrl, album.CoverUri);
 
             _artistService.Delete(artist.Id);
         }
@@ -101,7 +101,7 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             var albumName = Guid.NewGuid().ToString();
             var albumCoverUrl = Guid.NewGuid().ToString();
-            var newAlbum = new Album {Name = albumName, CoverUrl = albumCoverUrl, ReleaseDate = DateTime.Now};
+            var newAlbum = new Album {Name = albumName, CoverUri = albumCoverUrl, ReleaseDate = DateTime.Now};
             artist.AddAlbum(newAlbum);
 
             var albumId = _albumService.Save(artistId, newAlbum);
@@ -112,14 +112,14 @@ namespace AngularMusicStore.IntegrationTests.Core
 
             Assert.IsNotNull(newAlbum);
             Assert.AreEqual(albumName, newAlbum.Name);
-            Assert.AreEqual(albumCoverUrl, newAlbum.CoverUrl);
+            Assert.AreEqual(albumCoverUrl, newAlbum.CoverUri);
 
             artist = _artistService.GetById(artistId);
 
             Assert.IsNotNull(artist);
             Assert.IsNotNull(artist.Albums);
             Assert.AreEqual(1, artist.Albums.Count);
-            Assert.IsNotNull(artist.Albums.FirstOrDefault(x => x.Name == albumName && x.CoverUrl == albumCoverUrl));
+            Assert.IsNotNull(artist.Albums.FirstOrDefault(x => x.Name == albumName && x.CoverUri == albumCoverUrl));
 
             _artistService.Delete(artist.Id);
         }

@@ -34,13 +34,13 @@ namespace AngularMusicStore.UnitTests.Core
             var albumId = Guid.NewGuid();
             
             _repository.Setup(x => x.GetById<Album>(albumId))
-                .Returns(new Album {Name = albumName, CoverUrl = albumCoverUrl, ReleaseDate = albumReleaseDate});
+                .Returns(new Album {Name = albumName, CoverUri = albumCoverUrl, ReleaseDate = albumReleaseDate});
             
             var result = _albumService.GetAlbum(albumId);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(albumName, result.Name);
-            Assert.AreEqual(albumCoverUrl, result.CoverUrl);
+            Assert.AreEqual(albumCoverUrl, result.CoverUri);
             Assert.AreEqual(albumReleaseDate, result.ReleaseDate);
         }
 

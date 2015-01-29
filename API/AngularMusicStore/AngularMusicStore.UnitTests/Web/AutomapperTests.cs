@@ -28,7 +28,7 @@ namespace AngularMusicStore.UnitTests.Web
                 Id = Guid.NewGuid(),
                 Name = Guid.NewGuid().ToString(),
                 ReleaseDate = DateTime.Now,
-                CoverUrl = Guid.NewGuid().ToString()
+                CoverUri = Guid.NewGuid().ToString()
             };
             domainArtist.AddAlbum(domainAlbum);
             Assert.AreEqual(domainAlbum.Parent.Id, domainArtist.Id);
@@ -45,7 +45,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(domainAlbum.Id, apiAlbum.Id);
             Assert.AreEqual(domainAlbum.Name, apiAlbum.Name);
             Assert.AreEqual(domainAlbum.ReleaseDate, apiAlbum.ReleaseDate);
-            Assert.AreEqual(domainAlbum.CoverUrl, apiAlbum.CoverUrl);
+            Assert.AreEqual(domainAlbum.CoverUri, apiAlbum.CoverUri);
             Assert.AreEqual(domainAlbum.Parent.Id, apiAlbum.Parent.Id);
         }
 
@@ -58,7 +58,7 @@ namespace AngularMusicStore.UnitTests.Web
                 Id = Guid.NewGuid(),
                 Name = Guid.NewGuid().ToString(),
                 ReleaseDate = DateTime.Now,
-                CoverUrl = Guid.NewGuid().ToString()
+                CoverUri = Guid.NewGuid().ToString()
             };
             apiArtist.Albums.Add(apiAlbum);
 
@@ -74,7 +74,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(apiAlbum.Id, domainAlbum.Id);
             Assert.AreEqual(apiAlbum.Name, domainAlbum.Name);
             Assert.AreEqual(apiAlbum.ReleaseDate, domainAlbum.ReleaseDate);
-            Assert.AreEqual(apiAlbum.CoverUrl, domainAlbum.CoverUrl);
+            Assert.AreEqual(apiAlbum.CoverUri, domainAlbum.CoverUri);
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace AngularMusicStore.UnitTests.Web
                 Id = Guid.NewGuid(),
                 Name = Guid.NewGuid().ToString(),
                 ReleaseDate = DateTime.Now.AddDays(-10),
-                CoverUrl = Guid.NewGuid().ToString()
+                CoverUri = Guid.NewGuid().ToString()
             };
 
             var apiAlbum = Mapper.Map<Domain.Album, Album>(domainAlbum);
@@ -94,7 +94,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(domainAlbum.Id, apiAlbum.Id);
             Assert.AreEqual(domainAlbum.Name, apiAlbum.Name);
             Assert.AreEqual(domainAlbum.ReleaseDate, apiAlbum.ReleaseDate);
-            Assert.AreEqual(domainAlbum.CoverUrl, apiAlbum.CoverUrl);
+            Assert.AreEqual(domainAlbum.CoverUri, apiAlbum.CoverUri);
         }
 
         [Test]
@@ -105,7 +105,7 @@ namespace AngularMusicStore.UnitTests.Web
                 Id = Guid.NewGuid(),
                 Name = Guid.NewGuid().ToString(),
                 ReleaseDate = DateTime.Now.AddDays(-10),
-                CoverUrl = Guid.NewGuid().ToString()
+                CoverUri = Guid.NewGuid().ToString()
             };
 
             var domainAlbum = Mapper.Map<Album, Domain.Album>(apiAlbum);
@@ -114,7 +114,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(apiAlbum.Id, domainAlbum.Id);
             Assert.AreEqual(apiAlbum.Name, domainAlbum.Name);
             Assert.AreEqual(apiAlbum.ReleaseDate, domainAlbum.ReleaseDate);
-            Assert.AreEqual(apiAlbum.CoverUrl, domainAlbum.CoverUrl);
+            Assert.AreEqual(apiAlbum.CoverUri, domainAlbum.CoverUri);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
             var domainAlbum = new Domain.Album
             {
                 Name = Guid.NewGuid().ToString(),
-                CoverUrl = Guid.NewGuid().ToString()
+                CoverUri = Guid.NewGuid().ToString()
             };
             var albumId = Guid.NewGuid();
             _albumService.Setup(x => x.GetAlbum(albumId)).Returns(domainAlbum);
@@ -42,7 +42,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(domainAlbum.Name, result.Name);
-            Assert.AreEqual(domainAlbum.CoverUrl, result.CoverUrl);
+            Assert.AreEqual(domainAlbum.CoverUri, result.CoverUri);
         }
 
         [Test]

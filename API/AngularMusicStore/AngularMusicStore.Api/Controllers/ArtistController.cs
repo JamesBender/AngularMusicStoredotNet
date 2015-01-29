@@ -41,6 +41,7 @@ namespace AngularMusicStore.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, artist);
         }
 
+        //todo change to http response message
         public Guid PostArtist(Artist artist)
         {
             return _artistModel.Save(artist);

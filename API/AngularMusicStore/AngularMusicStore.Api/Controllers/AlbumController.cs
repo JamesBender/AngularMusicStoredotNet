@@ -10,7 +10,7 @@ namespace AngularMusicStore.Api.Controllers
 {
     public class AlbumController : ApiController
     {
-        private IAlbumModel _albumModel;
+        private readonly IAlbumModel _albumModel;
 
         public AlbumController(IAlbumModel albumModel)
         {
