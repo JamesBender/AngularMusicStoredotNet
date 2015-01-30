@@ -73,6 +73,10 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+            Guid albumId;
+            Assert.IsTrue(result.TryGetContentValue(out albumId));
+            Assert.IsNotNull(albumId);
+            Assert.AreNotEqual(Guid.Empty, albumId);
 
             result = _artistController.GetById(artistId.ToString());
 

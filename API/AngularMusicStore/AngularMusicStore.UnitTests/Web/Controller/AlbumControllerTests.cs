@@ -69,11 +69,16 @@ namespace AngularMusicStore.UnitTests.Web.Controller
             var artistId = Guid.NewGuid();
             var artist = new Artist {Id = artistId};
             var album = new Album {Parent = artist};
+            var albumId = Guid.NewGuid();
+            _albumModel.Setup(x => x.Save(artistId, album)).Returns(albumId);
 
             var result = _albumController.PostAlbum(album);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+            Guid returnAlbumId;
+            Assert.IsTrue(result.TryGetContentValue(out returnAlbumId));
+            Assert.AreEqual(albumId, returnAlbumId);
         }
 
         public void ShouldGetAnHttp400WhenTryingToSaveAnAlbumWithABadParentId()

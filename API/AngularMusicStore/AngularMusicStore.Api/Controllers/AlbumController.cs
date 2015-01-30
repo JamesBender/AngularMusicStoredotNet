@@ -33,9 +33,8 @@ namespace AngularMusicStore.Api.Controllers
 
         public HttpResponseMessage PostAlbum(Album album)
         {
-            //todo return album id
-            _albumModel.Save(album.Parent.Id, album);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            var artistId = _albumModel.Save(album.Parent.Id, album);
+            return Request.CreateResponse(HttpStatusCode.Created, artistId);
         }
 
         public HttpResponseMessage DeleteAlbum(string id)
