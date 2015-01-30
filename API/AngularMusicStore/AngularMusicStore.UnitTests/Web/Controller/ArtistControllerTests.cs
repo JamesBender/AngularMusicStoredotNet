@@ -86,6 +86,9 @@ namespace AngularMusicStore.UnitTests.Web.Controller
             var result = _artistController.PostArtist(artist);
 
             Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.Created, result.StatusCode);
+            Guid artistId;
+            Assert.IsTrue(result.TryGetContentValue(out artistId));
         }
 
         [Test]

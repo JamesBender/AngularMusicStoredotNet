@@ -46,11 +46,13 @@ namespace AngularMusicStore.IntegrationTests.Web
             artist.AddAlbum(existingAlbum);
             var originalNumberOfAlbums = artist.Albums.Count;
 
-            var artistId = _artistController.PostArtist(artist);
+            var result = _artistController.PostArtist(artist);
 
-            Assert.IsNotNull(artistId);
+            Assert.IsNotNull(result);
+            Guid artistId;
+            Assert.IsTrue(result.TryGetContentValue(out artistId));
             
-            var result = _artistController.GetById(artistId.ToString());
+            result = _artistController.GetById(artistId.ToString());
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
@@ -64,7 +66,7 @@ namespace AngularMusicStore.IntegrationTests.Web
                 Name = newAlbumName,
                 CoverUri = newAlbumCoverUri,
                 ReleaseDate = DateTime.Now,
-                Parent = new Artist {Id = artistId}
+                Parent = new Artist {Id = artist.Id}
             };
 
             result = _albumController.PostAlbum(newAlbum);

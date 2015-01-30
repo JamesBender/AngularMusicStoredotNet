@@ -37,12 +37,14 @@ namespace AngularMusicStore.IntegrationTests.Web
             var artist = new Artist {Name = artistName};
             artist.AddAlbum(album);
 
-            var artistId = _artistController.PostArtist(artist);
+            var response = _artistController.PostArtist(artist);
 
-            Assert.IsNotNull(artistId);
+            Assert.IsNotNull(response);
+            Guid artistId;
+            Assert.IsTrue(response.TryGetContentValue(out artistId));
             
             //Retrieve
-            var response = _artistController.GetById(artistId.ToString());
+            response = _artistController.GetById(artistId.ToString());
 
             Assert.IsNotNull(response);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
