@@ -56,6 +56,12 @@ angular.module('musicStore')
         'url': 'http://angular-ui.github.io/bootstrap/',
         'description': 'Bootstrap components written in pure AngularJS by the AngularUI Team.',
         'logo': 'ui-bootstrap.png'
+      },
+      {
+        'title': 'Sass (Node)',
+        'url': 'https://github.com/sass/node-sass',
+        'description': 'Node.js binding to libsass, the C version of the popular stylesheet preprocessor, Sass.',
+        'logo': 'node-sass.png'
       }
     ];
     angular.forEach($scope.awesomeThings, function(awesomeThing) {
