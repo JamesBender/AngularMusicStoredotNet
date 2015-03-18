@@ -12,14 +12,15 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-md-6" ng-repeat="awesomeThing in awesomeThings">
+      <a ng-href="{{awesomeThing.url}}">
       <div class="thumbnail">
         <img class="pull-right" ng-src="assets/images/{{awesomeThing.logo}}" alt="{{awesomeThing.title}}">
         <div class="caption">
-          <a ng-href="{{awesomeThing.url}}"><h3>{{awesomeThing.title}}</h3>
+          <h3>{{awesomeThing.title}}</h3>
           <p>{{awesomeThing.description}}</p>
-             </a>
         </div>
       </div>
+      </a>
     </div>
   </div>
 
