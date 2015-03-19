@@ -9,13 +9,14 @@ describe('The main view', function () {
   });
 
   it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+    expect(page.h1El.getText()).toBe('Welcome to the Angular Music Store!');
+    expect(page.lead.getText()).toBe('Select either Artists or Albums below!')
+    //expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
+    //expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
   });
 
-  it('list more than 5 awesome things', function () {
-    expect(page.thumbnailEls.count()).toBeGreaterThan(5);
+  it('list two options', function () {
+    expect(page.thumbnailEls.count()).toBe(2);
   });
 
 });

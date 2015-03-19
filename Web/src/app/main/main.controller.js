@@ -2,7 +2,7 @@
 
 angular.module('musicStore')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
+    $scope.categories = [
       {
         'title': 'Search By Artist',
         'url': 'https://angularjs.org/',
@@ -16,7 +16,4 @@ angular.module('musicStore')
         'logo': 'piano15.png'
       }
     ];
-    angular.forEach($scope.awesomeThings, function(awesomeThing) {
-      awesomeThing.rank = Math.random();
-    });
   });

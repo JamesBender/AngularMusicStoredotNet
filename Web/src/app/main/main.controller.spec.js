@@ -9,14 +9,22 @@ describe('controllers', function(){
     scope = $rootScope.$new();
   }));
 
-  it('should define more than 5 awesome things', inject(function($controller) {
-    expect(scope.awesomeThings).toBeUndefined();
+  it('should have catoegory for artist and album search', inject(function($controller) {
+    expect(scope.categories).toBeUndefined();
 
     $controller('MainCtrl', {
       $scope: scope
     });
 
-    expect(angular.isArray(scope.awesomeThings)).toBeTruthy();
-    expect(scope.awesomeThings.length === 2).toBeTruthy();
+    expect(angular.isArray(scope.categories)).toBeTruthy();
+    expect(scope.categories.length === 2).toBeTruthy();
+    
+    var artist = $.grep(scope.categories, function(e){ return e.title == 'Search By Artist'; })[0];
+    
+    expect(artist).not.toBe(null);
+
+    var album = $.grep(scope.categories, function(e){ return e.title == 'Search By Album';})[0];
+
+    expect(album).not.toBe(null);
   }));
 });
