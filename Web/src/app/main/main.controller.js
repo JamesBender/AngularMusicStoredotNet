@@ -5,7 +5,7 @@ angular.module('musicStore')
     $scope.categories = [
       {
         'title': 'Search By Artist',
-        'url': 'https://angularjs.org/',
+        'url': '#/artist',
         'description': 'Search for music by artist name.',
         'logo': 'guitar20.png'
       },

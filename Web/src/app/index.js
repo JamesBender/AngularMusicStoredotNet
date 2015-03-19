@@ -7,6 +7,10 @@ angular.module('musicStore', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       })
+      .when('/artist', {
+        templateUrl: 'app/artist/artist.html',
+        controller: 'ArtistCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
