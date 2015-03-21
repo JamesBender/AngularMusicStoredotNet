@@ -1,6 +1,11 @@
 <div class="container">
   <div ng-include="'components/navbar/navbar.html'"></div>
-  <p>
-  		This is the Artist search page. Tremble in it's magnificence!
-  </p>
+  <h1>Search by Artist</h1>
+  <div class='search'>
+  	<label labelFor='artistName'>Search for</label>
+  	<input id='artistName' type="text" placeholder='Name of artist...' ng-model='artistToSearchFor'>
+  	<button ng-click='searchForArtist()'>Search</button>
+  </div>
+  search: {{artistToSearchFor}}
+  result: {{result}}
 </div>
