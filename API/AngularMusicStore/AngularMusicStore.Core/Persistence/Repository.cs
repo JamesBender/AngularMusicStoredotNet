@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AngularMusicStore.Core.Entities;
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace AngularMusicStore.Core.Persistence
 {
@@ -11,6 +12,7 @@ namespace AngularMusicStore.Core.Persistence
         Guid Save<T>(T entity) where T: BaseEntity;
         void Delete<T>(T entity) where T : BaseEntity;
         T GetById<T>(Guid entityId) where T : BaseEntity;
+        IList<T> SearchByName<T>(string nameToSearchFor) where T : BaseEntity;
     }
 
     public class Repository : IRepository
@@ -69,6 +71,17 @@ namespace AngularMusicStore.Core.Persistence
             using (var session = _sessionFactory.OpenSession())
             {
                 return session.Get<T>(entityId);
+            }
+        }
+
+        public IList<T> SearchByName<T>(string nameToSearchFor) where T : BaseEntity
+        {
+            using (var session = _sessionFactory.OpenSession())
+            {
+                return
+                    session.CreateCriteria<T>()
+                        .Add(Restrictions.InsensitiveLike("Name", nameToSearchFor, MatchMode.Anywhere))
+                        .List<T>();
             }
         }
     }

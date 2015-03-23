@@ -98,5 +98,23 @@ namespace AngularMusicStore.UnitTests.Core
                 throw;
             }
         }
+
+        [Test]
+        public void ShouldBeAbleToFindAnArtistByName()
+        {
+            const string nameToFind = "Bob";
+            
+            var artistToFind = new Artist {Name = nameToFind};
+            var listOfFoundArtists = new List<Artist>{artistToFind};
+            
+            _artistRepository.Setup(x => x.SearchByName<Artist>(nameToFind))
+                .Returns(listOfFoundArtists);
+            
+            var result = _artistService.FindByName(nameToFind);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count);
+            Assert.IsNotNull(result.FirstOrDefault(x => x.Name == nameToFind));
+        }
     }
 }

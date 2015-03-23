@@ -84,5 +84,10 @@ namespace AngularMusicStore.Api.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        public IEnumerable<Artist> GetArtists(string name)
+        {
+            return _artistModel.GetByPartialName(name);
+        }
     }
 }

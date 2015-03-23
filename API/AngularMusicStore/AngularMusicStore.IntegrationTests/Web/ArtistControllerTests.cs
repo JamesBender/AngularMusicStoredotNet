@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -7,6 +8,7 @@ using AngularMusicStore.Api;
 using AngularMusicStore.Api.Controllers;
 using AngularMusicStore.Api.Models.ViewModels;
 using AngularMusicStore.Core.Factories;
+using AngularMusicStore.IntegrationTests.Core;
 using Ninject;
 using NUnit.Framework;
 
@@ -90,6 +92,53 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             Assert.IsNotNull(listOfArtists);
             Assert.IsNull(listOfArtists.FirstOrDefault(x => x.Name == newArtistName));
+        }
+
+        [Test]
+        public void ShouldBeAbleToFindAListOfArtistsByPartialName()
+        {
+            var nameFragmentToFind = "ABC";
+            var listOfGoodNames = new List<string> {"ABCDE", "DABCE", "DEABC"};
+            var listOfBadNames = new List<string> {"LMNOP", "PBJWB", "IHBTD"};
+
+            var artistsToFind = new List<Guid>();
+            var artistsToNotFind = new List<Guid>();
+
+            foreach (var postResponse in listOfGoodNames.Select(goodName => _artistController.PostArtist(new Artist {Name = goodName})))
+            {
+                Guid artistId;
+                Assert.IsTrue(postResponse.TryGetContentValue(out artistId));
+                artistsToFind.Add(artistId);
+            }
+
+            foreach (var postResponse in listOfBadNames.Select(badName => _artistController.PostArtist(new Artist { Name = badName })))
+            {
+                Guid artistId;
+                Assert.IsTrue(postResponse.TryGetContentValue(out artistId));
+                artistsToNotFind.Add(artistId);
+            }
+
+            var listOfAllArtists = _artistController.GetArtists();
+
+            Assert.IsNotNull(listOfAllArtists);
+            Assert.AreEqual(listOfAllArtists.Count(), artistsToFind.Count() + artistsToNotFind.Count());
+            listOfGoodNames.ForEach(x => Assert.IsNotNull(listOfAllArtists.FirstOrDefault(a => a.Name == x)));
+            listOfBadNames.ForEach(x => Assert.IsNotNull(listOfAllArtists.FirstOrDefault(a => a.Name == x)));
+
+            var findArtistResults = _artistController.GetArtists(nameFragmentToFind);
+            
+            Assert.IsNotNull(findArtistResults);
+            Assert.AreEqual(listOfGoodNames.Count(), findArtistResults.Count());
+            listOfGoodNames.ForEach(x => Assert.IsNotNull(findArtistResults.FirstOrDefault(a => a.Name == x)));
+            listOfBadNames.ForEach(x => Assert.IsNull(findArtistResults.FirstOrDefault(a => a.Name == x)));
+
+            artistsToFind.ForEach(x => _artistController.Delete(x.ToString()));
+            artistsToNotFind.ForEach(x => _artistController.Delete(x.ToString()));
+            
+            listOfAllArtists = _artistController.GetArtists();
+
+            Assert.IsNotNull(listOfAllArtists);
+            Assert.AreEqual(listOfAllArtists.Count(), 0);
         }
     }
 }

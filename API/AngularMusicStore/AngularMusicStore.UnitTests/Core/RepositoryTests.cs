@@ -5,6 +5,7 @@ using AngularMusicStore.Core.Entities;
 using AngularMusicStore.Core.Persistence;
 using Moq;
 using NHibernate;
+using NHibernate.Criterion;
 using NUnit.Framework;
 
 namespace AngularMusicStore.UnitTests.Core
@@ -26,6 +27,23 @@ namespace AngularMusicStore.UnitTests.Core
             _sessionMockedObject = _session.Object;
             sessionFactoryMock.Setup(x => x.OpenSession()).Returns(_sessionMockedObject);
             _repository = new Repository(_sessionFactory);
+        }
+
+        [Test]
+        public void ShouldBeAbleToFindAnArtistByName()
+        {
+            var addCriteria = new Mock<ICriteria>();
+            var listCriteria = new Mock<ICriteria>();
+            var nameToFind = "Bob";
+
+            var listOfFoundArtists = new List<Artist> {new Artist {Name = nameToFind}};
+            listCriteria.Setup(x => x.List<Artist>()).Returns(listOfFoundArtists);
+            addCriteria.Setup(x => x.Add(It.IsAny<ICriterion>())).Returns(listCriteria.Object);
+            _session.Setup(x => x.CreateCriteria<Artist>()).Returns(addCriteria.Object);
+
+            var result = _repository.SearchByName<Artist>(nameToFind);
+
+            Assert.IsNotNull(result);
         }
 
         [Test]

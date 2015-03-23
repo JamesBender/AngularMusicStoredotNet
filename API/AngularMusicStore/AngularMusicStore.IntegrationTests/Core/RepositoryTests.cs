@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Core.Entities;
 using AngularMusicStore.Core.Factories;
@@ -58,6 +60,38 @@ namespace AngularMusicStore.IntegrationTests.Core
             var result = _repository.GetById<Artist>(artistId);
 
             Assert.IsNull(result);
+        }
+
+        [Test]
+        public void ShouldBeAbleToSearchForAnAristByName()
+        {
+            var nameToSearchFor = "ABC";
+
+            var listOfGoodNames = new List<string> {"ABCDE", "DABCE", "DEABC"};
+            var badName = "FGHIJ";
+
+            var listOfArtistsToFind = listOfGoodNames.Select(goodName => new Artist {Name = goodName}).ToList();
+            var badArtist = new Artist {Name = badName};
+
+            var listOfArtistsToFindId = listOfArtistsToFind.Select(foundArtist => _repository.Save(foundArtist)).ToList();
+            var badArtistId = _repository.Save(badArtist);
+
+            listOfArtistsToFindId.ForEach(x => Assert.IsNotNull(x));
+            Assert.IsNotNull(badArtistId);
+
+            var listOfFoundArtists = _repository.SearchByName<Artist>(nameToSearchFor);
+
+            Assert.IsNotNull(listOfFoundArtists);
+            Assert.AreEqual(listOfArtistsToFind.Count, listOfFoundArtists.Count);
+            listOfArtistsToFind.ForEach(x => Assert.IsNotNull(listOfFoundArtists.FirstOrDefault(y => y.Name == x.Name)));
+            Assert.IsNull(listOfArtistsToFind.FirstOrDefault(x => x.Name == badName));
+
+            foreach (var artist in listOfArtistsToFind)
+            {
+                _repository.Delete(artist);
+            }
+
+            _repository.Delete(badArtist);
         }
 
         [Test]

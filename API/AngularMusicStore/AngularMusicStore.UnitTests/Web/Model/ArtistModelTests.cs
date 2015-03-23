@@ -26,6 +26,18 @@ namespace AngularMusicStore.UnitTests.Web.Model
         }
 
         [Test]
+        public void ShouldBeAbleToGetAListOfArtistByArtistNameFromModel()
+        {
+            const string nameToFind = "Bob";
+            _artistService.Setup(x => x.FindByName(nameToFind))
+                .Returns(new List<Domain.Artist> {new Domain.Artist {Name = nameToFind}});
+
+            var result = _artistModel.GetByPartialName(nameToFind);
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
         public void ShouldBeAbleToGetAListOfArtistsFromTheArtistModel()
         {
             var listOfDomainArtists = new List<Domain.Artist> {new Domain.Artist(), new Domain.Artist()};

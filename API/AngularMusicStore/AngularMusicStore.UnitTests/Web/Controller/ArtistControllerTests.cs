@@ -45,6 +45,17 @@ namespace AngularMusicStore.UnitTests.Web.Controller
         }
 
         [Test]
+        public void ShouldBeAbleToGetAListOfArtistsByName()
+        {
+            var name = "Bob";
+            _artistModel.Setup(x => x.GetByPartialName(name)).Returns(new List<Artist> {new Artist {Name = name}});
+
+            var result = _artistController.GetArtists(name);
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
         public void ShouldBeAbleToGetASpecificArtistByIdWhenIdIsValidGuidAndArtistExists()
         {
             var artistId = Guid.NewGuid();

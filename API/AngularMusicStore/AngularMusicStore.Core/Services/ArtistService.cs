@@ -12,6 +12,7 @@ namespace AngularMusicStore.Core.Services
         IEnumerable<Artist> GetAll();
         Guid Save(Artist artist);
         void Delete(Guid artistId);
+        IList<Artist> FindByName(string nameToFind);
     }
 
     public class ArtistService : IArtistService
@@ -46,6 +47,11 @@ namespace AngularMusicStore.Core.Services
                 throw new DataNotFoundException(string.Format("Artist {0} not found.", artistId));
             }
             _artistRepository.Delete(artist);
+        }
+
+        public IList<Artist> FindByName(string nameToFind)
+        {
+            return _artistRepository.SearchByName<Artist>(nameToFind);
         }
     }
 }
