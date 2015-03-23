@@ -4,10 +4,9 @@ angular.module('musicStore').controller('ArtistCtrl', ['$scope', 'musicStoreAPI'
 
     $scope.searchForArtist = function(){
       var artist = $scope.artistToSearchFor;
-      window.alert(artist);
-      var results = musicStoreAPI.get({id: artist}, function(data){
-        window.alert('done');
+      var results = musicStoreAPI.query({name: artist}, function(data){
         $scope.result = data;
+        $scope.artistsFound = data;
       });
     };
 
