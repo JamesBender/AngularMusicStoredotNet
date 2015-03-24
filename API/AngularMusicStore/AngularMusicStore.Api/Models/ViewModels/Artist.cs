@@ -8,6 +8,9 @@ namespace AngularMusicStore.Api.Models.ViewModels
         public Guid Id  { get; set; }
         public string Name { get; set; }
         public IList<Album> Albums { get; private set; }
+        public virtual string Bio { get; set; }
+        public virtual string PictureUrl { get; set; }
+        public virtual IList<Artist> RelatedArtists { get; protected set; } 
 
         public Artist()
         {
