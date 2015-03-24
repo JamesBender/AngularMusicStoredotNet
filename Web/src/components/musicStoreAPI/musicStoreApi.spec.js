@@ -1,4 +1,4 @@
-/*describe('musicStoreApi', function(){
+describe('musicStoreApi', function(){
 
 	var resource;
 
@@ -9,4 +9,3 @@
   }));
 
 });
-*/
