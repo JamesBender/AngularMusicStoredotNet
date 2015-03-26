@@ -2,6 +2,11 @@
 
 angular.module('musicStore').controller('ArtistDetailCtrl', ['$scope', '$routeParams', 'musicStoreAPI', function ($scope, $routeParams, musicStoreAPI) {
 
-  $scope.artistName = "put stuff here " + $routeParams.id;
+	musicStoreAPI.get({id: $routeParams.id}, function(data){
+		$scope.artistName = data.Name;
+		$scope.bio = data.Bio;
+		$scope.pictureUrl = data.PictureUrl;
+	});
+  //$scope.artistName = "put stuff here " + $routeParams.id;
 
 }]);

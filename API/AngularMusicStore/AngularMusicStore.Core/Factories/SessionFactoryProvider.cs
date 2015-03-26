@@ -18,12 +18,12 @@ namespace AngularMusicStore.Core.Factories
                 .Database(MsSqlConfiguration.MsSql2012
                     .ConnectionString(c => c.Is(ConfigurationManager.ConnectionStrings["AngularMusicStore"].ToString())))
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<BaseEntity>())
-                .ExposeConfiguration(cfg =>
-                {
-                    var schemaExport = new SchemaExport(cfg);
-                    schemaExport.Drop(false, true);
-                    schemaExport.Create(false, true);
-                })
+//                .ExposeConfiguration(cfg =>
+//                {
+//                    var schemaExport = new SchemaExport(cfg);
+//                    schemaExport.Drop(false, true);
+//                    schemaExport.Create(false, true);
+//                })
                 .BuildSessionFactory();
         }
     }
