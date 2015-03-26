@@ -7,6 +7,7 @@ using System.Web.Http;
 using AngularMusicStore.Api.Controllers;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
+using AngularMusicStore.Api.Providers;
 using AngularMusicStore.Core.Exceptions;
 using Moq;
 using NUnit.Framework;

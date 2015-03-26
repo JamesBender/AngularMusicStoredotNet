@@ -18,7 +18,7 @@
 //            var artistService = kernel.Get<IArtistService>();
 //
 //            var album = new Album {Name = "Clockwork Angles", ReleaseDate = DateTime.Now.AddYears(-2)};
-//            var artist = new Artist {Name = "Rush"};
+//            var artist = new Artist {Name = "Rush", Bio = "They are from Canada. They are alright I guess", PictureUrl = "band.jpg"};
 //            artist.AddAlbum(album);
 //            var result = artistService.Save(artist);
 //            artist = artistService.GetById(result);

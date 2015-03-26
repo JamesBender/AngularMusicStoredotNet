@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using AngularMusicStore.Api.Models.ViewModels;
 using AngularMusicStore.Core.Services;
@@ -20,18 +21,19 @@ namespace AngularMusicStore.Api.Models
     public class ArtistModel : IArtistModel
     {
         private readonly IArtistService _artistService;
+        private string _imageBasePath;
 
         public ArtistModel(IArtistService artistService)
         {
             _artistService = artistService;
+            _imageBasePath = ConfigurationManager.AppSettings["ImageBasePath"];
         }
 
         public IEnumerable<Artist> GetArtists()
         {
             var listOfDomainArtist = _artistService.GetAll();
 
-            var listOfApiArtists = Enumerable.ToList(listOfDomainArtist.Select(Mapper.Map<Domain.Artist, Artist>));
-            return listOfApiArtists;
+            return listOfDomainArtist.Select(Mapper.Map<Domain.Artist, Artist>).ToList();
         }
 
         public Artist GetById(Guid artistId)

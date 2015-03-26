@@ -7,6 +7,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
+using AngularMusicStore.Api.Providers;
 using AngularMusicStore.Core.Exceptions;
 
 namespace AngularMusicStore.Api.Controllers
@@ -15,7 +16,7 @@ namespace AngularMusicStore.Api.Controllers
     public class ArtistController : ApiController
     {
         private readonly IArtistModel _artistModel;
-
+        
         public ArtistController(IArtistModel artistModel)
         {
             _artistModel = artistModel;
@@ -23,7 +24,7 @@ namespace AngularMusicStore.Api.Controllers
 
         [EnableCors("*", "*", "*")]
         public IEnumerable<Artist> GetArtists()
-        {
+        {            
             return _artistModel.GetArtists();
         }
 
