@@ -13,26 +13,22 @@
 			{{bio}}
 		</div>
 	</div>
-	<!--<div class='row'>
-		<div class='search col-sm-6 col-md-6'>
-			<label labelFor='artistName'>Search for</label>
-			<input id='artistName' type="text" placeholder='Name of artist...' ng-model='artistToSearchFor'>
-			<button ng-click='searchForArtist()'>Search</button>
-		</div>
-	</div>
-	<hr/>
-	<div class='row'>
-		<div class='col-sm-6 col-md-6'>
-			<table>
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<table class="table table-striped">
 				<thead>
-					<th>Artist Name</th>
+					<th></th>
+					<th>Name</th>
+					<th>Release Date</th>					
 				</thead>
 				<tbody>
-					<tr ng-repeat='artist in artistsFound'>
-						<td>{{artist.Name}}</td>
+					<tr ng-repeat='album in albums'>
+						<td width="10%"><img src="{{album.CoverUri}}" height="50px"></td>
+						<td>{{album.Name}}</td>
+						<td>{{album.ReleaseDate | date}}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>-->
+	</div>
 </div>

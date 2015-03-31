@@ -24,5 +24,21 @@ namespace AngularMusicStore.UnitTests.Web.Model
             Assert.IsNotNull(result);
             Assert.AreEqual(basePath + imageName, result.PictureUrl);
         }
+
+        [Test]
+        public void AlbumCoverImageUrlShouldHaveBaseUrlPutOnFront()
+        {
+            AutomapperConfiguration.Configure();
+
+            const string imageName = "imageName";
+            var basePath = ConfigurationManager.AppSettings["ImageBasePath"];
+
+            var domainAlbum = new Domain.Album { CoverUri = imageName };
+
+            var result = Mapper.Map<Domain.Album, Album>(domainAlbum);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(basePath + imageName, result.CoverUri);
+        }
     }
 }

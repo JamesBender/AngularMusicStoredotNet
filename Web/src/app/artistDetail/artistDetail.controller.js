@@ -6,7 +6,7 @@ angular.module('musicStore').controller('ArtistDetailCtrl', ['$scope', '$routePa
 		$scope.artistName = data.Name;
 		$scope.bio = data.Bio;
 		$scope.pictureUrl = data.PictureUrl;
+		$scope.albums = data.Albums;
 	});
-  //$scope.artistName = "put stuff here " + $routeParams.id;
 
 }]);

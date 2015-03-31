@@ -10,6 +10,8 @@ var MainPage = function() {
   this.h1El = this.jumbEl.element(by.css('h1'));
   this.lead = this.jumbEl.element(by.css('.lead'));
   this.thumbnailEls = element(by.css('body')).all(by.repeater('category in categories'));
+  //this.artistH3 = element(by.css('.row')).element(by.css('h3'));
+  //this.artistP = element(by.css('.row')).element(by.css('p'));
 };
 
 module.exports = new MainPage();
