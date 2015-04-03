@@ -11,7 +11,7 @@ angular.module('musicStore')
       },
       {
         'title': 'Search By Album',
-        'url': 'http://browsersync.io/',
+        'url': '#/album',
         'description': 'Search for a specific album.',
         'logo': 'piano15.png'
       }

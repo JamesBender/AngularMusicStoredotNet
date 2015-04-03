@@ -1,0 +1,30 @@
+<div class="container">
+	<div ng-include="'components/navbar/navbar.html'"></div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<h1>Search by Album</h1>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='search col-sm-6 col-md-6'>
+			<label labelFor='albumName'>Search for</label>
+			<input id='albumName' type="text" placeholder='Name of album...' ng-model='albumToSearchFor'>
+			<button id='search' ng-click='searchForAlbum()'>Search</button>
+		</div>
+	</div>
+	<hr/>
+	<div class='row'>
+		<div class='col-sm-6 col-md-6'>
+			<table>
+				<thead>
+					<th>Album Name</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat='album in albumFound'>
+						<td><a href='#/album/{{album.Id}}'>{{album.Name}}</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
