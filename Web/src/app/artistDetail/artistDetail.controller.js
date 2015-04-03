@@ -8,5 +8,4 @@ angular.module('musicStore').controller('ArtistDetailCtrl', ['$scope', '$routePa
 		$scope.pictureUrl = data.PictureUrl;
 		$scope.albums = data.Albums;
 	});
-
 }]);

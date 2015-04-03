@@ -5,12 +5,12 @@
 			<h1>{{artistName}}</h1>
 		</div>
 		<div class="col-sm-6 col-md-6">
-			<img src={{pictureUrl}} height=210 >
+			<img id='bandImage' src={{pictureUrl}} height=210 >
 		</div>		
 	</div>
 	<div class="row">
 		<div class="col-sm-9 col-md-9">
-			{{bio}}
+			<p id='bandBio'>{{bio}}</p>
 		</div>
 	</div>
 	<div class="row">
@@ -24,8 +24,8 @@
 				<tbody>
 					<tr ng-repeat='album in albums'>
 						<td width="10%"><img src="{{album.CoverUri}}" height="50px"></td>
-						<td>{{album.Name}}</td>
-						<td>{{album.ReleaseDate | date}}</td>
+						<td><span class='albumName'>{{album.Name}}</span></td>
+						<td><span class='releaseDate'>{{album.ReleaseDate | date}}</span></td>
 					</tr>
 				</tbody>
 			</table>
