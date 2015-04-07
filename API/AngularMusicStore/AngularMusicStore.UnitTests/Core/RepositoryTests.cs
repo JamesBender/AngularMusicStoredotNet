@@ -47,6 +47,23 @@ namespace AngularMusicStore.UnitTests.Core
         }
 
         [Test]
+        public void ShouldBeAbleToFindAnAlbumByName()
+        {
+            var addCriteria = new Mock<ICriteria>();
+            var listCriteria = new Mock<ICriteria>();
+            var nameToFind = "Bob";
+
+            var listOfFoundAlbums = new List<Album> {new Album {Name = nameToFind}};
+            listCriteria.Setup(x => x.List<Album>()).Returns(listOfFoundAlbums);
+            addCriteria.Setup(x => x.Add(It.IsAny<ICriterion>())).Returns(listCriteria.Object);
+            _session.Setup(x => x.CreateCriteria<Album>()).Returns(addCriteria.Object);
+
+            var result = _repository.SearchByName<Album>(nameToFind);
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
         public void ShouldBeAbleToGetAListOfAllEntities()
         {
             var listOfUsers = new List<Artist> { new Artist(), new Artist(), new Artist() };

@@ -13,7 +13,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
     [TestFixture]
     public class AlbumModelTests
     {
-        private AlbumModel _albumModel;
+        private IAlbumModel _albumModel;
         private Mock<IAlbumService> _albumService;
 
         [SetUp]
@@ -22,6 +22,18 @@ namespace AngularMusicStore.UnitTests.Web.Model
             AutomapperConfiguration.Configure();
             _albumService = new Mock<IAlbumService>();
             _albumModel = new AlbumModel(_albumService.Object);
+        }
+
+        [Test]
+        public void ShouldBeAbleToGetAListOfAlbumsByAlbumNameFromModel()
+        {
+            const string nameToFind = "Bob";
+            _albumService.Setup(x => x.FindByName(nameToFind))
+                .Returns(new List<Domain.Album> { new Domain.Album { Name = nameToFind } });
+
+            var result = _albumModel.GetByPartialName(nameToFind);
+
+            Assert.IsNotNull(result);
         }
 
         [Test]
@@ -42,7 +54,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(domainAlbum.Name, result.Name);
-            Assert.AreEqual(domainAlbum.CoverUri, result.CoverUri);
+            Assert.AreEqual("imagePath" + domainAlbum.CoverUri, result.CoverUri);
         }
 
         [Test]

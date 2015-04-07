@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -121,6 +122,18 @@ namespace AngularMusicStore.UnitTests.Web.Controller
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
+        }
+
+        [Test]
+        public void ShouldBeAbleToGetListOfAlbumsByName()
+        {
+            const string albumName = "Bob";
+            _albumModel.Setup(x => x.GetByPartialName(albumName))
+                .Returns(new List<Album> {new Album {Name = albumName}});
+
+            var result = _albumController.GetAlbums(albumName);
+            
+            Assert.IsNotNull(result);
         }
     }
 }

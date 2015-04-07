@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -105,6 +106,82 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
+        }
+
+        [Test]
+        public void ShouldBeAbleToFindAListOfAlbumsByPartialName()
+        {
+            var nameFragmentToFind = "ABC";
+            var listOfGoodNames = new List<string> { "ABCDE", "DABCE", "DEABC" };
+            var listOfBadNames = new List<string> { "LMNOP", "PBJWB", "IHBTD" };
+            var artist = new Artist {Name = "artist"};
+
+            var artistSaveResponse = _artistController.PostArtist(artist);
+            Assert.IsNotNull(artistSaveResponse);
+            Guid artistId;
+            Assert.IsTrue(artistSaveResponse.TryGetContentValue(out artistId));
+            var artistResponse = _artistController.GetById(artistId.ToString());
+            Assert.IsNotNull(artistResponse);
+            Assert.IsTrue(artistResponse.TryGetContentValue(out artist));
+
+            var albumsToFind = new List<Guid>();
+            var albumsToNotFind = new List<Guid>();
+
+            foreach (var postResponse in listOfGoodNames.Select(goodName => _albumController.PostAlbum(new Album { Name = goodName, ReleaseDate = DateTime.Now, Parent = artist})))
+            {
+                Guid albumId;
+                Assert.IsTrue(postResponse.TryGetContentValue(out albumId));
+                albumsToFind.Add(albumId);
+            }
+
+            foreach (var postResponse in listOfBadNames.Select(badName => _albumController.PostAlbum(new Album { Name = badName, ReleaseDate = DateTime.Now, Parent = artist})))
+            {
+                Guid albumId;
+                Assert.IsTrue(postResponse.TryGetContentValue(out albumId));
+                albumsToNotFind.Add(albumId);
+            }
+
+            var listOfAllAlbums = new List<Album>();
+            foreach (var albumId in albumsToFind)
+            {
+                var albumResponse = _albumController.GetAlbum(albumId.ToString());
+                Assert.AreEqual(HttpStatusCode.OK, albumResponse.StatusCode);
+                Album retrievedAlbum;
+                Assert.IsTrue(albumResponse.TryGetContentValue(out retrievedAlbum));
+                Assert.IsNotNull(retrievedAlbum);
+                listOfAllAlbums.Add(retrievedAlbum);
+            }
+
+            foreach (var albumId in albumsToNotFind)
+            {
+                var albumResponse = _albumController.GetAlbum(albumId.ToString());
+                Assert.AreEqual(HttpStatusCode.OK, albumResponse.StatusCode);
+                Album retrievedAlbum;
+                Assert.IsTrue(albumResponse.TryGetContentValue(out retrievedAlbum));
+                Assert.IsNotNull(retrievedAlbum);
+                listOfAllAlbums.Add(retrievedAlbum);
+            }
+
+            Assert.IsNotNull(listOfAllAlbums);
+            Assert.AreEqual(listOfAllAlbums.Count(), albumsToFind.Count() + albumsToNotFind.Count());
+            listOfGoodNames.ForEach(x => Assert.IsNotNull(listOfAllAlbums.FirstOrDefault(a => a.Name == x)));
+            listOfBadNames.ForEach(x => Assert.IsNotNull(listOfAllAlbums.FirstOrDefault(a => a.Name == x)));
+
+            var findAlbumResults = _albumController.GetAlbums(nameFragmentToFind);
+
+            Assert.IsNotNull(findAlbumResults);
+            // ReSharper disable PossibleMultipleEnumeration
+            Assert.AreEqual(listOfGoodNames.Count(), findAlbumResults.Count());
+            listOfGoodNames.ForEach(x => Assert.IsNotNull(findAlbumResults.FirstOrDefault(a => a.Name == x)));
+            listOfBadNames.ForEach(x => Assert.IsNull(findAlbumResults.FirstOrDefault(a => a.Name == x)));
+
+//            albumsToFind.ForEach(x => _albumController.Delete(x.ToString()));
+//            albumsToNotFind.ForEach(x => _albumController.Delete(x.ToString()));
+//
+//            listOfAllAlbums = _artistController.GetArtists();
+//
+//            Assert.IsNotNull(listOfAllAlbums);
+//            Assert.AreEqual(listOfAllAlbums.Count(), 0);
         }
     }
 }

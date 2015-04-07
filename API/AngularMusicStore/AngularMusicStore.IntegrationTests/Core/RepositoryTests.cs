@@ -95,6 +95,38 @@ namespace AngularMusicStore.IntegrationTests.Core
         }
 
         [Test]
+        public void ShouldBeAbleToSearchForAnAlbumsByName()
+        {
+            var nameToSearchFor = "ABC";
+
+            var listOfGoodNames = new List<string> { "ABCDE", "DABCE", "DEABC" };
+            var badName = "FGHIJ";
+
+            var listOfAlbumsToFind = listOfGoodNames.Select(goodName => new Album { Name = goodName, ReleaseDate = DateTime.Now}).ToList();
+            var badAlbum = new Album { Name = badName, ReleaseDate = DateTime.Now};
+
+            var listOfAlbumsToFindId = listOfAlbumsToFind.Select(foundAlbum => _repository.Save(foundAlbum)).ToList();
+            var badAlbumId = _repository.Save(badAlbum);
+
+            listOfAlbumsToFindId.ForEach(x => Assert.IsNotNull(x));
+            Assert.IsNotNull(badAlbumId);
+
+            var listOfFoundAlbums = _repository.SearchByName<Album>(nameToSearchFor);
+
+            Assert.IsNotNull(listOfFoundAlbums);
+            Assert.AreEqual(listOfAlbumsToFind.Count, listOfFoundAlbums.Count);
+            listOfAlbumsToFind.ForEach(x => Assert.IsNotNull(listOfFoundAlbums.FirstOrDefault(y => y.Name == x.Name)));
+            Assert.IsNull(listOfAlbumsToFind.FirstOrDefault(x => x.Name == badName));
+
+            foreach (var album in listOfAlbumsToFind)
+            {
+                _repository.Delete(album);
+            }
+
+            _repository.Delete(badAlbum);
+        }
+
+        [Test]
         public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbumsAndDeletingTheArtistShouldCascadeToAlbums()
         {
             var albumOne = new Album {ReleaseDate = DateTime.Now};

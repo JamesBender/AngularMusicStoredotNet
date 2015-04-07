@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -54,6 +55,11 @@ namespace AngularMusicStore.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        public IEnumerable<Album> GetAlbums(string albumName)
+        {
+            return _albumModel.GetByPartialName(albumName);
         }
     }
 }
