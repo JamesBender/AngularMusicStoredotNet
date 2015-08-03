@@ -35,7 +35,8 @@ describe('artstDetailController', function(){
 	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller){
 		scope = $rootScope.$new();
 		$httpBackend = _$httpBackend_;
-		$httpBackend.expectGET('http://localhost:21138/api/artist/' + artistId).respond(artist);
+
+		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist/' + artistId).respond(artist);
 		controller = $controller('ArtistDetailCtrl', {$scope: scope, $routeParams: {id: artistId}});
 	}));
 

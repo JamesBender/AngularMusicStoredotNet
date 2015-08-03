@@ -49,7 +49,7 @@ describe('The artist detail view', function () {
       });
 
       expect(element(by.css('.albumName')).getText()).toBe('Clockwork Angles');
-      expect(element(by.css('.releaseDate')).getText()).toBe('Mar 30, 2013');
+      expect(element(by.css('.releaseDate')).getText()).toBe('Jul 29, 2013');
     }));
   });
 });

@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('musicStore').controller('ArtistCtrl', ['$scope', 'musicStoreArtistAPI', function ($scope, musicStoreArtistAPI) {
+angular.module('musicStore')
+.controller('ArtistCtrl', ['$scope', 'musicStoreArtistAPI', function ($scope, musicStoreArtistAPI) {
 
   $scope.searchForArtist = function(){
     var artist = $scope.artistToSearchFor;

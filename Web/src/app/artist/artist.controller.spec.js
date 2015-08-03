@@ -7,7 +7,8 @@ describe('controllers', function(){
 	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller){
 		scope = $rootScope.$new();
 		$httpBackend = _$httpBackend_;
-		$httpBackend.expectGET('http://localhost:21138/api/artist?name=u').respond(queryResponseForArtistNameU);
+		
+		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist?name=u').respond(queryResponseForArtistNameU);
 		controller = $controller('ArtistCtrl', {$scope: scope});
 	}));
 
