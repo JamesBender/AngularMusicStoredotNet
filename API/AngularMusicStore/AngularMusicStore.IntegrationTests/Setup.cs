@@ -18,7 +18,32 @@ namespace AngularMusicStore.IntegrationTests
             var kernel = new StandardKernel(new DomainModule());
             var artistService = kernel.Get<IArtistService>();
 
-            var albumArtistInfo = new string [25,6];
+            var albumArtistInfo = GetInitialData();
+
+            var numberOfEntries = albumArtistInfo.GetUpperBound(0);
+
+            for (var idx = 0; idx < numberOfEntries; idx++)
+            {
+                var albumName = albumArtistInfo[idx, 0];
+                var albumDate = albumArtistInfo[idx, 1];
+                var albumImage = albumArtistInfo[idx, 2];
+                var artistName = albumArtistInfo[idx, 3];
+                var artistBio = albumArtistInfo[idx, 4];
+                var artistImage = albumArtistInfo[idx, 5];
+
+                var album = new Album {Name = albumName, ReleaseDate = DateTime.Parse(albumDate), CoverUri = albumImage};
+                var artist = new Artist {Name = artistName, Bio = artistBio, PictureUrl = artistImage};
+
+                artist.AddAlbum(album);
+                var result = artistService.Save(artist);
+                artist = artistService.GetById(result);
+                Assert.IsNotNull(artist);
+            }
+        }
+
+        private static string[,] GetInitialData()
+        {
+            var albumArtistInfo = new string[25, 6];
 
             albumArtistInfo[0, 0] = "Clockwork Angles";
             albumArtistInfo[0, 1] = "6/8/2012";
@@ -89,7 +114,7 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[9, 1] = "8/3/2015";
             albumArtistInfo[9, 2] = "EdSheeran_X.png";
             albumArtistInfo[9, 3] = "Ed Sheeran";
-            albumArtistInfo[9, 4] = "Edward Christopher 'Ed' Sheeran (born 17 February 1991) is an English singer-songwriter and musician. Born in Hebden Bridge, West Yorkshire and raised in Framlingham, Suffolk, he moved to London in 2008 to pursue a musical career. In early 2011, Sheeran released an independent extended play, No. 5 Collaborations Project, which caught the attention of both Elton John and Jamie Foxx. He then signed to Asylum Records. His debut album, +, containing the singles The A Team and Lego House, was certified 6× Platinum in the UK. In 2012, Sheeran won two Brit Awards for Best British Male Solo Artist and British Breakthrough Act. "The A Team" won the Ivor Novello Award for Best Song Musically and Lyrically. In 2014, he was nominated for Best New Artist at the 56th Annual Grammy Awards.[1]";
+            albumArtistInfo[9, 4] = "Edward Christopher 'Ed' Sheeran (born 17 February 1991) is an English singer-songwriter and musician. Born in Hebden Bridge, West Yorkshire and raised in Framlingham, Suffolk, he moved to London in 2008 to pursue a musical career. In early 2011, Sheeran released an independent extended play, No. 5 Collaborations Project, which caught the attention of both Elton John and Jamie Foxx. He then signed to Asylum Records. His debut album, +, containing the singles The A Team and Lego House, was certified 6× Platinum in the UK. In 2012, Sheeran won two Brit Awards for Best British Male Solo Artist and British Breakthrough Act. The A Team won the Ivor Novello Award for Best Song Musically and Lyrically. In 2014, he was nominated for Best New Artist at the 56th Annual Grammy Awards.[1]";
             albumArtistInfo[9, 5] = "EdSheeran.jpg";
 
             albumArtistInfo[10, 0] = "A Night at the Opera";
@@ -98,7 +123,6 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[10, 3] = "Queen";
             albumArtistInfo[10, 4] = "Queen are a British rock band formed in London in 1970. They originally consisted of Freddie Mercury (lead vocals, piano), Brian May (guitar, vocals), John Deacon (bass guitar), and Roger Taylor (drums, vocals). Queen's earliest works were influenced by progressive rock, hard rock and heavy metal, but the band gradually ventured into more conventional and radio-friendly works by incorporating further styles, such as arena rock and pop rock, into their music.";
             albumArtistInfo[10, 5] = "Queen.png";
-
 
             albumArtistInfo[11, 0] = "The Real Thing";
             albumArtistInfo[11, 1] = "8/3/2015";
@@ -113,7 +137,6 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[12, 3] = "Green Day";
             albumArtistInfo[12, 4] = "Green Day is an American punk rock band formed in 1986 by vocalist/guitarist Billie Joe Armstrong and bassist Mike Dirnt. For much of their career, the band has been a trio with drummer Tré Cool, who replaced former drummer John Kiffmeyer in 1990 prior to the recording of the band's second studio album, Kerplunk (1992). In 2012, guitarist Jason White became a full-time member after having performed with the band as a session and touring member since 1999.";
             albumArtistInfo[12, 5] = "GreenDay.jpg";
-
 
             albumArtistInfo[13, 0] = "Hot Fuss";
             albumArtistInfo[13, 1] = "8/3/2015";
@@ -136,7 +159,6 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[15, 4] = "Foo Fighters is an American rock band, formed in Seattle in 1994. It was founded by Nirvana drummer Dave Grohl as a one-man project following the death of Kurt Cobain and the resulting dissolution of his previous band. The group got its name from the UFOs and various aerial phenomena that were reported by Allied aircraft pilots in World War II, which were known collectively as foo fighters.";
             albumArtistInfo[15, 5] = "FooFighers.jpg";
 
-
             albumArtistInfo[16, 0] = "Blackwater Park";
             albumArtistInfo[16, 1] = "8/3/2015";
             albumArtistInfo[16, 2] = "Opeth_BlackwaterPark.jpg";
@@ -148,70 +170,67 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[17, 1] = "8/3/2015";
             albumArtistInfo[17, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[17, 3] = "Moby";
-            albumArtistInfo[17, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[17, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[17, 5] = "band.jpg";
 
 
             albumArtistInfo[18, 0] = "The Offspring";
-            albumArtistInfo[18, 1] = "8/3/2015" ;
+            albumArtistInfo[18, 1] = "8/3/2015";
             albumArtistInfo[18, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[18, 3] = "Offspring";
-            albumArtistInfo[18, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[18, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[18, 5] = "band.jpg";
 
             albumArtistInfo[19, 0] = "Images and Words";
             albumArtistInfo[19, 1] = "8/3/2015";
             albumArtistInfo[19, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[19, 3] = "Dream Theater";
-            albumArtistInfo[19, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[19, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[19, 5] = "band.jpg";
 
             albumArtistInfo[20, 0] = "Brothers";
             albumArtistInfo[20, 1] = "8/3/2015";
             albumArtistInfo[20, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[20, 3] = "The Black Keys";
-            albumArtistInfo[20, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[20, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[20, 5] = "band.jpg";
 
             albumArtistInfo[21, 0] = "How Big, How Blue, How Beautiful";
             albumArtistInfo[21, 1] = "8/3/2015";
             albumArtistInfo[21, 2] = "LobsterKnifeFight.jpg";
-            albumArtistInfo[21, 3] = "Florence + The Machine"   ;
-            albumArtistInfo[21, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[21, 3] = "Florence + The Machine";
+            albumArtistInfo[21, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[21, 5] = "band.jpg";
 
             albumArtistInfo[22, 0] = "Mezzanine";
             albumArtistInfo[22, 1] = "8/3/2015";
             albumArtistInfo[22, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[22, 3] = "Massive Attack";
-            albumArtistInfo[22, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[22, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[22, 5] = "band.jpg";
 
             albumArtistInfo[23, 0] = "Songs About Jane";
             albumArtistInfo[23, 1] = "8/3/2015";
             albumArtistInfo[23, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[23, 3] = "Maroon 5";
-            albumArtistInfo[23, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[23, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[23, 5] = "band.jpg";
 
             albumArtistInfo[24, 0] = "OK Computer";
             albumArtistInfo[24, 1] = "8/3/2015";
             albumArtistInfo[24, 2] = "LobsterKnifeFight.jpg";
             albumArtistInfo[24, 3] = "Radiohead";
-            albumArtistInfo[24, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
+            albumArtistInfo[24, 4] =
+                "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[24, 5] = "band.jpg";
-
-
-
-
-            albums.Add(new Album {Name = "Clockwork Angles", ReleaseDate = DateTime.Now.AddYears(-2), CoverUri = "LobsterKnifeFight.jpg"});
-            artists.Add(new Artist {Name = "Rush", Bio = "They are from Canada. They are alright I guess", PictureUrl = "band.jpg"});
-
-
-            artist.AddAlbum(album);
-            var result = artistService.Save(artist);
-            artist = artistService.GetById(result);
-            Assert.IsNotNull(artist);
+            return albumArtistInfo;
         }
     }
 }

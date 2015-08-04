@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -62,11 +63,12 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             var newAlbumName = Guid.NewGuid().ToString();
             var newAlbumCoverUri = Guid.NewGuid().ToString();
+            var newAlbumReleaseDate = DateTime.Now;
             var newAlbum = new Album
             {
                 Name = newAlbumName,
                 CoverUri = newAlbumCoverUri,
-                ReleaseDate = DateTime.Now,
+                ReleaseDate = newAlbumReleaseDate,
                 Parent = new Artist {Id = artist.Id}
             };
 
@@ -87,9 +89,15 @@ namespace AngularMusicStore.IntegrationTests.Web
             Assert.IsNotNull(artist);
 
             Assert.AreEqual(originalNumberOfAlbums + 1, artist.Albums.Count);
-            newAlbum = artist.Albums.FirstOrDefault(x => x.Name == newAlbumName && x.CoverUri == newAlbumCoverUri);
+            newAlbum =
+                artist.Albums.FirstOrDefault(
+                    x =>
+                        x.Name == newAlbumName && x.CoverUri.IndexOf(newAlbumCoverUri, StringComparison.Ordinal) > 0 &&
+                        x.ReleaseDate.ToString(CultureInfo.InvariantCulture) == newAlbumReleaseDate.ToString(CultureInfo.InvariantCulture));
+                                                             
+                                                          
             Assert.IsNotNull(newAlbum);
-
+            
             result = _albumController.DeleteAlbum(newAlbum.Id.ToString());
 
             Assert.IsNotNull(result);

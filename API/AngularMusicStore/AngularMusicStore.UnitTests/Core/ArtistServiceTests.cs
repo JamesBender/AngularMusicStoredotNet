@@ -113,7 +113,7 @@ namespace AngularMusicStore.UnitTests.Core
             var result = _artistService.FindByName(nameToFind);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count);
+            Assert.AreEqual(1, result.ToList().Count);
             Assert.IsNotNull(result.FirstOrDefault(x => x.Name == nameToFind));
         }
     }

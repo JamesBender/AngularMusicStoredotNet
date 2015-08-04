@@ -54,7 +54,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(domainAlbum.Name, result.Name);
-            Assert.AreEqual("imagePath" + domainAlbum.CoverUri, result.CoverUri);
+            Assert.AreEqual("imagePath/Album/" + domainAlbum.CoverUri, result.CoverUri);
         }
 
         [Test]

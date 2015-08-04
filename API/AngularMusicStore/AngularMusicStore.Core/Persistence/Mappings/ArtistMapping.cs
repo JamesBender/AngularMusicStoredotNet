@@ -11,7 +11,7 @@ namespace AngularMusicStore.Core.Persistence.Mappings
             Map(x => x.Name);
             HasMany(x => x.Albums).Cascade.AllDeleteOrphan().Not.LazyLoad();
             HasMany(x => x.RelatedArtists).Not.LazyLoad();
-            Map(x => x.Bio);
+            Map(x => x.Bio).Length(5000);
             Map(x => x.PictureUrl);
         } 
     }

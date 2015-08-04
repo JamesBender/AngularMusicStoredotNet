@@ -45,7 +45,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(domainAlbum.Id, apiAlbum.Id);
             Assert.AreEqual(domainAlbum.Name, apiAlbum.Name);
             Assert.AreEqual(domainAlbum.ReleaseDate, apiAlbum.ReleaseDate);
-            Assert.AreEqual("imagePath" + domainAlbum.CoverUri, apiAlbum.CoverUri);
+            Assert.AreEqual($"imagePath/Album/{domainAlbum.CoverUri}", apiAlbum.CoverUri);
             Assert.AreEqual(domainAlbum.Parent.Id, apiAlbum.Parent.Id);
         }
 
@@ -94,7 +94,7 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(domainAlbum.Id, apiAlbum.Id);
             Assert.AreEqual(domainAlbum.Name, apiAlbum.Name);
             Assert.AreEqual(domainAlbum.ReleaseDate, apiAlbum.ReleaseDate);
-            Assert.AreEqual("imagePath" + domainAlbum.CoverUri, apiAlbum.CoverUri);
+            Assert.AreEqual($"imagePath/Album/{domainAlbum.CoverUri}", apiAlbum.CoverUri);
         }
 
         [Test]
