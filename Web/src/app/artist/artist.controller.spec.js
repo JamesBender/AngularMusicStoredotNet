@@ -7,8 +7,7 @@ describe('controllers', function(){
 	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller){
 		scope = $rootScope.$new();
 		$httpBackend = _$httpBackend_;
-		
-		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist?name=u').respond(queryResponseForArtistNameU);
+
 		controller = $controller('ArtistCtrl', {$scope: scope});
 	}));
 
@@ -16,7 +15,22 @@ describe('controllers', function(){
 		expect(controller).not.toBeNull();
 	});
 
+	it('should have a list of the top 50 artists when the page loads', function(){
+		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist').respond(queryResponseForArtistNameU);
+		
+		$httpBackend.flush();
+		expect(scope.artistsFound).not.toBeNull();
+		expect(scope.artistsFound).toBeDefined();
+		var numberOfArtistsFound = scope.artistsFound.length;
+		expect(numberOfArtistsFound).toBeLessThan(51);
+		expect(numberOfArtistsFound).toBeGreaterThan(0);
+	});
+
 	it('should bring back an array of artsts when searching', function(){
+		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist').respond(queryResponseForArtistNameU);
+		
+		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist?name=u').respond(queryResponseForArtistNameU);
+		
 		scope.artistToSearchFor = 'u';
 		scope.searchForArtist();
 		$httpBackend.flush();

@@ -16,7 +16,7 @@ describe('The artist view', function () {
     page.artstToSearchFor.sendKeys('u');
     page.searchButton.click().then(function(){
       var artistElement
-      expect(element.all(by.repeater('artist in artistsFound')).count()).toBe(1);
+      expect(element.all(by.repeater('artist in artistsFound')).count()).toBe(5);
       expect(element.all(by.repeater('artist in artistsFound')).then(function(artists){
         var foundArtist = artists[0];
         expect(foundArtist).not.toBeNull();

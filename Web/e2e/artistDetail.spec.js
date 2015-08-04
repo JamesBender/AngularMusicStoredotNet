@@ -29,10 +29,10 @@ describe('The artist detail view', function () {
     expect(page.bandImage).not.toBeNull();    
     page.bandImage.getAttribute('src').then(function(imageSrc){
       expect(imageSrc).not.toBeNull();
-      expect(imageSrc.indexOf('band.jpg')).toBe(38);    
+      expect(imageSrc.indexOf('Rush.jpg') > -1).toBeTruthy();    
     });
     expect(page.bandBio).not.toBeNull();
-    expect(page.bandBio.getText()).toBe('They are from Canada. They are alright I guess');
+    expect(page.bandBio.getText()).toBe("Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.");
   });
 
   it('should have a list of albums', function(){
@@ -44,12 +44,12 @@ describe('The artist detail view', function () {
       expect(coverImg).not.toBeNull();
       coverImg.getAttribute('src').then(function(imgSrc){
         expect(imgSrc).not.toBeNull();
-        expect(imgSrc.indexOf('LobsterKnifeFight.jpg')).toBe(38);
+        expect(imgSrc.indexOf('Rush_ClockworkAngles.png') > -1).toBeTruthy();
 
       });
 
       expect(element(by.css('.albumName')).getText()).toBe('Clockwork Angles');
-      expect(element(by.css('.releaseDate')).getText()).toBe('Jul 29, 2013');
+      expect(element(by.css('.releaseDate')).getText()).toBe('Jun 8, 2012');
     }));
   });
 });
