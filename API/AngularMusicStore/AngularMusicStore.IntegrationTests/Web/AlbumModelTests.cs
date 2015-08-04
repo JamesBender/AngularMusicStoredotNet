@@ -107,7 +107,7 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             Assert.IsNotNull(newAlbumId);
             Assert.AreEqual(startingNumberOfAlbums+1, artist.Albums.Count);
-            var deleteAlbum = artist.Albums.FirstOrDefault(x => x.Name == newAlbumName && x.CoverUri == newAlbumCoverUrl);
+            var deleteAlbum = artist.Albums.FirstOrDefault(x => x.Name == newAlbumName && x.CoverUri.IndexOf(newAlbumCoverUrl, StringComparison.Ordinal) > 0);
             Assert.IsNotNull(deleteAlbum);
 
             _albumModel.Delete(deleteAlbum.Id);

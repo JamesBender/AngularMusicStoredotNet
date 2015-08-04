@@ -124,7 +124,7 @@ namespace AngularMusicStore.UnitTests.Core
             }
             catch (DataNotFoundException exception)
             {
-                Assert.AreEqual(string.Format("Album {0} not found.", albumId), exception.Message);
+                Assert.AreEqual($"Album {albumId} not found.", exception.Message);
                 throw;
             }
         }
@@ -143,8 +143,9 @@ namespace AngularMusicStore.UnitTests.Core
             var result = _albumService.FindByName(nameToFind);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count);
-            Assert.IsNotNull(result.FirstOrDefault(x => x.Name == nameToFind));
+            var enumerable = result as Album[] ?? result.ToArray();
+            Assert.AreEqual(1, enumerable.ToList().Count);
+            Assert.IsNotNull(enumerable.FirstOrDefault(x => x.Name == nameToFind));
         }
     }
 }

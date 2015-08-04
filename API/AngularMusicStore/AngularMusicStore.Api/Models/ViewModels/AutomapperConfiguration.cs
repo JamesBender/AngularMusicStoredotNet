@@ -24,7 +24,7 @@ namespace AngularMusicStore.Api.Models.ViewModels
         {
             var baseImagePath = ConfigurationManager.AppSettings["ImageBasePath"];
 
-            return baseImagePath + source.PictureUrl;
+            return $"{baseImagePath}Artist/{source.PictureUrl}";
         }
     }
 
@@ -34,7 +34,7 @@ namespace AngularMusicStore.Api.Models.ViewModels
         {
             var baseImagePath = ConfigurationManager.AppSettings["ImageBasePath"];
 
-            return baseImagePath + source.CoverUri;
+            return $"{baseImagePath}Album/{source.CoverUri}";
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Api.Models;
-using AngularMusicStore.Core.Persistence;
 using AngularMusicStore.Core.Services;
 using Moq;
 using NUnit.Framework;

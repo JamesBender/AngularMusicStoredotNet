@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AngularMusicStore.Core.Entities;
@@ -82,8 +81,9 @@ namespace AngularMusicStore.IntegrationTests.Core
             var listOfFoundArtists = _repository.SearchByName<Artist>(nameToSearchFor);
 
             Assert.IsNotNull(listOfFoundArtists);
-            Assert.AreEqual(listOfArtistsToFind.Count, listOfFoundArtists.Count);
-            listOfArtistsToFind.ForEach(x => Assert.IsNotNull(listOfFoundArtists.FirstOrDefault(y => y.Name == x.Name)));
+            var ofFoundArtists = listOfFoundArtists as Artist[] ?? listOfFoundArtists.ToArray();
+            Assert.AreEqual(listOfArtistsToFind.Count, ofFoundArtists.ToList().Count);
+            listOfArtistsToFind.ForEach(x => Assert.IsNotNull(ofFoundArtists.FirstOrDefault(y => y.Name == x.Name)));
             Assert.IsNull(listOfArtistsToFind.FirstOrDefault(x => x.Name == badName));
 
             foreach (var artist in listOfArtistsToFind)
@@ -114,8 +114,9 @@ namespace AngularMusicStore.IntegrationTests.Core
             var listOfFoundAlbums = _repository.SearchByName<Album>(nameToSearchFor);
 
             Assert.IsNotNull(listOfFoundAlbums);
-            Assert.AreEqual(listOfAlbumsToFind.Count, listOfFoundAlbums.Count);
-            listOfAlbumsToFind.ForEach(x => Assert.IsNotNull(listOfFoundAlbums.FirstOrDefault(y => y.Name == x.Name)));
+            var ofFoundAlbums = listOfFoundAlbums as Album[] ?? listOfFoundAlbums.ToArray();
+            Assert.AreEqual(listOfAlbumsToFind.Count, ofFoundAlbums.ToList().Count);
+            listOfAlbumsToFind.ForEach(x => Assert.IsNotNull(ofFoundAlbums.FirstOrDefault(y => y.Name == x.Name)));
             Assert.IsNull(listOfAlbumsToFind.FirstOrDefault(x => x.Name == badName));
 
             foreach (var album in listOfAlbumsToFind)

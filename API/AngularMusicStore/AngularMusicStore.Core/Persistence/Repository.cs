@@ -12,7 +12,7 @@ namespace AngularMusicStore.Core.Persistence
         Guid Save<T>(T entity) where T: BaseEntity;
         void Delete<T>(T entity) where T : BaseEntity;
         T GetById<T>(Guid entityId) where T : BaseEntity;
-        IList<T> SearchByName<T>(string nameToSearchFor) where T : BaseEntity;
+        IEnumerable<T> SearchByName<T>(string nameToSearchFor) where T : BaseEntity;
     }
 
     public class Repository : IRepository
@@ -74,7 +74,7 @@ namespace AngularMusicStore.Core.Persistence
             }
         }
 
-        public IList<T> SearchByName<T>(string nameToSearchFor) where T : BaseEntity
+        public IEnumerable<T> SearchByName<T>(string nameToSearchFor) where T : BaseEntity
         {
             using (var session = _sessionFactory.OpenSession())
             {

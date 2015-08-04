@@ -22,7 +22,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
             var result = Mapper.Map<Domain.Artist, Artist>(domainArtist);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(basePath + imageName, result.PictureUrl);
+            Assert.AreEqual($"{basePath}Artist/{imageName}", result.PictureUrl);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace AngularMusicStore.UnitTests.Web.Model
             var result = Mapper.Map<Domain.Album, Album>(domainAlbum);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(basePath + imageName, result.CoverUri);
+            Assert.AreEqual($"{basePath}Album/{imageName}", result.CoverUri);
         }
     }
 }

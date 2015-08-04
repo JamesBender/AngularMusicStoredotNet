@@ -7,7 +7,6 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
-using AngularMusicStore.Api.Providers;
 using AngularMusicStore.Core.Exceptions;
 
 namespace AngularMusicStore.Api.Controllers

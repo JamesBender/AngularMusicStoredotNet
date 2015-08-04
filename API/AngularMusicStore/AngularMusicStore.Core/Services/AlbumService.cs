@@ -12,7 +12,7 @@ namespace AngularMusicStore.Core.Services
         IEnumerable<Album> GetAlbumsByArtist(Guid artistId);
         Guid Save(Guid artistId, Album album);
         void Delete(Guid albumId);
-        IList<Album> FindByName(string nameToFind);
+        IEnumerable<Album> FindByName(string nameToFind);
     }
 
     public class AlbumService : IAlbumService
@@ -58,7 +58,7 @@ namespace AngularMusicStore.Core.Services
             _repository.Delete(album);
         }
 
-        public IList<Album> FindByName(string nameToFind)
+        public IEnumerable<Album> FindByName(string nameToFind)
         {
             return _repository.SearchByName<Album>(nameToFind);
         }
