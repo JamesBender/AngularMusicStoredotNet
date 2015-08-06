@@ -168,68 +168,68 @@ namespace AngularMusicStore.IntegrationTests
 
             albumArtistInfo[17, 0] = "Go";
             albumArtistInfo[17, 1] = "8/3/2015";
-            albumArtistInfo[17, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[17, 2] = "Moby_Go.jpg";
             albumArtistInfo[17, 3] = "Moby";
             albumArtistInfo[17, 4] =
                 "Richard Melville Hall (born September 11, 1965),[1] better known by his stage name Moby, is an American singer-songwriter, musician, DJ and photographer. He is well known for his electronic music, vegan lifestyle, and support of animal rights. Moby has sold over 20 million albums worldwide.[2] AllMusic considers him one of the most important dance music figures of the early 1990s, helping bring the music to a mainstream audience both in the UK and in America.[3]";
-            albumArtistInfo[17, 5] = "band.jpg";
+            albumArtistInfo[17, 5] = "Moby.jpg";
 
 
             albumArtistInfo[18, 0] = "The Offspring";
             albumArtistInfo[18, 1] = "8/3/2015";
-            albumArtistInfo[18, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[18, 2] = "Offspring_Smash.jpg";
             albumArtistInfo[18, 3] = "Smash";
             albumArtistInfo[18, 4] =
                 "The Offspring is an American punk rock band from Huntington Beach, California, formed in 1984.[2] Formed under the name Manic Subsidal, the band consists of lead vocalist and rhythm guitarist Dexter Holland, bassist Greg K., lead guitarist Kevin 'Noodles' Wasserman and drummer Pete Parada. The Offspring is often credited—alongside fellow California punk bands Bad Religion, NOFX, Green Day, Rancid and Pennywise—for reviving mainstream interest in punk rock in the 1990s.[3][4] They have sold over 36 million records worldwide,[5][6] being considered one of the best-selling punk rock bands of all time.[7]";
-            albumArtistInfo[18, 5] = "band.jpg";
+            albumArtistInfo[18, 5] = "Offspring.jpg";
 
             albumArtistInfo[19, 0] = "Images and Words";
             albumArtistInfo[19, 1] = "8/3/2015";
-            albumArtistInfo[19, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[19, 2] = "DreamTheater_ImagesAndWords.jpg";
             albumArtistInfo[19, 3] = "Dream Theater";
             albumArtistInfo[19, 4] =
                 "Dream Theater is an American progressive metal and progressive rock band formed in 1985 under the name Majesty by John Petrucci, John Myung, and Mike Portnoy while they attended Berklee College of Music in Massachusetts. They subsequently dropped out of their studies to concentrate further on the band that would ultimately become Dream Theater. Though a number of lineup changes followed, the three original members remained together along with James LaBrie and Jordan Rudess until September 8, 2010 when Portnoy left the band. In October 2010, the band held auditions for a drummer to replace Portnoy. Mike Mangini was announced as the new permanent drummer on April 29, 2011.";
-            albumArtistInfo[19, 5] = "band.jpg";
+            albumArtistInfo[19, 5] = "DreamTheater.jpg";
 
             albumArtistInfo[20, 0] = "Brothers";
             albumArtistInfo[20, 1] = "8/3/2015";
-            albumArtistInfo[20, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[20, 2] = "BlackKeys_Brothers.jpg";
             albumArtistInfo[20, 3] = "The Black Keys";
             albumArtistInfo[20, 4] =
                 "The Black Keys are an American rock duo formed in Akron, Ohio, in 2001. The group consists of Dan Auerbach (guitar, vocals) and Patrick Carney (drums). The duo began as an independent act, recording music in basements and self-producing their records, before they eventually emerged as one of the most popular garage rock artists during a second wave of the genre's revival in the 2010s. The band's raw blues rock sound draws heavily from Auerbach's blues influences, including Junior Kimbrough, Howlin' Wolf, and Robert Johnson.";
-            albumArtistInfo[20, 5] = "band.jpg";
+            albumArtistInfo[20, 5] = "BlackKeys.jpg";
 
             albumArtistInfo[21, 0] = "How Big, How Blue, How Beautiful";
             albumArtistInfo[21, 1] = "8/3/2015";
-            albumArtistInfo[21, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[21, 2] = "FlorenceAndTheMachine_HowBigHowBlueHowBeautiful.png";
             albumArtistInfo[21, 3] = "Florence + The Machine";
             albumArtistInfo[21, 4] =
                 "Florence and the Machine (styled as Florence + the Machine)[4] are an English indie rock band that formed in London in 2007, consisting of lead singer Florence Welch, Isabella Summers, and a collaboration of other artists. The band's music received praise across the media, especially from the BBC, which played a large part in their rise to prominence by promoting Florence and the Machine as part of BBC Introducing. At the 2009 Brit Awards they received the Brit Awards Critics' Choice award. The band's music is renowned for its dramatic and eccentric production and also Welch's vocal performances.";
-            albumArtistInfo[21, 5] = "band.jpg";
+            albumArtistInfo[21, 5] = "FlorenceAndTheMachine.jpg";
 
             albumArtistInfo[22, 0] = "Mezzanine";
             albumArtistInfo[22, 1] = "8/3/2015";
-            albumArtistInfo[22, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[22, 2] = "MassiveAttack_Mezzanine.png";
             albumArtistInfo[22, 3] = "Massive Attack";
             albumArtistInfo[22, 4] =
                 "Massive Attack is an English musical group formed in 1988 in Bristol, consisting of Robert '3D' Del Naja and Grant 'Daddy G' Marshall. Their debut album Blue Lines was released in 1991, with the single 'Unfinished Sympathy' reaching the charts and later being voted the 63rd greatest song of all time in a poll by NME. 1998's Mezzanine, containing 'Teardrop', and 2003's 100th Window charted in the UK at number 1. Both Blue Lines and Mezzanine feature in Rolling Stone‍'​s list of the 500 Greatest Albums of All Time.";
-            albumArtistInfo[22, 5] = "band.jpg";
+            albumArtistInfo[22, 5] = "MassiveAttack.jpg";
 
             albumArtistInfo[23, 0] = "Songs About Jane";
             albumArtistInfo[23, 1] = "8/3/2015";
-            albumArtistInfo[23, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[23, 2] = "Maroon5.jpg";
             albumArtistInfo[23, 3] = "Maroon 5";
             albumArtistInfo[23, 4] =
                 "Maroon 5 is an American pop rock band that originated in Los Angeles, California. Before the group was formed the original four members of then 1994 band were known as Kara's Flowers while its members were still in high school and originally consisted of Adam Levine (lead vocals, guitar), Jesse Carmichael (guitar, backing vocals) Mickey Madden (bass guitar) and Ryan Dusick (drums). The band, which self-released an album called We Like Digging?, was named after a girl the group had a crush on. They signed to Reprise Records and released an album, The Fourth World, in 1997. After a tepid response to the album, the band parted ways with the record label and the members attended college.";
-            albumArtistInfo[23, 5] = "band.jpg";
+            albumArtistInfo[23, 5] = "Maroon5_SongsAboutJane.png";
 
             albumArtistInfo[24, 0] = "OK Computer";
             albumArtistInfo[24, 1] = "8/3/2015";
-            albumArtistInfo[24, 2] = "LobsterKnifeFight.jpg";
+            albumArtistInfo[24, 2] = "Radiohead_OKComputer.jpg";
             albumArtistInfo[24, 3] = "Radiohead";
             albumArtistInfo[24, 4] =
                 "Radiohead are an English rock band from Abingdon, Oxfordshire, formed in 1985. The band consists of Thom Yorke (lead vocals, guitar, piano), Jonny Greenwood (lead guitar, keyboards, other instruments), Colin Greenwood (bass), Phil Selway (drums, percussion, backing vocals) and Ed O'Brien (guitar, backing vocals).";
-            albumArtistInfo[24, 5] = "band.jpg";
+            albumArtistInfo[24, 5] = "Radiohead.jpg";
             return albumArtistInfo;
         }
     }
