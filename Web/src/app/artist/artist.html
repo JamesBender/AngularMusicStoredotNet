@@ -14,17 +14,12 @@
 	</div>
 	<hr/>
 	<div class='row col-md-12'>
-		<div>
-			<table width="100%">
-				<thead>
-					<th>Artist Name</th>
-					<th>Artist Name</th>
-					<th>Artist Name</th>
-				</thead>
+		<div class='artistList'>
+			<table width="100%">				
 				<tbody>
-					<tr ng-repeat='artistGroup in threeColumnArtistsList'>
+					<tr ng-repeat='artistGroup in artistsFound'>
 						<td class='col-md-6' ng-repeat='artist in artistGroup'>
-							<a href='#/artist/{{artist.Id}}'>
+							<a class='butthole' href='#/artist/{{artist.Id}}'>
 								<img style='margin-right: 2px;' src={{artist.PictureUrl}} class='artistThumbnail'>{{artist.Name}}
 							</a>
 						</td>

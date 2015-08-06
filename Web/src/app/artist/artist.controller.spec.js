@@ -23,18 +23,17 @@ describe('controllers', function(){
 		
 		$httpBackend.flush();
 		
-		expect(scope.threeColumnArtistsList).toBeDefined();
+		expect(scope.artistsFound).toBeDefined();
 
-		expect(scope.artistsFound.length).toBe(24);
-		expect(scope.threeColumnArtistsList.length).toBe(8);
-		expect(scope.threeColumnArtistsList[0].length).toBe(3);
-		expect(scope.threeColumnArtistsList[1].length).toBe(3);
-		expect(scope.threeColumnArtistsList[2].length).toBe(3);
-		expect(scope.threeColumnArtistsList[3].length).toBe(3);
-		expect(scope.threeColumnArtistsList[4].length).toBe(3);
-		expect(scope.threeColumnArtistsList[5].length).toBe(3);
-		expect(scope.threeColumnArtistsList[6].length).toBe(3);
-		expect(scope.threeColumnArtistsList[7].length).toBe(3);
+		expect(scope.artistsFound.length).toBe(8);
+		expect(scope.artistsFound[0].length).toBe(3);
+		expect(scope.artistsFound[1].length).toBe(3);
+		expect(scope.artistsFound[2].length).toBe(3);
+		expect(scope.artistsFound[3].length).toBe(3);
+		expect(scope.artistsFound[4].length).toBe(3);
+		expect(scope.artistsFound[5].length).toBe(3);
+		expect(scope.artistsFound[6].length).toBe(3);
+		expect(scope.artistsFound[7].length).toBe(3);
 	});
 
 	it('should have a list of the top 50 artists when the page loads', function(){
@@ -44,7 +43,7 @@ describe('controllers', function(){
 		expect(scope.artistsFound).not.toBeNull();
 		expect(scope.artistsFound).toBeDefined();
 		var numberOfArtistsFound = scope.artistsFound.length;
-		expect(numberOfArtistsFound).toBe(24);
+		expect(numberOfArtistsFound).toBe(8);
 	});
 
 	it('should bring back an array of artsts when searching', function(){
@@ -56,6 +55,6 @@ describe('controllers', function(){
 		$httpBackend.flush();
 		
 		expect(scope.artistsFound).not.toBeNull();
-		expect(scope.artistsFound[0].Name).toBe('Rush');
+		expect(scope.artistsFound[0][0].Name).toBe('Rush');
 	})
 });

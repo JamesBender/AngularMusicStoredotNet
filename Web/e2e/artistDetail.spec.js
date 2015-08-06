@@ -7,11 +7,15 @@ describe('The artist detail view', function () {
     browser.get('http://localhost:3000/#/artist');
     page = require('./artistDetail.po');
 
-    page.artstToSearchFor.sendKeys('u');
+    page.artstToSearchFor.sendKeys('Rush');
     page.searchButton.click().then(function(){
-      expect(element.all(by.repeater('artist in artistsFound')).then(function(artists){
+      expect(element.all(by.repeater('artist in artistGroup')).count()).toBe(1);
+
+      expect(element.all(by.repeater('artist in artistGroup')).then(function(artists){
         var firstArtist = artists[0];
-        expect(firstArtist).not.toBeNull();
+        expect(firstArtist).toBeDefined();
+
+
         var link = firstArtist.element(by.css('a'));
         expect(link).not.toBeNull();
         link.click().then(function(){

@@ -7,13 +7,12 @@ angular.module('musicStore').controller('ArtistCtrl', ['$scope', 'musicStoreArti
 	$scope.searchForArtist = function(){
 		var artist = $scope.artistToSearchFor;
 		var results = musicStoreArtistAPI.query({name: artist}, function(data){
-			$scope.artistsFound = data;
+			$scope.artistsFound = chunk(data, 3);
 		});
 	};
 
 	musicStoreArtistAPI.query(function(data){
-		$scope.artistsFound = data;
-		$scope.threeColumnArtistsList = chunk($scope.artistsFound, 3);
+		$scope.artistsFound = chunk(data, 3);
 	});
 
 	function chunk(arr, size) {
