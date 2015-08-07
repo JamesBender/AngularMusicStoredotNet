@@ -128,10 +128,29 @@ namespace AngularMusicStore.IntegrationTests.Core
         }
 
         [Test]
-        public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbumsAndDeletingTheArtistShouldCascadeToAlbums()
+        public void ShouldBeAbleToStoreAnArtistWithACollectionOfAlbumsWhichHaveACollectionOfTracksAndDeletingTheArtistShouldCascadeToAlbumsAndTracks()
         {
-            var albumOne = new Album {ReleaseDate = DateTime.Now};
-            var albumTwo = new Album {ReleaseDate = DateTime.Now};
+            var trackOneA = new Track();
+            var trackOneB = new Track();
+            var trackTwoA = new Track();
+            var trackTwoB = new Track();
+            var trackTwoC = new Track();
+
+            var albumOneName = Guid.NewGuid().ToString();
+            var albumTwoName = Guid.NewGuid().ToString();
+
+            var albumOne = new Album {ReleaseDate = DateTime.Now, Name = albumOneName};
+            var albumTwo = new Album {ReleaseDate = DateTime.Now, Name = albumTwoName};
+
+            albumOne.AddTrack(trackOneA);
+            albumOne.AddTrack(trackOneB);
+            albumTwo.AddTrack(trackTwoA);
+            albumTwo.AddTrack(trackTwoB);
+            albumTwo.AddTrack(trackTwoC);
+
+            var albumOneTrackCount = albumOne.Tracks.Count;
+            var albumTwoTrackCount = albumTwo.Tracks.Count;
+
             var artist = new Artist();
             artist.AddAlbum(albumOne);
             artist.AddAlbum(albumTwo);
@@ -146,12 +165,25 @@ namespace AngularMusicStore.IntegrationTests.Core
             Assert.IsNotNull(artist);
             Assert.IsNotNull(artist.Albums);
             Assert.AreEqual(numberOfAlbums, artist.Albums.Count(x => x.Parent.Id == artist.Id));
-            
+
+            var albumOneResult = artist.Albums.FirstOrDefault(x => x.Name == albumOneName);
+            Assert.IsNotNull(albumOneResult);
+            Assert.AreEqual(albumOneTrackCount, albumOneResult.Tracks.Count);
+
+            var albumTwoResult = artist.Albums.FirstOrDefault(x => x.Name == albumTwoName);
+            Assert.IsNotNull(albumTwoResult);
+            Assert.AreEqual(albumTwoTrackCount, albumTwoResult.Tracks.Count);
+
             _repository.Delete(artist);
             var listOfAlbums = _repository.GetAll<Album>();
 
             Assert.IsNotNull(listOfAlbums);
             Assert.AreEqual(0, listOfAlbums.Count());
+
+            var listOfTracks = _repository.GetAll<Track>();
+
+            Assert.IsNotNull(listOfTracks);
+            Assert.AreEqual(0, listOfTracks.Count());
         }
 
         [Test]

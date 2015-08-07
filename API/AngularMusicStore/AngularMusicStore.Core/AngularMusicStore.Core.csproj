@@ -61,10 +61,12 @@
     <Compile Include="Factories\SqlStatementInterceptor.cs" />
     <Compile Include="Persistence\Mappings\AlbumMapping.cs" />
     <Compile Include="Persistence\Mappings\ArtistMapping.cs" />
+    <Compile Include="Persistence\Mappings\TrackMapping.cs" />
     <Compile Include="Persistence\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AlbumService.cs" />
     <Compile Include="Services\ArtistService.cs" />
+    <Compile Include="Entities\Track.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

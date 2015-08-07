@@ -28,13 +28,29 @@ namespace AngularMusicStore.UnitTests.Core
         [Test]
         public void ShouldBeAbleToGetAnAlbumById()
         {
+            var trackName = Guid.NewGuid().ToString();
+            var trackOrder = 1;
+            var trackLength = new TimeSpan(0,4,27);
+            var trackRating = 3;
+            var trackId = Guid.NewGuid();
+
+            var track = new Track
+            {
+                AlbumOrder = trackOrder,
+                Id = trackId,
+                Length = trackLength,
+                Name = trackName,
+                Rating = trackRating
+            };
+
             var albumName = Guid.NewGuid().ToString();
             var albumCoverUrl = Guid.NewGuid().ToString();
             var albumReleaseDate = DateTime.Now;
             var albumId = Guid.NewGuid();
-            
-            _repository.Setup(x => x.GetById<Album>(albumId))
-                .Returns(new Album {Name = albumName, CoverUri = albumCoverUrl, ReleaseDate = albumReleaseDate});
+            var album = new Album {Name = albumName, CoverUri = albumCoverUrl, ReleaseDate = albumReleaseDate};
+            album.AddTrack(track);
+
+            _repository.Setup(x => x.GetById<Album>(albumId)).Returns(album);
             
             var result = _albumService.GetAlbum(albumId);
 
@@ -42,6 +58,15 @@ namespace AngularMusicStore.UnitTests.Core
             Assert.AreEqual(albumName, result.Name);
             Assert.AreEqual(albumCoverUrl, result.CoverUri);
             Assert.AreEqual(albumReleaseDate, result.ReleaseDate);
+
+            Assert.IsNotNull(result.Tracks);
+            Assert.AreEqual(1, result.Tracks.Count);
+            Assert.AreEqual(result.Tracks[0].AlbumOrder, trackOrder);
+            Assert.AreEqual(result.Tracks[0].Id, trackId);
+            Assert.AreEqual(result.Tracks[0].Length, trackLength);
+            Assert.AreEqual(result.Tracks[0].Name, trackName);
+            Assert.AreEqual(result.Tracks[0].Rating, trackRating);
+
         }
 
         [Test]

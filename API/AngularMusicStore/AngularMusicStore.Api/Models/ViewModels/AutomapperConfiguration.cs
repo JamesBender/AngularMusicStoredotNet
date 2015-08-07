@@ -1,5 +1,4 @@
 ﻿using System.Configuration;
-using System.Drawing;
 using AutoMapper;
 using Domain = AngularMusicStore.Core.Entities;
 
@@ -12,9 +11,13 @@ namespace AngularMusicStore.Api.Models.ViewModels
             Mapper.CreateMap<Domain.Artist, Artist>()
                 .ForMember(m => m.PictureUrl, opt => opt.ResolveUsing<ArtistImageResolver>());
             Mapper.CreateMap<Artist, Domain.Artist>();
+
             Mapper.CreateMap<Domain.Album, Album>()
                 .ForMember(m => m.CoverUri, opt => opt.ResolveUsing<AlbumImageResolver>());
             Mapper.CreateMap<Album, Domain.Album>();
+
+            Mapper.CreateMap<Domain.Track, Track>();
+            Mapper.CreateMap<Track, Domain.Track>();
         }
     }
 

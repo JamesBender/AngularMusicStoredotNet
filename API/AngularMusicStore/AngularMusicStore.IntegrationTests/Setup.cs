@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using AngularMusicStore.Api;
+using System.Linq;
+using System.Net.NetworkInformation;
 using AngularMusicStore.Core.Entities;
 using AngularMusicStore.Core.Factories;
 using AngularMusicStore.Core.Services;
@@ -12,13 +14,15 @@ namespace AngularMusicStore.IntegrationTests
     [TestFixture]
     public class Setup
     {
-       // [Test]
+
+        [Test]
         public void PrimeDatabaseWithOneArtistWithOneAlbum()
         {
             var kernel = new StandardKernel(new DomainModule());
             var artistService = kernel.Get<IArtistService>();
 
             var albumArtistInfo = GetInitialData();
+            var trackList = GetTracks();
 
             var numberOfEntries = albumArtistInfo.GetUpperBound(0);
 
@@ -34,11 +38,42 @@ namespace AngularMusicStore.IntegrationTests
                 var album = new Album {Name = albumName, ReleaseDate = DateTime.Parse(albumDate), CoverUri = albumImage};
                 var artist = new Artist {Name = artistName, Bio = artistBio, PictureUrl = artistImage};
 
+                var albumTracks = trackList.FirstOrDefault(x => x.Key == album.Name).Value;
+
+                if (albumTracks != null)
+                {
+                    foreach (var track in albumTracks)
+                    {
+                        album.AddTrack(track);
+                    }
+                }
+
                 artist.AddAlbum(album);
                 var result = artistService.Save(artist);
                 artist = artistService.GetById(result);
                 Assert.IsNotNull(artist);
             }
+        }
+
+        private static IDictionary<string, IList<Track>> GetTracks()
+        {
+            var list = new Dictionary<string, IList<Track>>();
+
+            var imagesAndWordsTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Pull Me Under"},
+                new Track {AlbumOrder = 2, Name = "Another Day"},
+                new Track {AlbumOrder = 3, Name = "Take the Time"},
+                new Track {AlbumOrder = 4, Name = "Surrounded"},
+                new Track {AlbumOrder = 5, Name = "Metropolis Pt. 1"},
+                new Track {AlbumOrder = 6, Name = "Under a Glass Moon"},
+                new Track {AlbumOrder = 7, Name = "Wait For Sleep"},
+                new Track {AlbumOrder = 8, Name = "Learning to Live"}
+            };
+
+            list.Add("Images and Words", imagesAndWordsTracks);
+
+            return list;
         }
 
         private static string[,] GetInitialData()
@@ -51,6 +86,7 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[0, 3] = "Rush";
             albumArtistInfo[0, 4] = "Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the group's first United States tour.";
             albumArtistInfo[0, 5] = "Rush.jpg";
+            
 
             albumArtistInfo[1, 0] = "Fear of a Blank Planet";
             albumArtistInfo[1, 1] = "4/16/2007";

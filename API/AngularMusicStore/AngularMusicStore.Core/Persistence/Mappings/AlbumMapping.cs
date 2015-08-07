@@ -12,6 +12,8 @@ namespace AngularMusicStore.Core.Persistence.Mappings
             Map(x => x.CoverUri);
             Map(x => x.ReleaseDate);
             References(x => x.Parent).Column("Artist_id").Cascade.None().Not.LazyLoad();
+            //HasMany(x => x.Albums).Cascade.AllDeleteOrphan().Not.LazyLoad();
+            HasMany(x => x.Tracks).Cascade.AllDeleteOrphan().Not.LazyLoad();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using AngularMusicStore.Api.Models.ViewModels;
 using AutoMapper;
+using FluentNHibernate.Utils;
 using NUnit.Framework;
 using Domain = AngularMusicStore.Core.Entities;
 
@@ -80,6 +81,15 @@ namespace AngularMusicStore.UnitTests.Web
         [Test]
         public void ShouldBeAbleToMapDomainAlbumToApiAlbum()
         {
+            var domainTrack = new Domain.Track
+            {
+                AlbumOrder = 1,
+                Id = Guid.NewGuid(),
+                Length = new TimeSpan(0, 4, 22),
+                Name = Guid.NewGuid().ToString(),
+                Rating = 3
+            };
+
             var domainAlbum = new Domain.Album
             {
                 Id = Guid.NewGuid(),
@@ -88,6 +98,8 @@ namespace AngularMusicStore.UnitTests.Web
                 CoverUri = Guid.NewGuid().ToString()
             };
 
+            domainAlbum.AddTrack(domainTrack);
+
             var apiAlbum = Mapper.Map<Domain.Album, Album>(domainAlbum);
 
             Assert.IsNotNull(apiAlbum);
@@ -95,11 +107,31 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(domainAlbum.Name, apiAlbum.Name);
             Assert.AreEqual(domainAlbum.ReleaseDate, apiAlbum.ReleaseDate);
             Assert.AreEqual($"imagePath/Album/{domainAlbum.CoverUri}", apiAlbum.CoverUri);
+
+            Assert.IsNotNull(apiAlbum.Tracks);
+            Assert.AreEqual(1, apiAlbum.Tracks.Count);
+
+            var apiTrack = apiAlbum.Tracks[0];
+
+            Assert.IsNotNull(apiTrack);
+            Assert.AreEqual(domainTrack.AlbumOrder, apiTrack.AlbumOrder);
+            Assert.AreEqual(domainTrack.Id, apiTrack.Id);
+            Assert.AreEqual(domainTrack.Length, apiTrack.Length);
+            Assert.AreEqual(domainTrack.Name, apiTrack.Name);
+            Assert.AreEqual(domainTrack.Rating, apiTrack.Rating);
         }
 
         [Test]
         public void ShouldBeAbleToMapApiAlbumToDomainAlbum()
         {
+            var apiTrack = new Track
+            {
+                AlbumOrder = 1,
+                Id = Guid.NewGuid(),
+                Length = new TimeSpan(0, 6, 4),
+                Name = Guid.NewGuid().ToString(),
+                Rating = 4
+            };
             var apiAlbum = new Album
             {
                 Id = Guid.NewGuid(),
@@ -107,7 +139,7 @@ namespace AngularMusicStore.UnitTests.Web
                 ReleaseDate = DateTime.Now.AddDays(-10),
                 CoverUri = Guid.NewGuid().ToString()
             };
-
+            apiAlbum.AddTrack(apiTrack);
             var domainAlbum = Mapper.Map<Album, Domain.Album>(apiAlbum);
 
             Assert.IsNotNull(domainAlbum);
@@ -115,6 +147,17 @@ namespace AngularMusicStore.UnitTests.Web
             Assert.AreEqual(apiAlbum.Name, domainAlbum.Name);
             Assert.AreEqual(apiAlbum.ReleaseDate, domainAlbum.ReleaseDate);
             Assert.AreEqual(apiAlbum.CoverUri, domainAlbum.CoverUri);
+            Assert.IsNotNull(domainAlbum.Tracks);
+            Assert.AreEqual(1, domainAlbum.Tracks.Count);
+
+            var domainTrack = domainAlbum.Tracks[0];
+            Assert.IsNotNull(domainTrack);
+
+            Assert.AreEqual(apiTrack.AlbumOrder, domainTrack.AlbumOrder);
+            Assert.AreEqual(apiTrack.Id, domainTrack.Id);
+            Assert.AreEqual(apiTrack.Length, domainTrack.Length);
+            Assert.AreEqual(apiTrack.Name, domainTrack.Name);
+            Assert.AreEqual(apiTrack.Rating, domainTrack.Rating);
         }
     }
 }
