@@ -369,6 +369,33 @@ namespace AngularMusicStore.IntegrationTests
             
             var goTracks = new List<Track>
             {
+                new Track {AlbumOrder = 1, Name = "Natural Blues", Length = new TimeSpan(0, 3, 1)},
+                new Track {AlbumOrder = 2, Name = "Go (2006)", Length = new TimeSpan(0, 4, 22)},
+                new Track {AlbumOrder = 3, Name = "Porcelain", Length = new TimeSpan(0, 3, 30)},
+                new Track {AlbumOrder = 4, Name = "We Are All Made of Stars", Length = new TimeSpan(0, 3, 37)},
+                new Track {AlbumOrder = 5, Name = "Dream About Me", Length = new TimeSpan(0, 3, 23)},
+                new Track {AlbumOrder = 6, Name = "New York, New York", Length = new TimeSpan(0, 4, 27)},
+                new Track {AlbumOrder = 7, Name = "In This World", Length = new TimeSpan(0, 3, 26)},
+                new Track {AlbumOrder = 8, Name = "South Side", Length = new TimeSpan(0, 3, 49)},
+                new Track {AlbumOrder = 9, Name = "Beautiful", Length = new TimeSpan(0, 3, 12)},
+                new Track {AlbumOrder = 10, Name = "Extreme Ways", Length = new TimeSpan(0, 3, 31)},
+                new Track {AlbumOrder = 11, Name = "Why Does My Heart Feel So Bad?", Length = new TimeSpan(0, 3, 45)},
+                new Track {AlbumOrder = 12, Name = "In My Heart", Length = new TimeSpan(0, 3, 19)},
+                new Track {AlbumOrder = 13, Name = "Honey", Length = new TimeSpan(0, 3, 19)},
+                new Track {AlbumOrder = 14, Name = "Lift Me Up", Length = new TimeSpan(0, 3, 19)},
+                new Track {AlbumOrder = 15, Name = "Feeling So Real (Live in London)", Length = new TimeSpan(0, 5, 13)},
+                new Track {AlbumOrder = 16, Name = "God Moving Over the Face of the Waters", Length = new TimeSpan(0, 5, 45)},
+                new Track {AlbumOrder = 17, Name = "Bodyrock", Length = new TimeSpan(0, 6, 26)},
+                new Track {AlbumOrder = 18, Name = "Why Does My Hear Feel So Bad? (Ferry Corsten Remix)", Length = new TimeSpan(0, 3, 35)},
+                new Track {AlbumOrder = 19, Name = "Natural Blues (Perfecto Dub)", Length = new TimeSpan(0, 7, 54)},
+                new Track {AlbumOrder = 20, Name = "South Side (Pete Heller Park Lane Dub)", Length = new TimeSpan(0, 9, 33)},
+                new Track {AlbumOrder = 21, Name = "We Are All Made of Stars (Timo Mass Vocal Remix)", Length = new TimeSpan(0, 7, 1)},
+                new Track {AlbumOrder = 22, Name = "Extreme Ways (DJ Tiesto's Vocal Remix)", Length = new TimeSpan(0, 7, 14)},
+                new Track {AlbumOrder = 23, Name = "Jam for the Ladies (Nevins Club Blaster Remix)", Length = new TimeSpan(0, 7, 42)},
+                new Track {AlbumOrder = 24, Name = "Lift Me Up (Mylo Mix)", Length = new TimeSpan(0, 6, 41)},
+                new Track {AlbumOrder = 25, Name = "Raining Again (Steve Angello's Vocal Mix)", Length = new TimeSpan(0, 6, 55)},
+                new Track {AlbumOrder = 26, Name = "Dream About Me (Booka Shade Remix)", Length = new TimeSpan(0, 7, 12)},
+                new Track {AlbumOrder = 27, Name = "Slipping Away (Axwell Vocal Remix)", Length = new TimeSpan(0, 7, 26)}            
             };
             list.Add("Go", goTracks);
 
