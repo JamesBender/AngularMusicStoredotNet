@@ -61,17 +61,451 @@ namespace AngularMusicStore.IntegrationTests
 
             var imagesAndWordsTracks = new List<Track>
             {
-                new Track {AlbumOrder = 1, Name = "Pull Me Under"},
-                new Track {AlbumOrder = 2, Name = "Another Day"},
-                new Track {AlbumOrder = 3, Name = "Take the Time"},
-                new Track {AlbumOrder = 4, Name = "Surrounded"},
-                new Track {AlbumOrder = 5, Name = "Metropolis Pt. 1"},
-                new Track {AlbumOrder = 6, Name = "Under a Glass Moon"},
-                new Track {AlbumOrder = 7, Name = "Wait For Sleep"},
-                new Track {AlbumOrder = 8, Name = "Learning to Live"}
+                new Track {AlbumOrder = 1, Name = "Pull Me Under", Length = new TimeSpan(0, 8, 14)},
+                new Track {AlbumOrder = 2, Name = "Another Day", Length = new TimeSpan(0, 4, 24)},
+                new Track {AlbumOrder = 3, Name = "Take the Time", Length = new TimeSpan(0, 8, 21)},
+                new Track {AlbumOrder = 4, Name = "Surrounded", Length = new TimeSpan(0, 5, 30)},
+                new Track {AlbumOrder = 5, Name = "Metropolis Pt. 1", Length = new TimeSpan(0, 9, 32)},
+                new Track {AlbumOrder = 6, Name = "Under a Glass Moon", Length = new TimeSpan(0, 7, 3)},
+                new Track {AlbumOrder = 7, Name = "Wait For Sleep", Length = new TimeSpan(0, 2, 32)},
+                new Track {AlbumOrder = 8, Name = "Learning to Live", Length = new TimeSpan(0, 11, 30)}
             };
 
             list.Add("Images and Words", imagesAndWordsTracks);
+
+            
+
+
+            var clockworkAnglesTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Caravan", Length = new TimeSpan(0, 5, 40)},
+                new Track {AlbumOrder = 2, Name = "BU2B", Length = new TimeSpan(0, 5, 10)},
+                new Track {AlbumOrder = 3, Name = "Clockwork Angles", Length = new TimeSpan(0, 7, 31)},
+                new Track {AlbumOrder = 4, Name = "The Anarchist", Length = new TimeSpan(0, 6, 52)},
+                new Track {AlbumOrder = 5, Name = "Carnies", Length = new TimeSpan(0, 4, 52)},
+                new Track {AlbumOrder = 6, Name = "Halo Effect", Length = new TimeSpan(0, 3, 14)},
+                new Track {AlbumOrder = 7, Name = "Seven Cities of Gold", Length = new TimeSpan(0, 6, 32)},
+                new Track {AlbumOrder = 8, Name = "The Wreckers", Length = new TimeSpan(0, 5, 1)},
+                new Track {AlbumOrder = 9, Name = "Headlong Flight", Length = new TimeSpan(0, 7, 21)},
+                new Track {AlbumOrder = 10, Name = "BU2B2", Length = new TimeSpan(0, 1, 28)},
+                new Track {AlbumOrder = 11, Name = "Wish Them Well", Length = new TimeSpan(0, 5, 26)},
+                new Track {AlbumOrder = 12, Name = "The Garden", Length = new TimeSpan(0, 6, 59)}
+            };
+
+            list.Add("Clockwork Angles", clockworkAnglesTracks);
+
+
+
+            var fearOfABlankPlanetTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Fear of a Blank Planet", Length = new TimeSpan(0, 7, 28},
+                new Track {AlbumOrder = 2, Name = "My Ashes", Length = new TimeSpan(0, 5, 7)},
+                new Track {AlbumOrder = 3, Name = "Anesthetize", Length = new TimeSpan(0, 17, 42)},
+                new Track {AlbumOrder = 4, Name = "Sentimental", Length = new TimeSpan(0, 5, 26)},
+                new Track {AlbumOrder = 5, Name = "Way Out of Here", Length = new TimeSpan(0, 7, 37)},
+                new Track {AlbumOrder = 6, Name = "Sleep Together", Length = new TimeSpan(0, 7, 28)}
+            };
+
+            list.Add("Fear of a Blank Planet", fearOfABlankPlanetTracks);
+
+
+            var handCannotEraseTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "First Regret / Three Years Older", Length = new TimeSpan(0, 12, 19)},
+                new Track {AlbumOrder = 2, Name = "Hand Cannot Erase", Length = new TimeSpan(0, 4, 17)},
+                new Track {AlbumOrder = 3, Name = "Perfect Life", Length = new TimeSpan(0, 4, 46)},
+                new Track {AlbumOrder = 4, Name = "Routine", Length = new TimeSpan(0, 8, 58)},
+                new Track {AlbumOrder = 5, Name = "Home Invastion / Regret #9", Length = new TimeSpan(0, 11, 14)},
+                new Track {AlbumOrder = 6, Name = "Tansience", Length = new TimeSpan(0, 2, 43)},
+                new Track {AlbumOrder = 7, Name = "Ancestral", Length = new TimeSpan(0, 13, 30)},
+                new Track {AlbumOrder = 8, Name = "Happy Returns / Transcendant Here On...", Length = new TimeSpan(0, 7, 54)}
+            };
+
+            list.Add("Hand. Cannot. Erase.", handCannotEraseTracks);
+
+
+            var momentaryLapseOfReasonTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Signs of Life", Length = new TimeSpan(0, 4, 24)},
+                new Track {AlbumOrder = 2, Name = "Learning to Fly", Length = new TimeSpan(0, 4, 53)},
+                new Track {AlbumOrder = 3, Name = "The Dogs of War", Length = new TimeSpan(0, 6, 5)},
+                new Track {AlbumOrder = 4, Name = "One Slip", Length = new TimeSpan(0, 5, 10)},
+                new Track {AlbumOrder = 5, Name = "On the Turning Away", Length = new TimeSpan(0, 5, 42)},
+                new Track {AlbumOrder = 6, Name = "Yet Another Movie / Round and Around", Length = new TimeSpan(0, 7, 28)},
+                new Track {AlbumOrder = 7, Name = "A New Macine (Part 1)", Length = new TimeSpan(0, 1, 46)},
+                new Track {AlbumOrder = 8, Name = "Terminal Frost", Length = new TimeSpan(0, 6, 17)},
+                new Track {AlbumOrder = 9, Name = "A New Machine (Part 2)", Length = new TimeSpan(0, 0, 38)},
+                new Track {AlbumOrder = 10, Name = "Sorrow", Length = new TimeSpan(0, 8, 46)}
+            }
+
+            list.Add("A Momentary Lapse of Reason", momentaryLapseOfReasonTracks);
+
+
+            var saturdayNightFeverTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Stayin' Alive", Length = new TimeSpan(0, 4, 45)},
+                new Track {AlbumOrder = 2, Name = "How Deep Is Your Love", Length = new TimeSpan(0, 4, 5)},
+                new Track {AlbumOrder = 3, Name = "Night Fever", Length = new TimeSpan(0, 3, 33)},
+                new Track {AlbumOrder = 4, Name = "More Than A Woman", Length = new TimeSpan(0, 3, 18)},
+                new Track {AlbumOrder = 5, Name = "If I Can't Have You", Length = new TimeSpan(0, 3, 0)},
+                new Track {AlbumOrder = 6, Name = "A Fifth of Beethoven", Length = new TimeSpan(0, 3, 3)},
+                new Track {AlbumOrder = 7, Name = "More Than A Woman", Length = new TimeSpan(0, 3, 17)},
+                new Track {AlbumOrder = 8, Name = "Manhattan Skyline", Length = new TimeSpan(0, 4, 45)},
+                new Track {AlbumOrder = 9, Name = "Calypso Breakdown", Length = new TimeSpan(0, 7, 51)},
+                new Track {AlbumOrder = 10, Name = "Night on Disco Mountian", Length = new TimeSpan(0, 5, 13)},
+                new Track {AlbumOrder = 11, Name = "Open Sesame", Length = new TimeSpan(0, 4, 1)},
+                new Track {AlbumOrder = 12, Name = "Jive Talkin'", Length = new TimeSpan(0, 3, 44)},
+                new Track {AlbumOrder = 13, Name = "You Should be Dancing", Length = new TimeSpan(0, 4, 14)},
+                new Track {AlbumOrder = 14, Name = "Boogie Shoes", Length = new TimeSpan(0, 2, 17)},
+                new Track {AlbumOrder = 15, Name = "Salsnation", Length = new TimeSpan(0, 3, 51)},
+                new Track {AlbumOrder = 16, Name = "K-Jee", Length = new TimeSpan(0, 4, 13)},
+                new Track {AlbumOrder = 17, Name = "Disco Inferno", Length = new TimeSpan(0, 10, 51)}
+            };
+
+            list.Add("Saturday Night Fever Soundtrack", saturdayNightFeverTracks);
+
+
+            var lifeForRestTracks = new List<Track>{
+                new Track {AlbumOrder = 1, Name = "White Flag", Length = new TimeSpan(0, 4, 1)},
+                new Track {AlbumOrder = 2, Name = "Stoned", Length = new TimeSpan(0, 5, 55)},
+                new Track {AlbumOrder = 3, Name = "Life for Rent", Length = new TimeSpan(0, 3, 41)},
+                new Track {AlbumOrder = 4, Name = "Mary's in India", Length = new TimeSpan(0, 3, 41)},
+                new Track {AlbumOrder = 5, Name = "See You When You're 40", Length = new TimeSpan(0, 5, 20)},
+                new Track {AlbumOrder = 6, Name = "Don't Leave Home", Length = new TimeSpan(0, 3, 46)},
+                new Track {AlbumOrder = 7, Name = "Who Makes You Feel", Length = new TimeSpan(0, 4, 20)},
+                new Track {AlbumOrder = 8, Name = "Sand in My Shoes", Length = new TimeSpan(0, 4, 59)},
+                new Track {AlbumOrder = 9, Name = "Do You Have a Little Time", Length = new TimeSpan(0, 3, 55)},
+                new Track {AlbumOrder = 10, Name = "This Land is Mine", Length = new TimeSpan(0, 3, 46)},
+                new Track {AlbumOrder = 11, Name = "See the Sun", Length = new TimeSpan(0, 5, 5)},
+                new Track {AlbumOrder = 12, Name = "Closer", Length = new TimeSpan(0, 3, 29)}
+            };
+            list.Add("Life For Rent", lifeForRestTracks);
+
+
+            var saveRackAndRollTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "The Phoenix", Length = new TimeSpan(0, 4, 4)},
+                new Track {AlbumOrder = 2, Name = "My Songs Know What You Did in the Dark (Light 'em Up)", Length = new TimeSpan(0, 3, 9)},
+                new Track {AlbumOrder = 3, Name = "Alone Together", Length = new TimeSpan(0, 3, 23)},
+                new Track {AlbumOrder = 4, Name = "Where Did the Party Go", Length = new TimeSpan(0, 4, 3)},
+                new Track {AlbumOrder = 5, Name = "Just One Yesterday", Length = new TimeSpan(0, 4, 4)},
+                new Track {AlbumOrder = 6, Name = "The Mighty Fall", Length = new TimeSpan(0, 3, 32)},
+                new Track {AlbumOrder = 7, Name = "Miss Missing You", Length = new TimeSpan(0, 3, 30)},
+                new Track {AlbumOrder = 8, Name = "Death Valley", Length = new TimeSpan(0, 3, 46)},
+                new Track {AlbumOrder = 9, Name = "Young Volcanos", Length = new TimeSpan(0, 3, 24)},
+                new Track {AlbumOrder = 10, Name = "Rat a Tat", Length = new TimeSpan(0, 4, 2)},
+                new Track {AlbumOrder = 11, Name = "Save Rock and Rolls", Length = new TimeSpan(0, 4, 41)}
+            };
+
+            list.Add("Save Rock and Roll", saveRackAndRollTracks);
+
+
+            var beyonceTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Pretty Hurts", Length = new TimeSpan(0, 4, 17)},
+                new Track {AlbumOrder = 2, Name = "Haunted", Length = new TimeSpan(0, 6, 9)},
+                new Track {AlbumOrder = 3, Name = "Drunk in Love", Length = new TimeSpan(0, 5, 23)},
+                new Track {AlbumOrder = 4, Name = "Blow", Length = new TimeSpan(0, 5, 9)},
+                new Track {AlbumOrder = 5, Name = "No Angel", Length = new TimeSpan(0, 3, 48)},
+                new Track {AlbumOrder = 6, Name = "Partition", Length = new TimeSpan(0, 5, 19)},
+                new Track {AlbumOrder = 7, Name = "Jealous", Length = new TimeSpan(0, 3, 4)},
+                new Track {AlbumOrder = 8, Name = "Rocket", Length = new TimeSpan(0, 6, 31)},
+                new Track {AlbumOrder = 9, Name = "Mine", Length = new TimeSpan(0, 6, 18)},
+                new Track {AlbumOrder = 10, Name = "XO", Length = new TimeSpan(0, 3, 35)},
+                new Track {AlbumOrder = 11, Name = "Flawless", Length = new TimeSpan(0, 4, 10)},
+                new Track {AlbumOrder = 12, Name = "Superpower", Length = new TimeSpan(0, 4, 36)},
+                new Track {AlbumOrder = 13, Name = "Heaven", Length = new TimeSpan(0, 3, 50)},
+                new Track {AlbumOrder = 14, Name = "Blue", Length = new TimeSpan(0, 4, 26)}
+            };
+
+            list.Add("Beyonce", beyonceTracks);
+
+            
+
+            var tsTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Welcome to New York", Length = new TimeSpan(0, 3, 32)},
+                new Track {AlbumOrder = 2, Name = "Blank Space", Length = new TimeSpan(0, 3, 51)},
+                new Track {AlbumOrder = 3, Name = "Style", Length = new TimeSpan(0, 3, 51)},
+                new Track {AlbumOrder = 4, Name = "Out of the Woods", Length = new TimeSpan(0, 3, 55)},
+                new Track {AlbumOrder = 5, Name = "All You Had to Do Was Stay", Length = new TimeSpan(0, 3, 13)},
+                new Track {AlbumOrder = 6, Name = "Shake it Off", Length = new TimeSpan(0, 3, 39)},
+                new Track {AlbumOrder = 7, Name = "I Wish You Would", Length = new TimeSpan(0, 3, 27)},
+                new Track {AlbumOrder = 8, Name = "Bad Blood", Length = new TimeSpan(0, 3, 31)},
+                new Track {AlbumOrder = 9, Name = "Wildest Dreams", Length = new TimeSpan(0, 3, 40)},
+                new Track {AlbumOrder = 10, Name = "How You Get the Girl", Length = new TimeSpan(0, 4, 7)},
+                new Track {AlbumOrder = 11, Name = "This Love", Length = new TimeSpan(0, 4, 10)},
+                new Track {AlbumOrder = 12, Name = "I Know Places", Length = new TimeSpan(0, 3, 15)},
+                new Track {AlbumOrder = 13, Name = "Clean", Length = new TimeSpan(0, 4, 30)}
+            };
+
+            list.Add("1989", tsTracks);
+
+
+            var xTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "One", Length = new TimeSpan(0, 4, 12)},
+                new Track {AlbumOrder = 2, Name = "I'm A Mess", Length = new TimeSpan(0, 4, 6)},
+                new Track {AlbumOrder = 3, Name = "Sing", Length = new TimeSpan(0, 3, 55)},
+                new Track {AlbumOrder = 4, Name = "Don't", Length = new TimeSpan(0, 3, 39)},
+                new Track {AlbumOrder = 5, Name = "Nina", Length = new TimeSpan(0, 3, 43)},
+                new Track {AlbumOrder = 6, Name = "Photograph", Length = new TimeSpan(0, 4, 18)},
+                new Track {AlbumOrder = 7, Name = "Bloodstream", Length = new TimeSpan(0, 4, 59)},
+                new Track {AlbumOrder = 8, Name = "Tenerife Sea", Length = new TimeSpan(0, 4, 0)},
+                new Track {AlbumOrder = 9, Name = "Runaway", Length = new TimeSpan(0, 3, 26)},
+                new Track {AlbumOrder = 10, Name = "The Man", Length = new TimeSpan(0, 4, 9)},
+                new Track {AlbumOrder = 11, Name = "Thinking Oxut Loud", Length = new TimeSpan(0, 4, 41)},
+                new Track {AlbumOrder = 12, Name = "Afire Love", Length = new TimeSpan(0, 5, 14)}
+            };
+
+            list.Add("X", xTracks);
+
+
+            var nightAtTheOperaTracks = new List<Track>{
+                new Track {AlbumOrder = 1, Name = "Death on Two Legs", Length = new TimeSpan(0, 3, 43)},
+                new Track {AlbumOrder = 2, Name = "Lazing on a Sunday Afternoon", Length = new TimeSpan(0, 1, 8)},
+                new Track {AlbumOrder = 3, Name = "I'm in Love with My Car", Length = new TimeSpan(0, 3, 5)},
+                new Track {AlbumOrder = 4, Name = "You're My Best Friend", Length = new TimeSpan(0, 2, 40},
+                new Track {AlbumOrder = 5, Name = "39", Length = new TimeSpan(0, 3, 25)},
+                new Track {AlbumOrder = 6, Name = "Sweet Lady", Length = new TimeSpan(0, 4, 1)},
+                new Track {AlbumOrder = 7, Name = "Seaside Rendezvous", Length = new TimeSpan(0, 2, 13)},
+                new Track {AlbumOrder = 8, Name = "The Prophet's Son", Length = new TimeSpan(0, 8, 17)},
+                new Track {AlbumOrder = 9, Name = "Love of my Life", Length = new TimeSpan(0, 3, 38)},
+                new Track {AlbumOrder = 10, Name = "Good Company", Length = new TimeSpan(0, 3, 26)},
+                new Track {AlbumOrder = 11, Name = "Bohemian Rhapsody", Length = new TimeSpan(0, 5, 55)},
+                new Track {AlbumOrder = 12, Name = "God Save the Queen", Length = new TimeSpan(0, 1, 11)}
+            };
+
+            list.Add("A Night at the Opera", nightAtTheOperaTracks);
+
+
+            var theRealThingTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "From Out of Nowhere", Length = new TimeSpan(0, 3, 22)},
+                new Track {AlbumOrder = 2, Name = "Epic", Length = new TimeSpan(0, 4, 53)},
+                new Track {AlbumOrder = 3, Name = "Falling to Pieces", Length = new TimeSpan(0, 5, 15)},
+                new Track {AlbumOrder = 4, Name = "Suprise! You're Dead!", Length = new TimeSpan(0, 2, 27)},
+                new Track {AlbumOrder = 5, Name = "Zombie Eaters", Length = new TimeSpan(0, 5, 58)},
+                new Track {AlbumOrder = 6, Name = "The Real Thing", Length = new TimeSpan(0, 8, 13)},
+                new Track {AlbumOrder = 7, Name = "Underwater Love", Length = new TimeSpan(0, 3, 51)},
+                new Track {AlbumOrder = 8, Name = "The Morning After", Length = new TimeSpan(0, 3, 43)},
+                new Track {AlbumOrder = 9, Name = "Woodpecker from Mars", Length = new TimeSpan(0, 5, 40)},
+                new Track {AlbumOrder = 10, Name = "War Pigs", Length = new TimeSpan(0, 7, 45)},
+                new Track {AlbumOrder = 11, Name = "Edge of the World", Length = new TimeSpan(0, 4, 10)}                                
+            };
+
+            list.Add("The Real Thing", theRealThingTracks);
+
+
+            var americanIdiotTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "American Idiot", Length = new TimeSpan(0, 2, 54)},
+                new Track {AlbumOrder = 2, Name = "Jesus of Suburbia", Length = new TimeSpan(0, 9, 8)},
+                new Track {AlbumOrder = 3, Name = "Holiday", Length = new TimeSpan(0, 3, 52)},
+                new Track {AlbumOrder = 4, Name = "Boulevard of Broken Dreams", Length = new TimeSpan(0, 4, 20)},
+                new Track {AlbumOrder = 5, Name = "Are We the Waiting", Length = new TimeSpan(0, 2, 42)},
+                new Track {AlbumOrder = 6, Name = "St. Jimmy", Length = new TimeSpan(0, 2, 56)},
+                new Track {AlbumOrder = 7, Name = "Give Me Novacaine", Length = new TimeSpan(0, 3. 25)},
+                new Track {AlbumOrder = 8, Name = "She's a Rebel", Length = new TimeSpan(0, 2, 0)},
+                new Track {AlbumOrder = 9, Name = "Extraordinary Girl", Length = new TimeSpan(0, 3, 33)},
+                new Track {AlbumOrder = 10, Name = "Letterbomb", Length = new TimeSpan(0, 4, 5)},
+                new Track {AlbumOrder = 11, Name = "Wake Me Up When September Ends", Length = new TimeSpan(0, 4, 45)},
+                new Track {AlbumOrder = 12, Name = "Homecoming", Length = new TimeSpan(0, 9, 18)},
+                new Track {AlbumOrder = 13, Name = "Whatsername", Length = new TimeSpan(0, 4, 14)}
+            };
+
+            list.Add("American Idiot", americanIdiotTracks);
+
+
+            var hotFuss = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Jenny Was A Friend of Mine", Length = new TimeSpan(0, 4, 4)},
+                new Track {AlbumOrder = 2, Name = "Mr. Brightside", Length = new TimeSpan(0, 3, 43)},
+                new Track {AlbumOrder = 3, Name = "Smile Like You Mean It", Length = new TimeSpan(0, 3, 54)},
+                new Track {AlbumOrder = 4, Name = "Somebody Told Me", Length = new TimeSpan(0, 3, 17)},
+                new Track {AlbumOrder = 5, Name = "All These Things That I've Done", Length = new TimeSpan(0, 5, 1)},
+                new Track {AlbumOrder = 6, Name = "Andy, You're A Star", Length = new TimeSpan(0, 3, 14)},
+                new Track {AlbumOrder = 7, Name = "On Top", Length = new TimeSpan(0, 4, 18)},
+                new Track {AlbumOrder = 8, Name = "Change Your Mind", Length = new TimeSpan(0, 3, 11)},
+                new Track {AlbumOrder = 9, Name = "Believe Me Natalie", Length = new TimeSpan(0, 5, 5)},
+                new Track {AlbumOrder = 10, Name = "Midnight Show", Length = new TimeSpan(0, 4, 2)},
+                new Track {AlbumOrder = 11, Name = "Everything Will Be Alrigh", Length = new TimeSpan(0, 5, 45)}
+            };
+
+            list.Add("Hot Fuss", hotFuss);
+
+
+            var blackHolesAndRevelations = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Take A Bow", Length = new TimeSpan(0, 4, 35)},
+                new Track {AlbumOrder = 2, Name = "Starlight", Length = new TimeSpan(0, 3, 59)},
+                new Track {AlbumOrder = 3, Name = "Supermassive Black Hole", Length = new TimeSpan(0, 3, 29)},
+                new Track {AlbumOrder = 4, Name = "Map of the Problematique", Length = new TimeSpan(0, 4, 18)},
+                new Track {AlbumOrder = 5, Name = "Soldier's Poem", Length = new TimeSpan(0, 2, 3)},
+                new Track {AlbumOrder = 6, Name = "Invincible", Length = new TimeSpan(0, 5, 0)},
+                new Track {AlbumOrder = 7, Name = "Assassin", Length = new TimeSpan(0, 3, 31)},
+                new Track {AlbumOrder = 8, Name = "Exo-Politics", Length = new TimeSpan(0, 3, 53)},
+                new Track {AlbumOrder = 9, Name = "City of Delusion", Length = new TimeSpan(0, 4, 48)},
+                new Track {AlbumOrder = 10, Name = "Hoodoo", Length = new TimeSpan(0, 3, 43)},
+                new Track {AlbumOrder = 11, Name = "Knights of Cydonia", Length = new TimeSpan(0, 6, 6)}
+            };
+
+            list.Add("Black Holes and Revelations", blackHolesAndRevelations);
+
+
+            var echosSilencePatienceAndGraceTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "The Pretender", Length = new TimeSpan(0, 4, 29)},
+                new Track {AlbumOrder = 2, Name = "Let it Die", Length = new TimeSpan(0, 4, 5)},
+                new Track {AlbumOrder = 3, Name = "Erase/Replace", Length = new TimeSpan(0, 4, 13)},
+                new Track {AlbumOrder = 4, Name = "Long Road to Ruin", Length = new TimeSpan(0, 3, 44)},
+                new Track {AlbumOrder = 5, Name = "Come Alive", Length = new TimeSpan(0, 5, 10)},
+                new Track {AlbumOrder = 6, Name = "Stranger Things Have Happened", Length = new TimeSpan(0, 5, 21)},
+                new Track {AlbumOrder = 7, Name = "Cheer Up, Boys (Your Mak Up is Running)", Length = new TimeSpan(0, 3, 41)},
+                new Track {AlbumOrder = 8, Name = "Summer's End", Length = new TimeSpan(0, 4, 37)},
+                new Track {AlbumOrder = 9, Name = "Ballad of the Beaconsfield Miners", Length = new TimeSpan(0, 2, 32)},
+                new Track {AlbumOrder = 10, Name = "Statues", Length = new TimeSpan(0, 3, 47)},
+                new Track {AlbumOrder = 11, Name = "But, Honestly", Length = new TimeSpan(0, 4, 35)},
+                new Track {AlbumOrder = 12, Name = "Home", Length = new TimeSpan(0, 4, 52)}
+            };
+            list.Add("Echos, Silence, Patience & Grace", echosSilencePatienceAndGraceTracks);
+
+
+            var blackwaterParkTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "The Leper Affinity", Length = new TimeSpan(0, 10, 23)},
+                new Track {AlbumOrder = 2, Name = "Bleak", Length = new TimeSpan(0, 9, 16)},
+                new Track {AlbumOrder = 3, Name = "Harvest", Length = new TimeSpan(0, 6, 1)},
+                new Track {AlbumOrder = 4, Name = "The Drapery Falls", Length = new TimeSpan(0, 10, 54)},
+                new Track {AlbumOrder = 5, Name = "Dirge for November", Length = new TimeSpan(0, 7, 54)},
+                new Track {AlbumOrder = 6, Name = "The Funeral Portrait", Length = new TimeSpan(0, 8, 44)},
+                new Track {AlbumOrder = 7, Name = "Patterns in the Ivy", Length = new TimeSpan(0, 1, 53)},
+                new Track {AlbumOrder = 8, Name = "Blackwater Park", Length = new TimeSpan(0, 12, 8)},
+                new Track {AlbumOrder = 9, Name = "The Leper Affinity (live)", Length = new TimeSpan(0, 9, 24)}
+            };
+            list.Add("Blackwater Park"), blackwaterParkTracks);
+
+            
+            var goTracks = new List<Track>
+            {
+            };
+            list.Add("Go", goTracks);
+
+           
+            var theOffspringTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Time to Relax", Length = new TimeSpan(0, 0, 25)},
+                new Track {AlbumOrder = 2, Name = "Nitro (Youth Energy)", Length = new TimeSpan(0, 2, 27)},
+                new Track {AlbumOrder = 3, Name = "Bad Habit", Length = new TimeSpan(0, 3, 43)},
+                new Track {AlbumOrder = 4, Name = "Gotta Get Away", Length = new TimeSpan(0, 3, 52)},
+                new Track {AlbumOrder = 5, Name = "Genocide", Length = new TimeSpan(0, 3, 33)},
+                new Track {AlbumOrder = 6, Name = "Something to Believe In", Length = new TimeSpan(0, 3, 17)},
+                new Track {AlbumOrder = 7, Name = "Come Out and Play", Length = new TimeSpan(0, 3, 17)},
+                new Track {AlbumOrder = 8, Name = "Self Esteem", Length = new TimeSpan(0, 4, 17)},
+                new Track {AlbumOrder = 9, Name = "It'll be a Long Time", Length = new TimeSpan(0, 2, 43)},
+                new Track {AlbumOrder = 10, Name = "Killboy Powerhead", Length = new TimeSpan(0, 2, 2)},
+                new Track {AlbumOrder = 11, Name = "What Happened to You?", Length = new TimeSpan(0, 2, 12)},
+                new Track {AlbumOrder = 12, Name = "So Alone", Length = new TimeSpan(0, 1, 17)},
+                new Track {AlbumOrder = 13, Name = "Not the One", Length = new TimeSpan(0, 2, 54)},
+                new Track {AlbumOrder = 14 Name = "Smash", Length = new TimeSpan(0, 10, 42)}
+            };
+            list.Add("The Offspring", theOffspringTracks);
+
+
+            var brothersTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Everlasting Light`", Length = new TimeSpan(0, 3, 24)},
+                new Track {AlbumOrder = 2, Name = "Next Girl", Length = new TimeSpan(0, 3, 18)},
+                new Track {AlbumOrder = 3, Name = "Tighten Up", Length = new TimeSpan(0, 3, 31)},
+                new Track {AlbumOrder = 4, Name = "Howlin' for You", Length = new TimeSpan(0, 3, 12)},
+                new Track {AlbumOrder = 5, Name = "She's Long Gone", Length = new TimeSpan(0, 3, 6)},
+                new Track {AlbumOrder = 6, Name = "Black Mud", Length = new TimeSpan(0, 2, 10)},
+                new Track {AlbumOrder = 7, Name = "The Only One", Length = new TimeSpan(0, 5, 0)},
+                new Track {AlbumOrder = 8, Name = "Too Afraid to Love You", Length = new TimeSpan(0, 3, 25)},
+                new Track {AlbumOrder = 9, Name = "Ten Cent Pistol", Length = new TimeSpan(0, 4, 29)},
+                new Track {AlbumOrder = 10, Name = "Sinister Kid", Length = new TimeSpan(0, 3, 45)},
+                new Track {AlbumOrder = 11, Name = "The Go Getter", Length = new TimeSpan(0, 3, 37)},
+                new Track {AlbumOrder = 12, Name = "I'm Not the One", Length = new TimeSpan(0, 3, 49)},
+                new Track {AlbumOrder = 13, Name = "Unknown Brother", Length = new TimeSpan(0, 4, 0)},
+                new Track {AlbumOrder = 14, Name = "Never Gonna Give You Up", Length = new TimeSpan(0, 3, 39)},
+                new Track {AlbumOrder = 15, Name = "These Days", Length = new TimeSpan(0, 5, 12)}
+            };
+            list.Add("Brothers", brothersTracks);
+
+
+            var howBigHowBlueHowBeautifulTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Ship to Wreck", Length = new TimeSpan(0, 3, 54)},
+                new Track {AlbumOrder = 2, Name = "What Kind of Man", Length = new TimeSpan(0, 3, 36)},
+                new Track {AlbumOrder = 3, Name = "How Big, How Blue, How Beautiful", Length = new TimeSpan(0, 5, 34)},
+                new Track {AlbumOrder = 4, Name = "Queen of Peace", Length = new TimeSpan(0, 5, 7)},
+                new Track {AlbumOrder = 5, Name = "Various Storms & Saints", Length = new TimeSpan(0, 4, 9)},
+                new Track {AlbumOrder = 6, Name = "Delilah", Length = new TimeSpan(0, 4, 53)},
+                new Track {AlbumOrder = 7, Name = "Long & Lost", Length = new TimeSpan(0, 3, 15)},
+                new Track {AlbumOrder = 8, Name = "Caught", Length = new TimeSpan(0, 4, 24)},
+                new Track {AlbumOrder = 9, Name = "Third Eye", Length = new TimeSpan(0, 4, 20)},
+                new Track {AlbumOrder = 10, Name = "St. Jude", Length = new TimeSpan(0, 3, 45)},
+                new Track {AlbumOrder = 11, Name = "Mother", Length = new TimeSpan(0, 5, 49)}
+            };
+            list.Add("How Big, How Blue, How Beautiful", howBigHowBlueHowBeautifulTracks);
+
+
+            var mezzanineTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Angel", Length = new TimeSpan(0, 8, 14)},
+                new Track {AlbumOrder = 2, Name = "Risingson", Length = new TimeSpan(0, 4, 24)},
+                new Track {AlbumOrder = 3, Name = "Teardrop", Length = new TimeSpan(0, 8, 121)},
+                new Track {AlbumOrder = 4, Name = "Inertia Creeps", Length = new TimeSpan(0, 5, 30)},
+                new Track {AlbumOrder = 5, Name = "Exchange", Length = new TimeSpan(0, 9, 32)},
+                new Track {AlbumOrder = 6, Name = "Dissolved Girl", Length = new TimeSpan(0, 7, 3)},
+                new Track {AlbumOrder = 7, Name = "Man Next Door", Length = new TimeSpan(0, 2, 32)},
+                new Track {AlbumOrder = 8, Name = "Black Milk", Length = new TimeSpan(0, 11, 30)},
+                new Track {AlbumOrder = 9, Name = "Mezzanine", Length = new TimeSpan(0, 7, 3)},
+                new Track {AlbumOrder = 10, Name = "Group Four", Length = new TimeSpan(0, 2, 32)},
+                new Track {AlbumOrder = 11, Name = "(Exchange)", Length = new TimeSpan(0, 11, 30)}
+            };
+            list.Add("Mezzanine", mezzanineTracks);
+
+
+            var songsAboutJaneTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Harder to Breathe", Length = new TimeSpan(0, 2, 55)},
+                new Track {AlbumOrder = 2, Name = "This Love", Length = new TimeSpan(0, 4, 26)},
+                new Track {AlbumOrder = 3, Name = "Shiver", Length = new TimeSpan(0, 3, 1)},
+                new Track {AlbumOrder = 4, Name = "She Will Be Loved", Length = new TimeSpan(0, 4, 17)},
+                new Track {AlbumOrder = 5, Name = "Tangled", Length = new TimeSpan(0, 3, 19)},
+                new Track {AlbumOrder = 6, Name = "The Sun", Length = new TimeSpan(0, 4, 11)},
+                new Track {AlbumOrder = 7, Name = "Must Get Out", Length = new TimeSpan(0, 4, 36)},
+                new Track {AlbumOrder = 8, Name = "Sunday Morning", Length = new TimeSpan(0, 4, 6)},
+                new Track {AlbumOrder = 9, Name = "Secret", Length = new TimeSpan(0, 4, 55)},
+                new Track {AlbumOrder = 10, Name = "Through with You", Length = new TimeSpan(0, 3, 1)},
+                new Track {AlbumOrder = 11, Name = "Not Coming Home", Length = new TimeSpan(0, 4, 24)},
+                new Track {AlbumOrder = 12, Name = "Sweetest Goodbye", Length = new TimeSpan(0, 4, 31)}
+            };
+            list.Add("Songs About Jane", songsAboutJaneTracks);
+
+
+            var okComputerTracks = new List<Track>
+            {
+                new Track {AlbumOrder = 1, Name = "Airbag", Length = new TimeSpan(0, 4, 44)},
+                new Track {AlbumOrder = 2, Name = "Paranoid Android", Length = new TimeSpan(0, 6, 23)},
+                new Track {AlbumOrder = 3, Name = "Subterranean Homesick Alien", Length = new TimeSpan(0, 4, 27)},
+                new Track {AlbumOrder = 4, Name = "Exit Music (For a Film)", Length = new TimeSpan(0, 4, 24)},
+                new Track {AlbumOrder = 5, Name = "Let Down", Length = new TimeSpan(0, 4, 59)},
+                new Track {AlbumOrder = 6, Name = "Karma Police", Length = new TimeSpan(0, 4, 21)},
+                new Track {AlbumOrder = 7, Name = "Fitter Happier", Length = new TimeSpan(0, 1, 57)},
+                new Track {AlbumOrder = 8, Name = "Electioneering", Length = new TimeSpan(0, 3, 50)},
+                new Track {AlbumOrder = 9, Name = "Climbing Up the Walls", Length = new TimeSpan(0, 4, 45)},
+                new Track {AlbumOrder = 10, Name = "No Suprises", Length = new TimeSpan(0, 3, 48)},
+                new Track {AlbumOrder = 11, Name = "Lucky", Length = new TimeSpan(0, 4, 19)},
+                new Track {AlbumOrder = 12, Name = "The Tourist", Length = new TimeSpan(0, 5, 24)}
+            };
+            list.Add("OK Computer", okComputerTracks);
+
+
+            
+
+
 
             return list;
         }
@@ -211,10 +645,10 @@ namespace AngularMusicStore.IntegrationTests
             albumArtistInfo[17, 5] = "Moby.jpg";
 
 
-            albumArtistInfo[18, 0] = "The Offspring";
+            albumArtistInfo[18, 0] = "Smash";
             albumArtistInfo[18, 1] = "8/3/2015";
             albumArtistInfo[18, 2] = "Offspring_Smash.jpg";
-            albumArtistInfo[18, 3] = "Smash";
+            albumArtistInfo[18, 3] = "The Offspring";
             albumArtistInfo[18, 4] =
                 "The Offspring is an American punk rock band from Huntington Beach, California, formed in 1984.[2] Formed under the name Manic Subsidal, the band consists of lead vocalist and rhythm guitarist Dexter Holland, bassist Greg K., lead guitarist Kevin 'Noodles' Wasserman and drummer Pete Parada. The Offspring is often credited—alongside fellow California punk bands Bad Religion, NOFX, Green Day, Rancid and Pennywise—for reviving mainstream interest in punk rock in the 1990s.[3][4] They have sold over 36 million records worldwide,[5][6] being considered one of the best-selling punk rock bands of all time.[7]";
             albumArtistInfo[18, 5] = "Offspring.jpg";
