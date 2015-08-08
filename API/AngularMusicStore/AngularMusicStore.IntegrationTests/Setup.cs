@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using AngularMusicStore.Core.Entities;
 using AngularMusicStore.Core.Factories;
 using AngularMusicStore.Core.Services;
@@ -14,7 +12,6 @@ namespace AngularMusicStore.IntegrationTests
     [TestFixture]
     public class Setup
     {
-
         [Test]
         public void PrimeDatabaseWithOneArtistWithOneAlbum()
         {
@@ -73,9 +70,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("Images and Words", imagesAndWordsTracks);
 
-            
-
-
             var clockworkAnglesTracks = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "Caravan", Length = new TimeSpan(0, 5, 40)},
@@ -94,11 +88,9 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("Clockwork Angles", clockworkAnglesTracks);
 
-
-
             var fearOfABlankPlanetTracks = new List<Track>
             {
-                new Track {AlbumOrder = 1, Name = "Fear of a Blank Planet", Length = new TimeSpan(0, 7, 28},
+                new Track {AlbumOrder = 1, Name = "Fear of a Blank Planet", Length = new TimeSpan(0, 7, 28)},
                 new Track {AlbumOrder = 2, Name = "My Ashes", Length = new TimeSpan(0, 5, 7)},
                 new Track {AlbumOrder = 3, Name = "Anesthetize", Length = new TimeSpan(0, 17, 42)},
                 new Track {AlbumOrder = 4, Name = "Sentimental", Length = new TimeSpan(0, 5, 26)},
@@ -107,7 +99,6 @@ namespace AngularMusicStore.IntegrationTests
             };
 
             list.Add("Fear of a Blank Planet", fearOfABlankPlanetTracks);
-
 
             var handCannotEraseTracks = new List<Track>
             {
@@ -123,7 +114,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("Hand. Cannot. Erase.", handCannotEraseTracks);
 
-
             var momentaryLapseOfReasonTracks = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "Signs of Life", Length = new TimeSpan(0, 4, 24)},
@@ -131,15 +121,19 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 3, Name = "The Dogs of War", Length = new TimeSpan(0, 6, 5)},
                 new Track {AlbumOrder = 4, Name = "One Slip", Length = new TimeSpan(0, 5, 10)},
                 new Track {AlbumOrder = 5, Name = "On the Turning Away", Length = new TimeSpan(0, 5, 42)},
-                new Track {AlbumOrder = 6, Name = "Yet Another Movie / Round and Around", Length = new TimeSpan(0, 7, 28)},
+                new Track
+                {
+                    AlbumOrder = 6,
+                    Name = "Yet Another Movie / Round and Around",
+                    Length = new TimeSpan(0, 7, 28)
+                },
                 new Track {AlbumOrder = 7, Name = "A New Macine (Part 1)", Length = new TimeSpan(0, 1, 46)},
                 new Track {AlbumOrder = 8, Name = "Terminal Frost", Length = new TimeSpan(0, 6, 17)},
                 new Track {AlbumOrder = 9, Name = "A New Machine (Part 2)", Length = new TimeSpan(0, 0, 38)},
                 new Track {AlbumOrder = 10, Name = "Sorrow", Length = new TimeSpan(0, 8, 46)}
-            }
+            };
 
             list.Add("A Momentary Lapse of Reason", momentaryLapseOfReasonTracks);
-
 
             var saturdayNightFeverTracks = new List<Track>
             {
@@ -164,7 +158,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("Saturday Night Fever Soundtrack", saturdayNightFeverTracks);
 
-
             var lifeForRestTracks = new List<Track>{
                 new Track {AlbumOrder = 1, Name = "White Flag", Length = new TimeSpan(0, 4, 1)},
                 new Track {AlbumOrder = 2, Name = "Stoned", Length = new TimeSpan(0, 5, 55)},
@@ -180,7 +173,6 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 12, Name = "Closer", Length = new TimeSpan(0, 3, 29)}
             };
             list.Add("Life For Rent", lifeForRestTracks);
-
 
             var saveRackAndRollTracks = new List<Track>
             {
@@ -198,7 +190,6 @@ namespace AngularMusicStore.IntegrationTests
             };
 
             list.Add("Save Rock and Roll", saveRackAndRollTracks);
-
 
             var beyonceTracks = new List<Track>
             {
@@ -219,9 +210,7 @@ namespace AngularMusicStore.IntegrationTests
             };
 
             list.Add("Beyonce", beyonceTracks);
-
-            
-
+           
             var tsTracks = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "Welcome to New York", Length = new TimeSpan(0, 3, 32)},
@@ -241,7 +230,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("1989", tsTracks);
 
-
             var xTracks = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "One", Length = new TimeSpan(0, 4, 12)},
@@ -260,12 +248,11 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("X", xTracks);
 
-
             var nightAtTheOperaTracks = new List<Track>{
                 new Track {AlbumOrder = 1, Name = "Death on Two Legs", Length = new TimeSpan(0, 3, 43)},
                 new Track {AlbumOrder = 2, Name = "Lazing on a Sunday Afternoon", Length = new TimeSpan(0, 1, 8)},
                 new Track {AlbumOrder = 3, Name = "I'm in Love with My Car", Length = new TimeSpan(0, 3, 5)},
-                new Track {AlbumOrder = 4, Name = "You're My Best Friend", Length = new TimeSpan(0, 2, 40},
+                new Track {AlbumOrder = 4, Name = "You're My Best Friend", Length = new TimeSpan(0, 2, 40)},
                 new Track {AlbumOrder = 5, Name = "39", Length = new TimeSpan(0, 3, 25)},
                 new Track {AlbumOrder = 6, Name = "Sweet Lady", Length = new TimeSpan(0, 4, 1)},
                 new Track {AlbumOrder = 7, Name = "Seaside Rendezvous", Length = new TimeSpan(0, 2, 13)},
@@ -277,7 +264,6 @@ namespace AngularMusicStore.IntegrationTests
             };
 
             list.Add("A Night at the Opera", nightAtTheOperaTracks);
-
 
             var theRealThingTracks = new List<Track>
             {
@@ -296,7 +282,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("The Real Thing", theRealThingTracks);
 
-
             var americanIdiotTracks = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "American Idiot", Length = new TimeSpan(0, 2, 54)},
@@ -305,7 +290,7 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 4, Name = "Boulevard of Broken Dreams", Length = new TimeSpan(0, 4, 20)},
                 new Track {AlbumOrder = 5, Name = "Are We the Waiting", Length = new TimeSpan(0, 2, 42)},
                 new Track {AlbumOrder = 6, Name = "St. Jimmy", Length = new TimeSpan(0, 2, 56)},
-                new Track {AlbumOrder = 7, Name = "Give Me Novacaine", Length = new TimeSpan(0, 3. 25)},
+                new Track {AlbumOrder = 7, Name = "Give Me Novacaine", Length = new TimeSpan(0, 3, 25)},
                 new Track {AlbumOrder = 8, Name = "She's a Rebel", Length = new TimeSpan(0, 2, 0)},
                 new Track {AlbumOrder = 9, Name = "Extraordinary Girl", Length = new TimeSpan(0, 3, 33)},
                 new Track {AlbumOrder = 10, Name = "Letterbomb", Length = new TimeSpan(0, 4, 5)},
@@ -315,7 +300,6 @@ namespace AngularMusicStore.IntegrationTests
             };
 
             list.Add("American Idiot", americanIdiotTracks);
-
 
             var hotFuss = new List<Track>
             {
@@ -334,7 +318,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("Hot Fuss", hotFuss);
 
-
             var blackHolesAndRevelations = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "Take A Bow", Length = new TimeSpan(0, 4, 35)},
@@ -352,7 +335,6 @@ namespace AngularMusicStore.IntegrationTests
 
             list.Add("Black Holes and Revelations", blackHolesAndRevelations);
 
-
             var echosSilencePatienceAndGraceTracks = new List<Track>
             {
                 new Track {AlbumOrder = 1, Name = "The Pretender", Length = new TimeSpan(0, 4, 29)},
@@ -368,8 +350,8 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 11, Name = "But, Honestly", Length = new TimeSpan(0, 4, 35)},
                 new Track {AlbumOrder = 12, Name = "Home", Length = new TimeSpan(0, 4, 52)}
             };
-            list.Add("Echos, Silence, Patience & Grace", echosSilencePatienceAndGraceTracks);
 
+            list.Add("Echos, Silence, Patience & Grace", echosSilencePatienceAndGraceTracks);
 
             var blackwaterParkTracks = new List<Track>
             {
@@ -383,8 +365,7 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 8, Name = "Blackwater Park", Length = new TimeSpan(0, 12, 8)},
                 new Track {AlbumOrder = 9, Name = "The Leper Affinity (live)", Length = new TimeSpan(0, 9, 24)}
             };
-            list.Add("Blackwater Park"), blackwaterParkTracks);
-
+            list.Add("Blackwater Park", blackwaterParkTracks);
             
             var goTracks = new List<Track>
             {
@@ -407,7 +388,7 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 11, Name = "What Happened to You?", Length = new TimeSpan(0, 2, 12)},
                 new Track {AlbumOrder = 12, Name = "So Alone", Length = new TimeSpan(0, 1, 17)},
                 new Track {AlbumOrder = 13, Name = "Not the One", Length = new TimeSpan(0, 2, 54)},
-                new Track {AlbumOrder = 14 Name = "Smash", Length = new TimeSpan(0, 10, 42)}
+                new Track {AlbumOrder = 14, Name = "Smash", Length = new TimeSpan(0, 10, 42)}
             };
             list.Add("The Offspring", theOffspringTracks);
 
