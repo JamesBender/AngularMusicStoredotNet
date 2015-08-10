@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AngularMusicStore.Core.Entities;
 using AngularMusicStore.Core.Exceptions;
 using AngularMusicStore.Core.Persistence;
@@ -13,6 +14,7 @@ namespace AngularMusicStore.Core.Services
         Guid Save(Guid artistId, Album album);
         void Delete(Guid albumId);
         IEnumerable<Album> FindByName(string nameToFind);
+        IEnumerable<Album> GetAlbums();
     }
 
     public class AlbumService : IAlbumService
@@ -61,6 +63,11 @@ namespace AngularMusicStore.Core.Services
         public IEnumerable<Album> FindByName(string nameToFind)
         {
             return _repository.SearchByName<Album>(nameToFind);
+        }
+
+        public IEnumerable<Album> GetAlbums()
+        {
+            return _repository.GetAll<Album>().Take(50);
         }
     }
 }

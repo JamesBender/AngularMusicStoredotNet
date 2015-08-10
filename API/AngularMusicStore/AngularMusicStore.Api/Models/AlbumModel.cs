@@ -14,6 +14,7 @@ namespace AngularMusicStore.Api.Models
         Guid Save(Guid artistId, Album album);
         void Delete(Guid albumId);
         IList<Album> GetByPartialName(string nameToFind);
+        IList<Album> GetAlbums();
     }
 
     public class AlbumModel : IAlbumModel
@@ -55,6 +56,12 @@ namespace AngularMusicStore.Api.Models
         public IList<Album> GetByPartialName(string nameToFind)
         {
             var listOfAlbums = _albumService.FindByName(nameToFind);
+            return listOfAlbums.Select(Mapper.Map<Core.Entities.Album, Album>).ToList();
+        }
+
+        public IList<Album> GetAlbums()
+        {
+            var listOfAlbums = _albumService.GetAlbums();
             return listOfAlbums.Select(Mapper.Map<Core.Entities.Album, Album>).ToList();
         }
     }

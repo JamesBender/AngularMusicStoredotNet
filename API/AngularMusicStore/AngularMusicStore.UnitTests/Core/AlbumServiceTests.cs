@@ -30,7 +30,7 @@ namespace AngularMusicStore.UnitTests.Core
         {
             var trackName = Guid.NewGuid().ToString();
             var trackOrder = 1;
-            var trackLength = new TimeSpan(0,4,27);
+            var trackLength = new TimeSpan(0, 4, 27);
             var trackRating = 3;
             var trackId = Guid.NewGuid();
 
@@ -51,7 +51,7 @@ namespace AngularMusicStore.UnitTests.Core
             album.AddTrack(track);
 
             _repository.Setup(x => x.GetById<Album>(albumId)).Returns(album);
-            
+
             var result = _albumService.GetAlbum(albumId);
 
             Assert.IsNotNull(result);
@@ -118,7 +118,7 @@ namespace AngularMusicStore.UnitTests.Core
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ShouldNotBeAbleToSaveAnAlbumWithAnInvalidArtistId()
         {
             var artistId = Guid.NewGuid();
@@ -139,7 +139,7 @@ namespace AngularMusicStore.UnitTests.Core
         }
 
         [Test]
-        [ExpectedException(typeof(DataNotFoundException))]
+        [ExpectedException(typeof (DataNotFoundException))]
         public void ShouldGetADataNotFoundExceptionWhenTryingToDeleteAnAlbumThatDoesntExist()
         {
             var albumId = Guid.NewGuid();
@@ -159,8 +159,8 @@ namespace AngularMusicStore.UnitTests.Core
         {
             const string nameToFind = "Bob";
 
-            var albumToFind = new Album { Name = nameToFind };
-            var listOfFoundAlbums = new List<Album> { albumToFind };
+            var albumToFind = new Album {Name = nameToFind};
+            var listOfFoundAlbums = new List<Album> {albumToFind};
 
             _repository.Setup(x => x.SearchByName<Album>(nameToFind))
                 .Returns(listOfFoundAlbums);
@@ -171,6 +171,25 @@ namespace AngularMusicStore.UnitTests.Core
             var enumerable = result as Album[] ?? result.ToArray();
             Assert.AreEqual(1, enumerable.ToList().Count);
             Assert.IsNotNull(enumerable.FirstOrDefault(x => x.Name == nameToFind));
+        }
+
+        [Test]
+        public void ShouldGetAListOfTheFirstFiftyAlbumsWhenNoOtherSearchCriteriaProvided()
+        {
+            var expectedNumberOfAlbums = 50;
+            var listOfAlbumsFromRepo = new List<Album>();
+
+            for (int idx = 0; idx < 100; idx++)
+            {
+                listOfAlbumsFromRepo.Add(new Album());
+            }
+
+            _repository.Setup(x => x.GetAll<Album>()).Returns(listOfAlbumsFromRepo);
+
+            var result = _albumService.GetAlbums();
+
+            Assert.IsNotNull(result);            
+            Assert.AreEqual(expectedNumberOfAlbums, result.Count());
         }
     }
 }

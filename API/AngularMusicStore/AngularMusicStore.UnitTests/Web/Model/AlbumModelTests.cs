@@ -107,5 +107,31 @@ namespace AngularMusicStore.UnitTests.Web.Model
 
             _albumService.Verify(x => x.Delete(It.IsAny<Guid>()));
         }
+
+        [Test]
+        public void ShouldBeAbleToGetTheFirstFiftyAlbumsWhenNoCriteriaProvided()
+        {
+            const int expectedNumberOfAlbums = 50;
+            var listOfAlbumsFromAlbumService = new List<Domain.Album>();
+            var listOfAlbumIdsFromAlbumService = new List<Guid>();
+
+            for (var idx = 0; idx < expectedNumberOfAlbums; idx++)
+            {
+                var newAlbum = new Domain.Album {Id = Guid.NewGuid()};
+                listOfAlbumsFromAlbumService.Add(newAlbum);
+                listOfAlbumIdsFromAlbumService.Add(newAlbum.Id);
+            }
+
+            _albumService.Setup(x => x.GetAlbums()).Returns(listOfAlbumsFromAlbumService);
+
+            var result = _albumModel.GetAlbums();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(expectedNumberOfAlbums, result.Count());
+            foreach (var albumId in listOfAlbumIdsFromAlbumService)
+            {
+                Assert.IsNotNull(result.FirstOrDefault(x => x.Id == albumId));
+            }
+        }
     }
 }
