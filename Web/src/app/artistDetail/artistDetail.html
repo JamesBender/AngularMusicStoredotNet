@@ -25,7 +25,9 @@
 					<tr ng-repeat='album in albums'>
 						<td width="10%"><img src="{{album.CoverUri}}" height="50px"></td>
 						<td><span class='albumName'>{{album.Name}}</span></td>
-						<td><span class='releaseDate'>{{album.ReleaseDate | date}}</span></td>
+						<td>
+							<span class='releaseDate'>{{album.ReleaseDate | date}}</span
+						</td>
 					</tr>
 				</tbody>
 			</table>
