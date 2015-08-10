@@ -12,7 +12,7 @@ namespace AngularMusicStore.IntegrationTests
     [TestFixture]
     public class Setup
     {
-        [Test]
+     //   [Test]
         public void PrimeDatabaseWithOneArtistWithOneAlbum()
         {
             var kernel = new StandardKernel(new DomainModule());
@@ -398,7 +398,6 @@ namespace AngularMusicStore.IntegrationTests
                 new Track {AlbumOrder = 27, Name = "Slipping Away (Axwell Vocal Remix)", Length = new TimeSpan(0, 7, 26)}            
             };
             list.Add("Go", goTracks);
-
            
             var theOffspringTracks = new List<Track>
             {

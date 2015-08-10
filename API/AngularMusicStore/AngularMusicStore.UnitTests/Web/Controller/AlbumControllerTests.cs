@@ -46,6 +46,43 @@ namespace AngularMusicStore.UnitTests.Web.Controller
         }
 
         [Test]
+        public void ShouldBeAbleToGetListOfAlbumsByName()
+        {
+            IList<Album> albumList;
+            const string albumName = "Bob";
+            _albumModel.Setup(x => x.GetByPartialName(albumName))
+                .Returns(new List<Album> { new Album { Name = albumName } });
+
+            var result = _albumController.GetAlbums(albumName);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.TryGetContentValue(out albumList));
+            Assert.IsNotNull(albumList);
+            _albumModel.Verify(x => x.GetByPartialName(albumName), Times.Once);
+        }
+
+        [Test]
+        public void ShouldBeAbleToGetListOfFirstFiftyAlbumsWhenNoOtherCriteriaProvided()
+        {
+            const int expectedNumberOfAlbums = 50;
+            var listOfAlbumsFromModel = new List<Album>();
+
+            for (int idx = 0; idx < expectedNumberOfAlbums; idx++)
+            {
+                listOfAlbumsFromModel.Add(new Album());
+            }
+
+            _albumModel.Setup(x => x.GetAlbums()).Returns(listOfAlbumsFromModel);
+
+            var result = _albumController.GetAlbums();
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.TryGetContentValue(out listOfAlbumsFromModel));
+            Assert.IsNotNull(listOfAlbumsFromModel);
+            _albumModel.Verify(x => x.GetAlbums(), Times.Once);
+        }
+
+        [Test]
         public void ShouldGetBackAnHttp404WhenTheAlbumDoesNotExist()
         {
             var result = _albumController.GetAlbum(Guid.NewGuid().ToString());
@@ -122,18 +159,6 @@ namespace AngularMusicStore.UnitTests.Web.Controller
 
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.BadRequest, result.StatusCode);
-        }
-
-        [Test]
-        public void ShouldBeAbleToGetListOfAlbumsByName()
-        {
-            const string albumName = "Bob";
-            _albumModel.Setup(x => x.GetByPartialName(albumName))
-                .Returns(new List<Album> {new Album {Name = albumName}});
-
-            var result = _albumController.GetAlbums(albumName);
-            
-            Assert.IsNotNull(result);
         }
     }
 }

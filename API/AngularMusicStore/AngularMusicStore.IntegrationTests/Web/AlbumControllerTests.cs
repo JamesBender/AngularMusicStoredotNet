@@ -179,9 +179,11 @@ namespace AngularMusicStore.IntegrationTests.Web
 
             Assert.IsNotNull(findAlbumResults);
             // ReSharper disable PossibleMultipleEnumeration
-            Assert.AreEqual(listOfGoodNames.Count(), findAlbumResults.Count());
-            listOfGoodNames.ForEach(x => Assert.IsNotNull(findAlbumResults.FirstOrDefault(a => a.Name == x)));
-            listOfBadNames.ForEach(x => Assert.IsNull(findAlbumResults.FirstOrDefault(a => a.Name == x)));
+            Assert.IsTrue(findAlbumResults.TryGetContentValue(out listOfAllAlbums));
+
+            Assert.AreEqual(listOfGoodNames.Count(), listOfAllAlbums.Count());
+            listOfGoodNames.ForEach(x => Assert.IsNotNull(listOfAllAlbums.FirstOrDefault(a => a.Name == x)));
+            listOfBadNames.ForEach(x => Assert.IsNull(listOfAllAlbums.FirstOrDefault(a => a.Name == x)));
 
 //            albumsToFind.ForEach(x => _albumController.Delete(x.ToString()));
 //            albumsToNotFind.ForEach(x => _albumController.Delete(x.ToString()));

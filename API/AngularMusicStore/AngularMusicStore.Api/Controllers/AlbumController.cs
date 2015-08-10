@@ -32,6 +32,18 @@ namespace AngularMusicStore.Api.Controllers
                 : Request.CreateResponse(HttpStatusCode.OK, album);
         }
 
+        public HttpResponseMessage GetAlbums(string albumName)
+        {
+            var album = _albumModel.GetByPartialName(albumName);
+            return Request.CreateResponse(HttpStatusCode.OK, album);
+        }
+
+        public HttpResponseMessage GetAlbums()
+        {
+            var listOfAlbums = _albumModel.GetAlbums();
+            return Request.CreateResponse(HttpStatusCode.OK, listOfAlbums);
+        }
+
         public HttpResponseMessage PostAlbum(Album album)
         {
             var artistId = _albumModel.Save(album.Parent.Id, album);
@@ -55,11 +67,6 @@ namespace AngularMusicStore.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        public IEnumerable<Album> GetAlbums(string albumName)
-        {
-            return _albumModel.GetByPartialName(albumName);
-        }
+        }        
     }
 }
