@@ -16,12 +16,12 @@
 	<div class='row'>
 		<div class='col-sm-6 col-md-6'>
 			<table>
-				<thead>
-					<th>Album Name</th>
-				</thead>
 				<tbody>
-					<tr ng-repeat='album in albumFound'>
-						<td><a href='#/album/{{album.Id}}'>{{album.Name}}</a></td>
+					<tr ng-repeat='album in albumList'>
+						<td class='col-md-6'>
+							<img src="{{album.CoverUri}}" class='artistThumbnail' style='margin-right: 2px;'>
+							<a href='#/album/{{album.Id}}'>{{album.Name}}</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

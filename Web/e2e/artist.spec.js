@@ -33,7 +33,7 @@ describe('The artist view', function () {
         var link = dataCell.$$('a');
         link.getAttribute('href').then(function(attr){
           expect(typeof attr[0]).toBe('string');
-          expect(attr[0]).toBe('http://localhost:3000/#/artist/aa0f9ee4-009e-4e55-85e3-a4ea0103bf05');
+          expect(attr[0]).toBe('http://localhost:3000/#/artist/2e41f95a-22d5-4b38-a558-a4f000abd899');
         });
       });
     });
