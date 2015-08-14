@@ -21,7 +21,27 @@ describe('album controllers', function(){
 		$httpBackend.expectGET(baseAlbumUri).respond(albumWithNoCriteriaResult);
 		$httpBackend.flush();
 
-		expect(scope.albumList).not.toBeNull();
-		expect(scope.albumList.length).toBe(24);
+		expect(scope.albumsFound).not.toBeNull();
+		expect(scope.albumsFound.length).toBe(12);
+	});
+
+	it('should be able to search for an album by partial name', function(){
+		var searchUri = baseAlbumUri + '?albumName=Clock';
+		var searchResponse = '[{"$id":"1","Id":"f3569115-28f5-4a37-a7be-a4f000abd8a2","Name":"Clockwork Angles","ReleaseDate":"2012-06-08T00:00:00","CoverUri":"http://192.168.100.137/AngularMusicStore.Api/Content/Images/Album/Rush_ClockworkAngles.png","Parent":{"$id":"2","Id":"2e41f95a-22d5-4b38-a558-a4f000abd899","Name":"Rush","Albums":[{"$ref":"1"}],"Bio":"Rush is a Canadian rock band formed in August 1968 in the Willowdale neighbourhood of Toronto, Ontario. The band is composed of bassist, keyboardist, and lead vocalist Geddy Lee; guitarist and backing vocalist Alex Lifeson; and drummer, percussionist, and lyricist Neil Peart. The band and its membership went through several reconfigurations between 1968 and 1974, achieving its current form when Peart replaced original drummer John Rutsey in July 1974, two weeks before the groups first United States tour.","PictureUrl":"http://192.168.100.137/AngularMusicStore.Api/Content/Images/Artist/Rush.jpg","RelatedArtists":[]},"Tracks":[{"$id":"3","Id":"7896c5ce-a84a-421b-863d-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":1,"Length":"00:05:40","Name":"Caravan","Rating":0},{"$id":"4","Id":"e3f60f33-553a-4274-8bd5-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":11,"Length":"00:05:26","Name":"Wish Them Well","Rating":0},{"$id":"5","Id":"2fd4f528-24e9-4a14-90bd-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":10,"Length":"00:01:28","Name":"BU2B2","Rating":0},{"$id":"6","Id":"0a855630-3828-47a5-91bf-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":12,"Length":"00:06:59","Name":"The Garden","Rating":0},{"$id":"7","Id":"29e6903d-cbe9-4d14-925c-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":2,"Length":"00:05:10","Name":"BU2B","Rating":0},{"$id":"8","Id":"457d2773-eef9-4293-9b4d-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":7,"Length":"00:06:32","Name":"Seven Cities of Gold","Rating":0},{"$id":"9","Id":"a5eb2761-f0d4-404b-a9c7-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":4,"Length":"00:06:52","Name":"The Anarchist","Rating":0},{"$id":"10","Id":"e7bd9d1e-258e-48cb-aaf5-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":6,"Length":"00:03:14","Name":"Halo Effect","Rating":0},{"$id":"11","Id":"e8ecacba-e828-4c90-b494-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":9,"Length":"00:07:21","Name":"Headlong Flight","Rating":0},{"$id":"12","Id":"9cfca286-0535-4cc6-b6fe-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":5,"Length":"00:04:52","Name":"Carnies","Rating":0},{"$id":"13","Id":"a3f10c8d-5438-4f86-b992-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":8,"Length":"00:05:01","Name":"The Wreckers","Rating":0},{"$id":"14","Id":"01001832-b8d1-49f0-ba89-a4f000abd8a3","Parent":{"$ref":"1"},"AlbumOrder":3,"Length":"00:07:31","Name":"Clockwork Angles","Rating":0}]}]';
+
+		$httpBackend.expectGET(baseAlbumUri).respond('[]');
+		$httpBackend.expectGET(searchUri).respond(searchResponse);
+		scope.albumToSearchFor = 'Clock';
+		scope.searchForAlbum();
+		$httpBackend.flush();
+
+		expect(scope.albumsFound).toBeDefined();
+		expect(scope.albumsFound).not.toBeNull();
+		expect(scope.albumsFound.length).toBe(1);
+		expect(scope.albumsFound[0].length).toBe(1);
+		expect(scope.albumsFound[0]).toBeDefined();
+		expect(scope.albumsFound[0][0]).toBeDefined();
+		var album = scope.albumsFound[0][0];
+		expect(album.Name).toBe('Clockwork Angles');
 	});
 });
