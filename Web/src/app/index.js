@@ -19,6 +19,10 @@ angular.module('musicStore', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
         templateUrl: 'app/artistDetail/artistDetail.html',
         controller: 'ArtistDetailCtrl'
       })
+      .when('/album/:id', {
+        templateUrl: 'app/albumDetail/albumDetail.html',
+        controller: 'AlbumDetailCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

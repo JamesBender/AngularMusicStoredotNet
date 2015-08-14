@@ -40,7 +40,7 @@ describe('The album view', function(){
 				link.getAttribute('href').then(function(attr){
 					expect(typeof attr[0]).toBe('string');
 					var baseUri = attr[0].substring(0, 30);
-					expect(baseUri).toBe('http://localhost:3000/#/album/'); //f3569115-28f5-4a37-a7be-a4f000abd8a2');
+					expect(baseUri).toBe('http://localhost:3000/#/album/'); 
 				});
 			});
 		});
