@@ -8,6 +8,7 @@ angular.module('musicStore').controller('AlbumDetailCtrl',['$scope',
 musicStoreAlbumAPI.get({id: $routeParams.id}, function(data){
 		$scope.albumName = data.Name;
 		$scope.albumCoverUri = data.CoverUri;	
+		$scope.trackList = data.Tracks
 		// $scope.artistName = data.Name;
 		// $scope.bio = data.Bio;
 		// $scope.pictureUrl = data.PictureUrl;
