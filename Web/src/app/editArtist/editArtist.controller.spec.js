@@ -35,6 +35,5 @@ describe('The edit artist view', function(){
 
 		$httpBackend.flush();
 		expect(location.path()).toBe('/artist/edit/12345');
-		// expect(scope.artist.id).toBe('12345');
 	});
 });

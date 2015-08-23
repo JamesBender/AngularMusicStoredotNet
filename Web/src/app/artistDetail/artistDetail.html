@@ -1,5 +1,10 @@
 <div class="container">
 	<div ng-include="'components/navbar/navbar.html'"></div>
+	<div class='row admin'>
+		<div class="col-sm-6 col-md-6">
+			<button id='editArtist' ng-click='editArtist()'>Edit Artist</button>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-sm-6 col-md-6">
 			<h1>{{artistName}}</h1>

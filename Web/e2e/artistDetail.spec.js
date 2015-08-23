@@ -56,4 +56,12 @@ describe('The artist detail view', function () {
       expect(element(by.css('.releaseDate')).getText()).toBe('Jun 8, 2012');
     }));
   });
+
+   it('should go to an populated edit artist page when the edit artist button is clicked', function(){
+    page.editArtistButton.click().then(function(){
+      browser.getCurrentUrl().then(function(actualUrl){
+        expect(actualUrl).toContain('/artist/edit');
+      });
+    });
+  });
 });

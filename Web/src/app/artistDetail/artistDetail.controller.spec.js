@@ -1,5 +1,5 @@
 describe('artstDetailController', function(){
-	var scope, $httpBackend, controller;
+	var scope, $httpBackend, controller, location;
 	
 	var artistId = "a82ac00f-5b46-4347-925f-a46400de32be";
 	var artistName = "Rush";
@@ -32,9 +32,10 @@ describe('artstDetailController', function(){
 
 	beforeEach(module('musicStore'));
 
-	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller){
+	beforeEach(inject(function(_$httpBackend_, $rootScope, _$location_, $controller){
 		scope = $rootScope.$new();
 		$httpBackend = _$httpBackend_;
+		location = _$location_;
 
 		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist/' + artistId).respond(artist);
 		controller = $controller('ArtistDetailCtrl', {$scope: scope, $routeParams: {id: artistId}});
@@ -61,5 +62,11 @@ describe('artstDetailController', function(){
 		expect(album.Id).toBe(albumId);
 		expect(album.Name).toBe(albumName);
 		expect(album.ReleaseDate).toBe(albumReleaseDate);
+	});
+
+	it('should take you to the edit page for the artist when you click the edit artist button', function(){
+		$httpBackend.flush();
+		scope.editArtist();
+		expect(location.path()).toBe('/artist/edit/a82ac00f-5b46-4347-925f-a46400de32be');
 	});
 });
