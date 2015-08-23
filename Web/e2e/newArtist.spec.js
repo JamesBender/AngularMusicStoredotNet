@@ -23,6 +23,9 @@ describe('The edit artist view to create a new artist', function () {
 		//browser.pause();
 
 		page.saveButton.click().then(function(){
+			browser.getCurrentUrl().then(function(actualUrl){
+				expect(actualUrl).toContain('/artist/edit/');
+			});
 			//expect(page.artistName.getText()).toBe('not test');
 			//expect(page.artistBio.getText()).toBe('something...');
 		});
