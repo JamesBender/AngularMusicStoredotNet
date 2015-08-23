@@ -10,7 +10,7 @@ angular.module('musicStore').controller('EditArtistCtrl', ['$scope', 'musicStore
 		var artist = new musicStoreArtistAPI({name: $scope.artist.name, bio: $scope.artist.bio});
 		artist.$save(function(response){
 			$scope.artist.id = response.Id;
-			//it worked, so, do... something...
+			//it worked, so, do... something... treat as new 'edit' page for artist that was just created
 		}, function(err){
 			//This is just for now, I'll figure out how to handle this later
 			$scope.artist.bio = 'crap: ' + err.status + ' : ' + err.statusText;

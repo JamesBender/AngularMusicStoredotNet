@@ -19,6 +19,6 @@ angular.module('musicStore').controller('ArtistCtrl',
 	$scope.editArtist = function(){
 		// var current = $location.path();
 		// $location.path(current + '/edit')
-		$location.path('/artist/edit')
+		$location.path('/artist/new')
 	};
 }]);

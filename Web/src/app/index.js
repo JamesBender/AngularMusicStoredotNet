@@ -15,7 +15,7 @@ angular.module('musicStore', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
         templateUrl: 'app/album/album.html',
         controller: 'AlbumCtrl'
       })
-      .when('/artist/edit', {
+      .when('/artist/new', {
         templateUrl: 'app/editArtist/editArtist.html',
         controller: 'EditArtistCtrl'
       })

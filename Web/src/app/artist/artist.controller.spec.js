@@ -63,6 +63,6 @@ describe('artist controllers', function(){
 	it('should go to an empty edit view when new artist button is clicked', function(){
 		scope.editArtist();
 		expect(location).toBeDefined();
-		expect(location.path).toHaveBeenCalledWith('/artist/edit');
+		expect(location.path).toHaveBeenCalledWith('/artist/new');
 	});
 });

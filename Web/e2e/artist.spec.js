@@ -52,7 +52,7 @@ describe('The artist view', function () {
     //expect(ptor).toBeDefined();
     page.addNewArtistButton.click().then(function(){
       browser.getCurrentUrl().then(function(actualUrl){
-        expect(actualUrl).toContain('/artist/edit');
+        expect(actualUrl).toContain('/artist/new');
       });
     });
   });
