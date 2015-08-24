@@ -22,7 +22,7 @@ describe('The edit artist view', function(){
 		expect(scope.artist.bio).toBe('');
 	});
 
-	it('should be able to save a new artist and get an id back', function(){
+	it('should be able to save an artist and get an id back', function(){
 		expect($httpBackend).toBeDefined();
 		expect(location).toBeDefined();
 		expect($httpBackend.expectPOST).toBeDefined();
