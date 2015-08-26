@@ -1,11 +1,19 @@
 'use strict';
 
+//var util = require('util');
+
 describe('The artist view', function () {
   var page;
+
+  //var ptor = protractor.getInstance();
 
   beforeEach(function () {
     browser.get('http://localhost:3000/#/artist');
     page = require('./artist.po');
+  });
+
+  it('should have defined page elements', function(){
+    expect(page.addNewArtistButton).toBeDefined();
   });
 
   it('should have the correct label', function() {
@@ -33,8 +41,18 @@ describe('The artist view', function () {
         var link = dataCell.$$('a');
         link.getAttribute('href').then(function(attr){
           expect(typeof attr[0]).toBe('string');
-          expect(attr[0]).toBe('http://localhost:3000/#/artist/aa0f9ee4-009e-4e55-85e3-a4ea0103bf05');
+          var baseUri = attr[0].substring(0, 31);
+          expect(baseUri).toBe('http://localhost:3000/#/artist/');  //2e41f95a-22d5-4b38-a558-a4f000abd899');
         });
+      });
+    });
+  });
+
+  it('should go to an empty edit artist page when the new artist button is clicked', function(){
+    //expect(ptor).toBeDefined();
+    page.addNewArtistButton.click().then(function(){
+      browser.getCurrentUrl().then(function(actualUrl){
+        expect(actualUrl).toContain('/artist/new');
       });
     });
   });

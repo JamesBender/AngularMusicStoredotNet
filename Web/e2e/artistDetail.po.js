@@ -7,6 +7,7 @@ var ArtistDetailPage = function() {
 	this.bandImage = element(by.css('#bandImage'));
 	this.bandBio = element(by.css('#bandBio'));
 	this.listOfAlbums = element.all(by.repeater('album in albums'));
+	this.editArtistButton = element(by.css('#editArtist'));
 };
 
 module.exports = new ArtistDetailPage();

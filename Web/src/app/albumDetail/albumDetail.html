@@ -1,0 +1,16 @@
+<div class="container">
+	<div ng-include="'components/navbar/navbar.html'"></div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<h1>{{albumName}}</h1>
+		</div>
+		<div class="col-sm-6 col-md-6">
+			<img id='albumCover' src={{albumCoverUri}} height=210 >
+		</div>		
+	</div>
+	<div class='row' style='margin-top: 25px;'>		
+		<ul ng-repeat='track in trackList | orderBy:"AlbumOrder"'>
+			<li><ams-track track='track'></ams-track></li>
+		</ul>
+	</div>
+</div>
