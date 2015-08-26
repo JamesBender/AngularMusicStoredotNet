@@ -44,10 +44,15 @@ namespace AngularMusicStore.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, artist);
         }
 
+        public class ArtistResponse
+        {
+            public Guid Id { get; set; }
+        }
         public HttpResponseMessage PostArtist(Artist artist)
         {
             var artistId = _artistModel.Save(artist);
-            return Request.CreateResponse(HttpStatusCode.Created, artistId);
+            var resp = new ArtistResponse {Id = artistId};
+            return Request.CreateResponse(HttpStatusCode.Created, resp);
         }
 
         public HttpResponseMessage PutArtist(string id, Artist artist)

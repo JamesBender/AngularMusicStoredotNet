@@ -62,6 +62,15 @@ namespace AngularMusicStore.Api.Models
         public IList<Album> GetAlbums()
         {
             var listOfAlbums = _albumService.GetAlbums();
+            foreach (var album in listOfAlbums)
+            {
+                album.Name = album.Name.Replace("'", "&apos;");
+                album.Parent.Bio = album.Parent.Bio.Replace("'", "&apos;");
+                foreach (var track in album.Tracks)
+                {
+                    track.Name = track.Name.Replace("'", "&apos;");
+                }
+            }
             return listOfAlbums.Select(Mapper.Map<Core.Entities.Album, Album>).ToList();
         }
     }

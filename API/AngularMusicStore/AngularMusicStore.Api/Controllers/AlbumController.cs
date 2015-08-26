@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using AngularMusicStore.Api.Models;
 using AngularMusicStore.Api.Models.ViewModels;
 using AngularMusicStore.Core.Exceptions;
 
 namespace AngularMusicStore.Api.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class AlbumController : ApiController
     {
         private readonly IAlbumModel _albumModel;

@@ -12,7 +12,7 @@ namespace AngularMusicStore.IntegrationTests
     [TestFixture]
     public class Setup
     {
-     //   [Test]
+   //     [Test]
         public void PrimeDatabaseWithOneArtistWithOneAlbum()
         {
             var kernel = new StandardKernel(new DomainModule());
