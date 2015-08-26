@@ -1,5 +1,5 @@
 describe('artstDetailController', function(){
-	var scope, $httpBackend, controller, location;
+	var scope, $httpBackend, controller, location, modalController, modalInstance;
 	
 	var artistId = "a82ac00f-5b46-4347-925f-a46400de32be";
 	var artistName = "Rush";
@@ -39,6 +39,12 @@ describe('artstDetailController', function(){
 
 		$httpBackend.expectGET('http://192.168.100.137/AngularMusicStore.Api/api/artist/' + artistId).respond(artist);
 		controller = $controller('ArtistDetailCtrl', {$scope: scope, $routeParams: {id: artistId}});
+
+		modalInstance = {
+			close: jasmine.createSpy('modalInstance.close')
+		};
+
+		modalController = $controller('ArtistDeleteCtrl', {$scope: scope, $modalInstance: modalInstance});
 	}));
 
 	it('should have a valid artist detail controller', function(){
@@ -68,5 +74,9 @@ describe('artstDetailController', function(){
 		$httpBackend.flush();
 		scope.editArtist();
 		expect(location.path()).toBe('/artist/edit/a82ac00f-5b46-4347-925f-a46400de32be');
+	});
+
+	it('should be able to delete an artist', function (){
+		expect(modalController).toBeDefined();
 	});
 });
